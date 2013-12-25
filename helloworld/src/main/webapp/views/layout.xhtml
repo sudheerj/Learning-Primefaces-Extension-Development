@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<f:view contentType="text/html" locale="en">
+    <pe:head title="PrimeFaces Extensions HelloWorld" shortcutIcon="#{request.contextPath}/favicon.ico">
+        <f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+        </f:facet>
+    </pe:head>
+    <h:body>
+        <pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me" togglerTipOpen="Close Me">
+            <pe:layoutPane position="north">
+                North Block
+            </pe:layoutPane>
+            <pe:layoutPane position="east">
+                East Block
+            </pe:layoutPane>
+            <pe:layoutPane position="center">
+                <h1>Hello, Welcome to Primefaces Extensions world</h1>
+            </pe:layoutPane>
+            <pe:layoutPane position="west" size="200">  
+               		 West Block
+            </pe:layoutPane>
+            <pe:layoutPane position="south">
+                 South Block
+            </pe:layoutPane>
+        </pe:layout>
+    </h:body>
+</f:view>
+</html>
