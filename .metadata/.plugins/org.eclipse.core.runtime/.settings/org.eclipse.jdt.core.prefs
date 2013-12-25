@@ -1,7 +1,12 @@
 eclipse.preferences.version=1
+org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=
+org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.7
 org.eclipse.jdt.core.compiler.compliance=1.7
 org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
 org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.source=1.7
+org.eclipse.jdt.core.userLibrary.JSF=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="D\:/MyLocalRepository/com/sun/faces/jsf-impl/2.2.4/jsf-impl-2.2.4.jar"/>\r\n\t<archive path\="D\:/MyLocalRepository/com/sun/faces/jsf-api/2.2.4/jsf-api-2.2.4.jar"/>\r\n</userlibrary>\r\n
+org.eclipse.jdt.core.userLibrary.PF=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="D\:/MyLocalRepository/org/primefaces/primefaces/4.0/primefaces-4.0.jar"/>\r\n</userlibrary>\r\n
+org.eclipse.jdt.core.userLibrary.PFExt=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="D\:/MyLocalRepository/org/primefaces/extensions/primefaces-extensions/1.1.0/primefaces-extensions-1.1.0.jar"/>\r\n</userlibrary>\r\n

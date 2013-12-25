@@ -1,3 +1,5 @@
 INDEX VERSION 1.126
+D:\learning-pfextension\Learning-Primefaces-Extension-Development\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2092852241.index
+\helloworld\src\main\resources
 D:\learning-pfextension\Learning-Primefaces-Extension-Development\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3975696153.index
 \jobhub\src\main\resources
