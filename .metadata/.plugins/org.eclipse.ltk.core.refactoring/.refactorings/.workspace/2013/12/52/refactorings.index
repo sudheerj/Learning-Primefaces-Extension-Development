@@ -1,1 +1,6 @@
 1387712527269	Delete resource 'helloworld/src/main/java/controller'
+1388009976079	Delete 2 resources
+1388175703043	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/model/Country.java'
+1388175709748	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/model/League.java'
+1388175722160	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/model/Sport.java'
+1388175737912	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/controller/SimpleMasterDetailController.java'

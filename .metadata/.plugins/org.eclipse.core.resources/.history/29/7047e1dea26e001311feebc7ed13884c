@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<f:view contentType="text/html" locale="en">
+    <pe:head title="PrimeFaces Extensions HelloWorld" shortcutIcon="#{request.contextPath}/favicon.ico">
+        <f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+        </f:facet>
+    </pe:head>
+    <h:body>
+        <pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me" togglerTipOpen="Close Me">
+            <pe:layoutPane position="north">
+                North Block
+            </pe:layoutPane>
+            <pe:layoutPane position="east">
+                East Block
+            </pe:layoutPane>
+            <pe:layoutPane position="center">
+            <pe:masterDetail id="masterDetail" level="#{JobDetailsController.currentLevel}">
+
+    <pe:masterDetailLevel level="1" levelLabel="posts">
+        <p:dataTable id="posts" value="#{JobDetailsController.sports}" var="post">
+            <p:column headerText="Post Title">
+                <p:commandLink value="#{post.title}">
+                    <pe:selectDetailLevel contextValue="#{post}"/>
+                </p:commandLink>
+            </p:column>
+            <p:column headerText="Description">
+                <h:outputText value="#{post.description)}"/>
+            </p:column>
+             <p:column headerText="Location">
+                <h:outputText value="#{post.location)}"/>
+            </p:column>
+        </p:dataTable>
+    </pe:masterDetailLevel>
+
+    <pe:masterDetailLevel level="2" contextVar="post" levelLabel="Jobs related to #{post.title}">
+        <p:dataTable id="jobs" value="#{post.jobDetails}" var="job">
+            <p:column headerText="Job Category">
+                <p:commandLink value="#{job.jobCategory}">
+                    <pe:selectDetailLevel contextValue="#{job}"/>
+                </p:commandLink>
+            </p:column>
+            <p:column headerText="Experience">
+                <h:outputText value="#{job.experience}"/>
+            </p:column>
+            <p:column headerText="Position">
+                <h:outputText value="#{job.position}"/>
+            </p:column>
+        </p:dataTable>
+    </pe:masterDetailLevel>
+
+    <pe:masterDetailLevel level="3" contextVar="job" levelLabel="Skills related to #{job.jobCategory}">
+        <p:dataTable id="skills" value="#{job.skillsDetails}" var="skills">
+            <p:column headerText="Frameworks/Technologies">
+                <h:outputText value="#{skills.frameworks}"/>
+            </p:column>
+            <p:column headerText="Experience">
+                <h:outputText value="#{skills.experience}"/>
+            </p:column>
+             <p:column headerText="Certifications">
+                <h:outputText value="#{skills.certifications}"/>
+            </p:column>
+             <p:column headerText="Rating">
+                <h:outputText value="#{skills.rating}"/>
+            </p:column>
+        </p:dataTable>
+        <h:panelGrid columns="2" style="margin-top: 10px">
+            <p:commandButton value="Go to Posts" icon="ui-icon-arrowthickstop-1-w">
+                <pe:selectDetailLevel level="1"/>
+            </p:commandButton>
+            <p:commandButton value="Go to JobDetails" icon="ui-icon-arrowthick-1-w">
+                <pe:selectDetailLevel step="-1"/>
+            </p:commandButton>
+        </h:panelGrid>
+    </pe:masterDetailLevel>
+    </pe:masterDetail>
+            </pe:layoutPane>
+            <pe:layoutPane position="west" size="200">  
+               		 West Block
+            </pe:layoutPane>
+            <pe:layoutPane position="south">
+                 South Block
+            </pe:layoutPane>
+        </pe:layout>
+    </h:body>
+</f:view>
+</html>

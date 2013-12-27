@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+    <title>Jobhub Application</title>
+</h:head>
+<h:body>
+<h:form id="form">
+  
+
+    <p:growl id="growl" showDetail="true" life="3000" />
+
+    <p:panel id="panel" header="JobSeeker Login" style="height:30%;width:30%;margin-left:35%;margin-top:10%" >
+
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputLabel for="username" value="Username:" />
+			<p:inputText value="#{loginBean.username}" 
+					id="username" required="true" label="username">
+			 <pe:tooltip for="username" value="Please enter the user name" showEffect="slideToggle"  
+                    hideEffect="slideToggle" showDelay="0" myPosition="left center" atPosition="right center"/>
+                    </p:inputText>  
+			<h:outputLabel for="password" value="Password:" />
+			<p:password value="#{loginBean.password}" 
+					id="password" required="true" label="password" >
+			<pe:tooltip for="password" value="Please enter the password" showEffect="slideToggle"  
+                    hideEffect="slideToggle" showDelay="0" myPosition="left center" atPosition="right center"/>
+                    </p:password>  
+					<h:outputText></h:outputText>
+					<p:commandButton id="loginButton" value="Login" update="growl" style="float:right"
+					actionListener="#{loginBean.login}" 
+					oncomplete="handleLoginRequest(xhr, status, args)"/>
+					
+		</h:panelGrid>
+			
+			<f:facet name="footer">
+			  <h:panelGrid columns="3" style="margin-left:30%">
+			        <p:commandLink value="ChangePassword"></p:commandLink>
+			        <p:spacer width="10"/>
+					<p:commandLink value="Register" ajax="false" action="employeeRegistration?faces-redirect=true"></p:commandLink>
+					</h:panelGrid>
+			</f:facet>
+			
+		
+		
+    </p:panel>
+    <p:outputPanel>
+     <p:separator></p:separator>
+     <div style="margin-left:30%">
+     <p:commandLink value="AboutUS" ajax="false" action="employeeRegistration?faces-redirect=true"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Communication" ajax="false" action="employeeRegistration?faces-redirect=true"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Privacy" ajax="false" action="employeeRegistration?faces-redirect=true"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Disclaimer" ajax="false" action="employeeRegistration?faces-redirect=true"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Help" ajax="false" action="employeeRegistration?faces-redirect=true"></p:commandLink>
+     <p:spacer height="40"/>
+     </div>
+     <div style="margin-left:36%">
+     @CopyRight 2013 All rights reserved.
+     </div>
+     
+     
+    </p:outputPanel>
+</h:form>
+</h:body>
+</html>

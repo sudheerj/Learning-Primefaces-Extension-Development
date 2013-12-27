@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+    <title>Jobhub Application</title>
+</h:head>
+<h:body>
+<h:form id="form">
+<p:growl id="growl" sticky="true" showDetail="true"/>
+<p:wizard flowListener="#{employeeRegistration.onFlowProcess}">
+	
+		<p:tab id="personal" title="Personal">
+
+			<p:panel header="Personal Details">
+			
+				<h:messages errorClass="error"/>
+				
+				<h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+					<h:outputText value="Firstname: *" />
+					<p:inputText id="firstname" required="true" label="Firstname" title="Please enter firstname"
+							value="#{employeeRegistration.jobseeker.firstname}" />
+					
+					<h:outputText value="Lastname: *" />
+					<p:inputText id="lastname" required="true" label="Lastname" title="Please enter firstname"
+							value="#{employeeRegistration.jobseeker.lastname}" />
+					
+					<h:outputText value="Age: * " title="Please enter Age"/>
+					<p:inputText id="age" value="#{employeeRegistration.jobseeker.age}" />
+					
+					<h:outputText value="Sex: " title="Please enter Sex" />
+					<p:inputText id="sex" value="#{employeeRegistration.jobseeker.sex}" />
+					
+					<h:outputText value="MaritalStatus: " title="Please enter MaritalStatus"/>
+					<p:inputText id="status" value="#{employeeRegistration.jobseeker.MaritalStatus}" />
+					
+					
+					<h:outputText value="Skip to last: " />
+					<h:selectBooleanCheckbox value="#{employeeRegistration.skip}" />
+				</h:panelGrid>
+				<pe:tooltip global="true" myPosition="left center" atPosition="right center"/> 
+				<pe:keyFilter for="firstname" mask="alphanum"/>
+				<pe:keyFilter for="lastname" regEx="/[a-z0-9_]/i"/>
+				<pe:keyFilter for="age" mask="num"/>
+				<pe:keyFilter for="sex" mask="alpha"/>
+				<pe:keyFilter for="status" mask="alpha"/>
+				
+			</p:panel>
+		</p:tab>
+			
+		<p:tab id="address" title="Address">
+			<p:panel header="Adress Details">
+			
+				<h:messages errorClass="error"/>
+				
+				<h:panelGrid columns="2" columnClasses="label, value">
+					<h:outputText value="Street: " />
+					<p:inputText value="#{employeeRegistration.jobseeker.street}" />
+					
+					<h:outputText value="Postal Code: " />
+					<p:inputText value="#{employeeRegistration.jobseeker.postalCode}" />
+					
+					<h:outputText value="City: " />
+					<p:inputText value="#{employeeRegistration.jobseeker.city}" />
+					
+					<h:outputText value="Skip to last: " />
+					<h:selectBooleanCheckbox value="#{employeeRegistration.skip}" />
+				</h:panelGrid>
+				
+			</p:panel>
+		</p:tab>
+		<p:tab id="professional" title="Professional">
+			<p:panel header="Professional Information">
+				
+				<h:messages errorClass="error"/>
+			
+				<h:panelGrid columns="2" columnClasses="label, value">
+					<h:outputText value="Profession: *" />
+					<p:inputText required="true" label="Email"
+							value="#{employeeRegistration.jobseeker.profession}" />
+					
+					<h:outputText value="Experience: " />
+					<pe:inputNumber value="#{employeeRegistration.jobseeker.experience}"/>
+					
+					<h:outputText value="Current Package: " />
+					<pe:inputNumber value="#{employeeRegistration.jobseeker.currentPack}"/>
+					
+					<h:outputText value="Expected Package: " />
+					<pe:inputNumber required="true" label="Email"
+							value="#{employeeRegistration.jobseeker.expectedPack}" />
+					
+					<h:outputText value="Available Interview Timings: " />
+					<pe:timePicker value="#{employeeRegistration.jobseeker.interviewTime}"/>
+					
+					<h:outputText value="Hired Date: " />
+					<p:inputText value="#{employeeRegistration.jobseeker.info}"/>
+				</h:panelGrid>
+			</p:panel>
+		</p:tab>	
+		<p:tab id="skills" title="Skills">
+			<p:panel header="Contact Information">
+				
+				<h:messages errorClass="error"/>
+			
+				<h:panelGrid columns="2" columnClasses="label, value">
+					 <h:outputText value="Frameworks Expertise:"/>
+    <pe:triStateManyCheckbox id="TriBasic"
+                             value="#{employeeRegistration.selectedOptionsTriStateBasic}"
+                             layout="pageDirection"
+                             stateOneTitle="not matter"
+                             stateTwoTitle="love it"
+                             stateThreeTitle="dislikes">
+        <f:selectItems value="#{employeeRegistration.basicOptions}"/>
+    </pe:triStateManyCheckbox>
+
+    <h:outputText value="Database Expertise:"/>
+    <pe:triStateManyCheckbox id="TriAjax"
+                             value="#{employeeRegistration.selectedOptionsTriStateAjax}"
+                             stateOneIcon="ui-icon-home"
+                             stateTwoIcon="ui-icon-heart"
+                             stateThreeIcon="ui-icon-star"
+                             tabindex="2">
+        <f:selectItem itemLabel="Oracle" itemValue="Oracle"/>
+        <f:selectItem itemLabel="MySQL" itemValue="MySQL"/>
+        <f:selectItem itemLabel="SQL Server" itemValue="SQL Server"/>
+        <p:ajax update="growl" listener="#{employeeRegistration.addMessage}"/>
+    </pe:triStateManyCheckbox>
+				</h:panelGrid>
+			</p:panel>
+		</p:tab>
+		<p:tab id="contact" title="Contact">
+			<p:panel header="Contact Information">
+				
+				<h:messages errorClass="error"/>
+			
+				<h:panelGrid columns="2" columnClasses="label, value">
+					<h:outputText value="Email: *" />
+					<p:inputText required="true" label="Email"
+							value="#{employeeRegistration.jobseeker.email}" />
+					
+					<h:outputText value="Phone: " />
+					<p:inputText value="#{employeeRegistration.jobseeker.phone}"/>
+					
+					<h:outputText value="Additional Info: " />
+					<p:inputText value="#{employeeRegistration.jobseeker.info}"/>
+				</h:panelGrid>
+				<pe:keyFilter for="firstname" mask="email"/>
+				<pe:keyFilter for="lastname" mask="pint"/>
+			</p:panel>
+		</p:tab>
+			
+		<p:tab id="confirm" title="Confirmation">
+			<p:panel header="Confirmation">
+			
+				<h:panelGrid id="confirmation" columns="6">
+					<h:outputText value="Firstname: " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.firstname}" />
+					
+					<h:outputText value="Lastname: " />
+					<h:outputText  styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.lastname}"/>
+					
+					<h:outputText value="Age: " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.age}" />>
+					
+					<h:outputText value="Street: " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.street}" />
+					
+					<h:outputText value="Postal Code: " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.postalCode}" />
+					
+					<h:outputText value="City: " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.city}" />
+					
+					<h:outputText value="Email: " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.email}" />
+					
+					<h:outputText value="Phone " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.phone}"/>
+					
+					<h:outputText value="Info: " />
+					<h:outputText styleClass="outputLabel"
+								value="#{employeeRegistration.jobseeker.info}" />
+					
+					<h:outputText />
+					<h:outputText />
+				</h:panelGrid>
+				 <h:outputText value="Are you sure about the correctness of the content information: "/>  
+    			<pe:triStateCheckbox value="#{triStateCheckBoxController.infoCheck}"/>  
+				<p:commandButton value="Submit" update="growl" 
+							actionListener="#{employeeRegistration.save}"/>
+			
+			</p:panel>
+		</p:tab>
+		
+	</p:wizard>
+</h:form>
+</h:body>
+</html>

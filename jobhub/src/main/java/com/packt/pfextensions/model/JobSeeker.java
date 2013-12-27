@@ -1,6 +1,7 @@
 package com.packt.pfextensions.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class JobSeeker implements Serializable {
 
@@ -10,9 +11,23 @@ public class JobSeeker implements Serializable {
 	
 	private Integer age;
 	
+	private String sex;
+	
+	private String maritalStatus;
+	
 	private String street;
 	
 	private String city;
+	
+	private String profession;
+	
+	private String experience;
+	
+	private String currentPack;
+	
+	private String expectedPack;
+	
+	private Date interviewTime;
 	
 	private String postalCode;
 	
