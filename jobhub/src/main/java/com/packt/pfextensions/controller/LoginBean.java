@@ -35,12 +35,12 @@ public class LoginBean implements Serializable{
 	public String validateUser() {
 		FacesMessage msg = null;
 		
-		if(username != null && username.equals("admin") && password != null && password.equals("admin")) {
+		if(userrole.equalsIgnoreCase("2") && username != null && username.equals("admin") && password != null && password.equals("admin")) {
 			return "/views/admin?faces-redirct=true";
-		} else if(username != null && username.equals("employer") && password != null && password.equals("employer")) {
-			return "views/employer?faces-redirct=true";
+		} else if(userrole.equalsIgnoreCase("1") && username != null && username.equals("employer") && password != null && password.equals("employer")) {
+			return "/views/employerslist?faces-redirct=true";
 		}
-		else if(username != null && username.equals("jobseeker") && password != null && password.equals("jobseeker")){
+		else if(userrole.equalsIgnoreCase("0") && username != null && username.equals("jobseeker") && password != null && password.equals("jobseeker")){
 			 return "/views/jobsList?faces-redirect=true";
 		}
 		else {
