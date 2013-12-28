@@ -108,4 +108,61 @@ public class JobSeeker implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getMaritalStatus() {
+		return maritalStatus;
+	}
+
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	public String getProfession() {
+		return profession;
+	}
+
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
+	public String getCurrentPack() {
+		return currentPack;
+	}
+
+	public void setCurrentPack(String currentPack) {
+		this.currentPack = currentPack;
+	}
+
+	public String getExpectedPack() {
+		return expectedPack;
+	}
+
+	public void setExpectedPack(String expectedPack) {
+		this.expectedPack = expectedPack;
+	}
+
+	public Date getInterviewTime() {
+		return interviewTime;
+	}
+
+	public void setInterviewTime(Date interviewTime) {
+		this.interviewTime = interviewTime;
+	}
+	
 }
