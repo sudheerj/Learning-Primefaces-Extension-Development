@@ -21,13 +21,14 @@ public class JobSeeker implements Serializable {
 	
 	private String profession;
 	
-	private String experience;
+	private Double experience=new Double(0);
 	
-	private String currentPack;
+	private Double currentPack = new Double(0); 
+	private Double expectedPack = new Double(0); 
 	
-	private String expectedPack;
+	private Date interviewFromTime;
+	private Date interviewToTime;
 	
-	private Date interviewTime;
 	
 	private String postalCode;
 	
@@ -133,36 +134,47 @@ public class JobSeeker implements Serializable {
 		this.profession = profession;
 	}
 
-	public String getExperience() {
+	
+	public Double getExperience() {
 		return experience;
 	}
 
-	public void setExperience(String experience) {
+	public void setExperience(Double experience) {
 		this.experience = experience;
 	}
 
-	public String getCurrentPack() {
+	public Double getCurrentPack() {
 		return currentPack;
 	}
 
-	public void setCurrentPack(String currentPack) {
+	public void setCurrentPack(Double currentPack) {
 		this.currentPack = currentPack;
 	}
 
-	public String getExpectedPack() {
+	public Double getExpectedPack() {
 		return expectedPack;
 	}
 
-	public void setExpectedPack(String expectedPack) {
+	public void setExpectedPack(Double expectedPack) {
 		this.expectedPack = expectedPack;
 	}
 
-	public Date getInterviewTime() {
-		return interviewTime;
+	public Date getInterviewFromTime() {
+		return interviewFromTime;
 	}
 
-	public void setInterviewTime(Date interviewTime) {
-		this.interviewTime = interviewTime;
+	public void setInterviewFromTime(Date interviewFromTime) {
+		this.interviewFromTime = interviewFromTime;
 	}
+
+	public Date getInterviewToTime() {
+		return interviewToTime;
+	}
+
+	public void setInterviewToTime(Date interviewToTime) {
+		this.interviewToTime = interviewToTime;
+	}
+
+	
 	
 }
