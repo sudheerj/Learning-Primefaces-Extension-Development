@@ -4,10 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
       >
  
     <h:head>
         <title>Jobhub Application</title>
+        <h:outputStylesheet library="css" name="style.css"  />
     </h:head>
  
     <h:body>
@@ -33,6 +36,12 @@
     	    </div>
  
         </div>
+        <pe:blockUI  content="blockUIContent" widgetVar="blockUIWidget2"/>  
+  
+<h:panelGrid id="blockUIContent" columns="2" style="display:none;">  
+    <p:graphicImage value="/resources/images/process/ajax-loader.gif"   />  
+    <h:outputText value="Please wait, data is being processed..." style="white-space: nowrap;"/>  
+</h:panelGrid> 
  </h:form>
     </h:body>
     

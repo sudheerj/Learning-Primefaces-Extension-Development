@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pe="http://primefaces.org/ui/extensions"
+        template="/templates/masterTemplate.xhtml">
+
+<ui:define name="content">
+<p:accordionPanel multiple="true">  
+    <p:tab title="AboutUS">  
+        <h:panelGrid id="aboutusgrid" columns="2" cellpadding="10">  
+            <p:graphicImage value="/resources/images/aboutus.png" />  
+            <h:outputText  
+                value="#{adminController.aboutus}" />  
+        </h:panelGrid>  
+         <p:commandButton value="Edit" actionListener="#{adminController.aboutusEdit}" update="editor1panel"></p:commandButton>
+         <p:outputPanel id="editor1panel">
+         <p:editor id="editor1" value="#{adminController.aboutus}" rendered="#{adminController.aboutusFlag}" width="600"/>
+         <p:commandButton value="Save" actionListener="#{adminController.aboutusSave}" update="editor1panel,aboutusgrid" rendered="#{adminController.aboutusFlag}"></p:commandButton>
+         </p:outputPanel> 
+    </p:tab>  
+    <p:tab title="Communication">  
+        <h:panelGrid id="communicationgrid" columns="2" cellpadding="10">  
+            <p:graphicImage value="communication.png" library="images"  />  
+            <h:outputText value="#{adminController.communication}" />  
+        </h:panelGrid>
+        <p:commandButton value="Edit" actionListener="#{adminController.communicationEdit}" update="editor2panel"></p:commandButton>
+         <p:outputPanel id="editor2panel">
+         <p:editor id="editor2" value="#{adminController.communication}" width="600" rendered="#{adminController.communicationFlag}"/>
+         <p:commandButton value="Save" actionListener="#{adminController.communicationSave}" update="editor2panel,communicationgrid" rendered="#{adminController.communicationFlag}"></p:commandButton>
+         
+         </p:outputPanel>    
+    </p:tab>  
+    <p:tab title="Privacy">  
+        <h:panelGrid id="privacygrid" columns="2" cellpadding="10">  
+            <p:graphicImage value="privacy.png" library="images"  />  
+            <h:outputText value="#{adminController.privacy}" />  
+        </h:panelGrid>  
+        <p:commandButton value="Edit" actionListener="#{adminController.privacyEdit}" update="editor3panel"></p:commandButton>
+         <p:outputPanel id="editor3panel">
+         <p:editor id="editor3" value="#{adminController.privacy}" width="600" rendered="#{adminController.privacyFlag}"/>
+         <p:commandButton value="Save" actionListener="#{adminController.privacySave}" update="editor3panel,privacygrid" rendered="#{adminController.privacyFlag}"></p:commandButton>
+         
+         </p:outputPanel>  
+    </p:tab> 
+     <p:tab title="Disclaimer">  
+        <h:panelGrid id="disclaimergrid" columns="2" cellpadding="10">  
+            <p:graphicImage value="disclaimer.png" library="images"  />  
+            <h:outputText value="#{adminController.disclaimer}" />  
+        </h:panelGrid>  
+        <p:commandButton value="Edit" actionListener="#{adminController.disclaimerEdit}" update="editor4panel"></p:commandButton>
+         <p:outputPanel id="editor4panel">
+         <p:editor id="editor4" value="#{adminController.disclaimer}" width="600" rendered="#{adminController.disclaimerFlag}"/>
+         <p:commandButton value="Save" actionListener="#{adminController.disclaimerSave}" update="editor4panel,disclaimergrid" rendered="#{adminController.disclaimerFlag}"></p:commandButton>
+         
+         </p:outputPanel>  
+    </p:tab>
+     <p:tab title="Help">  
+        <h:panelGrid id="helpgrid" columns="2" cellpadding="10">  
+            <p:graphicImage value="help.png" library="images" />  
+            <h:outputText value="#{adminController.help}" />  
+        </h:panelGrid>  
+        <p:commandButton value="Edit" actionListener="#{adminController.helpEdit}" update="editor5panel"></p:commandButton>
+         <p:outputPanel id="editor5panel">
+         <p:editor id="editor5" value="#{adminController.help}" width="600" rendered="#{adminController.helpFlag}"/>
+         <p:commandButton value="Save" actionListener="#{adminController.helpSave}" update="editor5panel,helpgrid" rendered="#{adminController.helpFlag}"></p:commandButton>
+         
+         </p:outputPanel> 
+    </p:tab>   
+</p:accordionPanel>  
+</ui:define>
+</ui:composition>

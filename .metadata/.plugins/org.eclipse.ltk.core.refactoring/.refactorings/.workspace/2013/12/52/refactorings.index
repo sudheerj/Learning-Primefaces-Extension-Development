@@ -4,3 +4,6 @@
 1388175709748	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/model/League.java'
 1388175722160	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/model/Sport.java'
 1388175737912	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/controller/SimpleMasterDetailController.java'
+1388177367363	Delete resource 'jobhub/src/main/java/com/packt/pfextensions/controller/AdminController'
+1388180809811	Delete resource 'jobhub/src/main/resources/images'
+1388224904703	Delete resource 'jobhub/src/main/webapp/resources/theme.css'

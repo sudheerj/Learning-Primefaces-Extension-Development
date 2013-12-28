@@ -1,7 +1,10 @@
 package com.packt.pfextensions.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
@@ -23,8 +26,15 @@ public class AdminController implements Serializable {
 	private Boolean privacyFlag;
 	private Boolean disclaimerFlag;
 	private Boolean helpFlag;
+	private List<String> images;
 	
-	public AdminController() {
+	@PostConstruct  
+	public void init() {  
+	 images = new ArrayList<String>();  
+	  
+	  for(int i=1;i<=6;i++) {  
+	   images.add("galleria" + i + ".jpg");  
+	        }  
 		aboutus = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
 		communication = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
 		privacy = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
@@ -142,6 +152,14 @@ public class AdminController implements Serializable {
 
 	public void setHelpFlag(Boolean helpFlag) {
 		this.helpFlag = helpFlag;
+	}
+
+	public List<String> getImages() {
+		return images;
+	}
+
+	public void setImages(List<String> images) {
+		this.images = images;
 	}
 	
 

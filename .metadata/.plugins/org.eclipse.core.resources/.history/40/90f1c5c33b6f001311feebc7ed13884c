@@ -1,0 +1,71 @@
+package com.packt.pfextensions.controller;
+import java.io.Serializable;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+
+@ManagedBean
+@ApplicationScoped
+public class AdminController implements Serializable{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String aboutUS;
+   private String communication;
+   private String privacy;
+   private String disclaimer;
+   private String help;
+   
+   public AdminController(){
+	   aboutUS="The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
+	   communication="The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
+	   privacy="The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
+	   disclaimer="The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
+	   help="The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
+
+   }
+
+public String getAboutUS() {
+	return aboutUS;
+}
+
+public void setAboutUS(String aboutUS) {
+	this.aboutUS = aboutUS;
+}
+
+public String getCommunication() {
+	return communication;
+}
+
+public void setCommunication(String communication) {
+	this.communication = communication;
+}
+
+public String getPrivacy() {
+	return privacy;
+}
+
+public void setPrivacy(String privacy) {
+	this.privacy = privacy;
+}
+
+public String getDisclaimer() {
+	return disclaimer;
+}
+
+public void setDisclaimer(String disclaimer) {
+	this.disclaimer = disclaimer;
+}
+
+public String getHelp() {
+	return help;
+}
+
+public void setHelp(String help) {
+	this.help = help;
+}
+   
+   
+}

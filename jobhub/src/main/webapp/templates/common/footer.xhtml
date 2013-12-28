@@ -6,48 +6,38 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:pe="http://primefaces.org/ui/extensions">
         
-     <p:outputPanel>
-     <p:separator></p:separator>
-     <div style="margin-left:30%">
-     <p:commandLink value="AboutUS" oncomplete="aboutusDialog1.show()"></p:commandLink>
+     <p:panel style="margin-top:2%">
+<!--      <p:separator></p:separator>
+ -->     <div style="margin-left:30%">
+     <p:commandLink value="AboutUS" onclick="PF('$aboutusDialog').show()" styleClass="links"></p:commandLink>
      <p:spacer width="20"/>
-     <p:commandLink value="Communication" oncomplete="aboutusDialog2.show()"></p:commandLink>
+     <p:commandLink value="Communication" oncomplete="$communicationDialog.show()" styleClass="links"></p:commandLink>
      <p:spacer width="20"/>
-     <p:commandLink value="Privacy" oncomplete="aboutusDialog3.show()"></p:commandLink>
+     <p:commandLink value="Privacy" oncomplete="$privacyDialog.show()" styleClass="links"></p:commandLink>
      <p:spacer width="20"/>
-     <p:commandLink value="Disclaimer" oncomplete="aboutusDialog4.show()"></p:commandLink>
+     <p:commandLink value="Disclaimer" oncomplete="$disclaimerDialog.show()" styleClass="links"></p:commandLink>
      <p:spacer width="20"/>
-     <p:commandLink value="Help" oncomplete="aboutusDialog5.show()"></p:commandLink>
+     <p:commandLink value="Help" oncomplete="$helpDialog.show()" styleClass="links"></p:commandLink>
      <p:spacer height="40"/>
      </div>
      <div style="margin-left:36%">
      @CopyRight 2013 All rights reserved.
      </div>
      
-     <p:dialog id="aboutusDialog1" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
-     <h:outputText value="The jobhub application is aimed to provide employement for most of the people around the globe.
-                         This is mainly categoriezed for jobseekers and employeers.
-                         Administrator can have access rights to change the rules and acts." />
+     <p:dialog id="aboutusDialog" header="Dynamic Dialog" widgetVar="$aboutusDialog" width="400" modal="true" dynamic="true">  
+     <h:outputText value="#{adminController.aboutus}" />
      </p:dialog>                     
-     <p:dialog id="aboutusDialog2" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
-     <h:outputText value="The jobhub application is aimed to provide employement for most of the people around the globe.
-                         This is mainly categoriezed for jobseekers and employeers.
-                         Administrator can have access rights to change the rules and acts." />
+     <p:dialog id="communicationDialog" header="Dynamic Dialog" widgetVar="$communicationDialog" width="400" modal="true" dynamic="true">  
+     <h:outputText value="#{adminController.communication}" />
                           </p:dialog>    
-     <p:dialog id="aboutusDialog3" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
-     <h:outputText value="The jobhub application is aimed to provide employement for most of the people around the globe.
-                         This is mainly categoriezed for jobseekers and employeers.
-                         Administrator can have access rights to change the rules and acts." />
+     <p:dialog id="privacyDialog" header="Dynamic Dialog" widgetVar="$privacyDialog" width="400" modal="true" dynamic="true">  
+     <h:outputText value="#{adminController.privacy}" />
                           </p:dialog>    
-    <p:dialog id="aboutusDialog4" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
-     <h:outputText value="The jobhub application is aimed to provide employement for most of the people around the globe.
-                         This is mainly categoriezed for jobseekers and employeers.
-                         Administrator can have access rights to change the rules and acts." />  
+    <p:dialog id="disclaimerDialog" header="Dynamic Dialog" widgetVar="$disclaimerDialog" width="400" modal="true" dynamic="true">  
+     <h:outputText value="#{adminController.disclaimer}" />  
      </p:dialog> 
-     <p:dialog id="aboutusDialog5" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
-     <h:outputText value="The jobhub application is aimed to provide employement for most of the people around the globe.
-                         This is mainly categoriezed for jobseekers and employeers.
-                         Administrator can have access rights to change the rules and acts." />
+     <p:dialog id="helpDialog" header="Dynamic Dialog" widgetVar="$helpDialog" width="400" modal="true" dynamic="true">  
+     <h:outputText value="#{adminController.help}" />
                           </p:dialog>    
-    </p:outputPanel>
+    </p:panel>
 </html>

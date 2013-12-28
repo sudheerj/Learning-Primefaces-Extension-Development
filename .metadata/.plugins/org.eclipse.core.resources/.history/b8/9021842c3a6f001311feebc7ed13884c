@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pe="http://primefaces.org/ui/extensions"
+        template="/templates/masterTemplate.xhtml">
+
+<ui:define name="content">
+<p:accordionPanel multiple="true">  
+    <p:tab title="AboutUS">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/godfather/godfather1.jpg" />  
+            <h:outputText  
+                value="#{adminController.aboutUS}" />  
+        </h:panelGrid>  
+         <p:editor id="editor" value="#{adminController.aboutUS}" width="600"/> 
+    </p:tab>  
+    <p:tab title="Communication">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/godfather/godfather2.jpg" />  
+            <h:outputText value="#{adminController.communication}" />  
+        </h:panelGrid>
+         <p:editor id="editor" value="#{adminController.communication}" width="600"/>   
+    </p:tab>  
+    <p:tab title="Privacy">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+            <h:outputText value="#{adminController.privacy}" />  
+        </h:panelGrid>  
+         <p:editor id="editor" value="#{adminController.privacy}" width="600"/> 
+    </p:tab> 
+     <p:tab title="Disclaimer">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+            <h:outputText value="#{adminController.disclaimer}" />  
+        </h:panelGrid>  
+         <p:editor id="editor" value="#{adminController.disclaimer}" width="600"/> 
+    </p:tab>
+     <p:tab title="Help">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+            <h:outputText value="#{adminController.help}" />  
+        </h:panelGrid>  
+         <p:editor id="editor" value="#{adminController.helps}" width="600"/> 
+    </p:tab>   
+</p:accordionPanel>  
+</ui:define>
+</ui:composition>

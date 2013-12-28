@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pe="http://primefaces.org/ui/extensions">
+    <p:panel>
+   <p:graphicImage value="/resources/images/logo/jobhub.png" width="250" height="120"  />   
+	<p:carousel value="#{adminController.images}" var="image" pageLinks="6" autoPlayInterval="4000"   
+        numVisible="1" effect="easeInStrong" circular="true" style="margin-left:15%">  
+    <p:graphicImage value="/resources/images/galleria/#{image}" alt="Image Description for #{image}"  width="500" height="100"  title="#{image}"/>  
+	</p:carousel>
+	<p:outputPanel style="float:right">
+        <p:selectOneMenu value="#{loginBean.userrole}" label="Login as:">  
+            <f:selectItem itemLabel="JobSeeker" itemValue="0" />  
+            <f:selectItem itemLabel="Employer" itemValue="1" />  
+            <f:selectItem itemLabel="Admin" itemValue="2" /> 
+            <p:ajax update="mainForm" listener="#{loginBean.changeUserRole}" /> 
+        </p:selectOneMenu>
+        </p:outputPanel>
+        
+	</p:panel> 
+	
+</html>

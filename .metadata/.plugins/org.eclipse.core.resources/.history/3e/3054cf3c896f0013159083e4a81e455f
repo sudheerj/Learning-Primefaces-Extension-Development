@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pe="http://primefaces.org/ui/extensions">
+        
+     <p:outputPanel>
+     <p:separator></p:separator>
+     <div style="margin-left:30%">
+     <p:commandLink value="AboutUS" oncomplete="PF('aboutusDialog').show()"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Communication" oncomplete="communicationDialog.show()"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Privacy" oncomplete="privacyDialog.show()"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Disclaimer" oncomplete="disclaimerDialog.show()"></p:commandLink>
+     <p:spacer width="20"/>
+     <p:commandLink value="Help" oncomplete="helpDialog.show()"></p:commandLink>
+     <p:spacer height="40"/>
+     </div>
+     <div style="margin-left:36%">
+     @CopyRight 2013 All rights reserved.
+     </div>
+     
+     <p:dialog id="aboutusDialog" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
+     <h:outputText value="#{adminController.aboutus}" />
+     </p:dialog>                     
+     <p:dialog id="communicationDialog" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
+     <h:outputText value="#{adminController.communication}" />
+                          </p:dialog>    
+     <p:dialog id="privacyDialog" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
+     <h:outputText value="#{adminController.privacy}" />
+                          </p:dialog>    
+    <p:dialog id="disclaimerDialog" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
+     <h:outputText value="#{adminController.disclaimer}" />  
+     </p:dialog> 
+     <p:dialog id="helpDialog" header="Dynamic Dialog" widgetVar="dlg" dynamic="true">  
+     <h:outputText value="#{adminController.help}" />
+                          </p:dialog>    
+    </p:outputPanel>
+</html>
