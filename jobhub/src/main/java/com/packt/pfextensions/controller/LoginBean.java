@@ -29,7 +29,7 @@ public class LoginBean implements Serializable{
 	
 	@PostConstruct  
 	public void init() { 
-		loginmessage="JobSeeker's Login"; 
+		loginmessage="Login"; 
 	}
 	
 	public String validateUser() {
