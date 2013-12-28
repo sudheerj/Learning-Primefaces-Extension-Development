@@ -8,7 +8,7 @@
         template="/templates/masterTemplate.xhtml">
 
 <ui:define name="content">
-<p:accordionPanel activeIndex="">  
+<p:accordionPanel multiple="true">  
     <p:tab title="AboutUS">  
         <h:panelGrid id="aboutusgrid" columns="2" cellpadding="10">  
             <p:graphicImage value="/resources/images/aboutus.png" />  
