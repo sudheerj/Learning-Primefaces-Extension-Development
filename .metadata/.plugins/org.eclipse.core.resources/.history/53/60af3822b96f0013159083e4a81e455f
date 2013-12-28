@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      template="/templates/masterTemplate.xhtml">
+      
+  <pe:fluidGrid value="#{fluidGridDynamicController.images}" var="image"  
+              fitWidth="true" hasImages="true">  
+    <p:ajax event="layoutComplete" update="@none"  
+            listener="#{fluidGridDynamicController.fireLayoutComplete}"/>  
+      
+    <pe:fluidGridItem>  
+        <h:graphicImage library="images" name="fluidgrid/#{image.name}"/>  
+    </pe:fluidGridItem>  
+</pe:fluidGrid>  
+              
+<h:outputStylesheet id="fluidGridCSS">      
+    img {  
+        margin-top: -4px;  
+    }  
+</h:outputStylesheet> 
+</html>
