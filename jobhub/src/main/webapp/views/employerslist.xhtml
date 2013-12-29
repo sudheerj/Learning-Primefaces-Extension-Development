@@ -33,14 +33,14 @@
 						paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15"
-						selection="#{employerDetailsController.selectedEmployer}" selectionMode="single">
+						selection="#{employerDetailsController.selectedEmployer}">
 						<f:facet name="header">
             Registered Employers List
         </f:facet>
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
 						
-						<!-- <p:column selectionMode="single" style="width:2%" /> -->
+						<p:column selectionMode="single" style="width:2%" />
 						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
 						</p:column>
@@ -106,7 +106,7 @@
 
 						</p:rowExpansion>
 						<f:facet name="footer">
-							<p:commandButton id="viewButton" value="View"
+							<p:commandButton id="viewButton" value="Edit"
 								icon="ui-icon-search" update=":employeeForm:displaySingle"
 								oncomplete="PF('singleEmployerDialog').show()" />
 						</f:facet>
@@ -150,7 +150,7 @@
 							<p:selectBooleanButton
 								value="#{employerDetailsController.editable}"
 								offLabel="Edit" onLabel="Save">
-								<p:ajax event="change" process="idPanel1" update="idPanel1" />
+								<p:ajax event="change" process="idPanel1" update="idPanel1,employerList" />
 							</p:selectBooleanButton>
 						</pe:spotlight>
 					</p:dialog>
