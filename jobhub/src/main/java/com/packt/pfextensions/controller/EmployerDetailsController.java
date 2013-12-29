@@ -54,7 +54,7 @@ public class EmployerDetailsController implements Serializable {
 		        employerDetails.add(new EmployerDetails("Dollas", getRandomVacancies(), getEmployeeCount(),getClientsCount()));
 		        employerDetails.add(new EmployerDetails("California", getRandomVacancies(), getEmployeeCount(),getClientsCount()));
 		        employerDetails.add(new EmployerDetails("WD", getRandomVacancies(), getEmployeeCount(),getClientsCount()));
-		        employerDetails.add(new EmployerDetails("", getRandomVacancies(), getEmployeeCount(),getClientsCount()));
+		        employerDetails.add(new EmployerDetails("Chicago", getRandomVacancies(), getEmployeeCount(),getClientsCount()));
 			 }
 		        
 		       
