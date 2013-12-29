@@ -45,14 +45,14 @@ public class EmployerDetailsController implements Serializable {
 	}
 
 	private String getRandomYear() {
-		return (Math.random() * 50 + 1960) + "";
+		return (int)(Math.random() * 50 + 1960) + "";
 	}
 
 	private String getRandomBranch(int i) {
 		if (i % 2 == 0)
-			return "UK" + (Math.random() * 50);
+			return "UK" +(int) (Math.random() * 50);
 		else
-			return "US" + (Math.random() * 50);
+			return "US" +(int) (Math.random() * 50);
 	}
 
 	private String getOrgname(int i) {
@@ -60,7 +60,7 @@ public class EmployerDetailsController implements Serializable {
 	}
 
 	private String getRandomNoofemployees() {
-		return (Math.random() * 50 + 10000) + "";
+		return (int)(Math.random() * 50 * 4 + 10000) + "";
 
 	}
 

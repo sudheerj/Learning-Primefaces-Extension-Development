@@ -27,11 +27,11 @@
             <pe:layoutPane position="center">
  <h:form id="employeeForm">
     <p:dataTable id="employerList" var="employer" value="#{employerDetailsController.employers}"
-                 paginator="true" rows="10"
+                 paginator="true" rows="10" paginatorPosition="bottom"
                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                  rowsPerPageTemplate="5,10,15">
         <f:facet name="header">
-            Ajax Pagination
+            Registered Employers List
         </f:facet>
 
         <p:column>
