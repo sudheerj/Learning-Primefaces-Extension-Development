@@ -11,7 +11,13 @@
         numVisible="1" effect="easeInStrong" circular="true" style="margin-left:12%">  
     <p:graphicImage value="/resources/images/galleria/#{image}" alt="Image Description for #{image}"  width="500" height="100"  title="#{image}"/>  
 	</p:carousel>
-	
+	<p:outputPanel style="float:right">
+	<h:outputText value="Select Language: "  />  
+        <p:selectOneMenu value="#{adminController.language}">  
+            <f:selectItem itemLabel="English" itemValue="1" />  
+            <f:selectItem itemLabel="Turkey" itemValue="2" />  
+        </p:selectOneMenu>  
+	</p:outputPanel>
 	</p:panel> 
 	
 </html>

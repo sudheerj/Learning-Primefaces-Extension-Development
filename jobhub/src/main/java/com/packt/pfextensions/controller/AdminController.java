@@ -20,6 +20,7 @@ public class AdminController implements Serializable {
 	private String privacy;
 	private String disclaimer;
 	private String help;
+	private String language;
 
 	private Boolean aboutusFlag;
 	private Boolean communicationFlag;
@@ -160,6 +161,14 @@ public class AdminController implements Serializable {
 
 	public void setImages(List<String> images) {
 		this.images = images;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 	
 
