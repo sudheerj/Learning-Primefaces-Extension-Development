@@ -1,6 +1,8 @@
 package com.packt.pfextensions.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Employer implements Serializable {
 
@@ -13,13 +15,16 @@ public class Employer implements Serializable {
 	private String branch;
 	private String establishedyear;
 	private String noofemployees;
+	public List<EmployerDetails> employerDetails = new ArrayList<EmployerDetails>();
+
 	public Employer(String orgname, String branch, String establishedyear,
-			String noofemployees) {
+			String noofemployees,List<EmployerDetails> employerDetails) {
 		super();
 		this.orgname = orgname;
 		this.branch = branch;
 		this.establishedyear = establishedyear;
 		this.noofemployees = noofemployees;
+		this.employerDetails=employerDetails;
 	}
 	public String getOrgname() {
 		return orgname;
@@ -44,6 +49,12 @@ public class Employer implements Serializable {
 	}
 	public void setNoofemployees(String noofemployees) {
 		this.noofemployees = noofemployees;
+	}
+	public List<EmployerDetails> getEmployerDetails() {
+		return employerDetails;
+	}
+	public void setEmployerDetails(List<EmployerDetails> employerDetails) {
+		this.employerDetails = employerDetails;
 	}
 	
 	

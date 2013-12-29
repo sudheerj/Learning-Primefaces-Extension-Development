@@ -1,103 +1,144 @@
 <!DOCTYPE html>
-<html
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-      xmlns:pe="http://primefaces.org/ui/extensions">
-      <f:view contentType="text/html" locale="en">
-    <pe:head title="PrimeFaces Extensions HelloWorld" shortcutIcon="#{request.contextPath}/favicon.ico">
-        <f:facet name="first">
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <meta http-equiv="pragma" content="no-cache"/>
-            <meta http-equiv="cache-control" content="no-cache"/>
-            <meta http-equiv="expires" content="0"/>
-        </f:facet>
-    </pe:head>
-    <h:body>
-        <pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me" togglerTipOpen="Close Me">
-            <pe:layoutPane position="north">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<f:view contentType="text/html" locale="en">
+	<pe:head title="PrimeFaces Extensions Jobhub Application"
+		shortcutIcon="#{request.contextPath}/favicon.ico">
+		<f:facet name="first">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta http-equiv="pragma" content="no-cache" />
+			<meta http-equiv="cache-control" content="no-cache" />
+			<meta http-equiv="expires" content="0" />
+		</f:facet>
+	</pe:head>
+	<h:body>
+		<pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me"
+			togglerTipOpen="Close Me">
+			<pe:layoutPane position="north">
                 North Block
             </pe:layoutPane>
-            <pe:layoutPane position="east">
+			<pe:layoutPane position="east">
                 East Block
             </pe:layoutPane>
-            <pe:layoutPane position="center">
- <h:form id="employeeForm">
-    <p:dataTable id="employerList" var="employer" value="#{employerDetailsController.employers}"
-                 paginator="true" rows="10" paginatorPosition="bottom"
-                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 rowsPerPageTemplate="5,10,15">
-        <f:facet name="header">
+			<pe:layoutPane position="center">
+				<h:form id="employeeForm">
+					<p:dataTable id="employerList" var="employer"
+						value="#{employerDetailsController.employers}" paginator="true"
+						rows="10" paginatorPosition="bottom"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15">
+						<f:facet name="header">
             Registered Employers List
         </f:facet>
- <p:ajax event="page"  
-                onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()"/>  
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Organization name" />
-            </f:facet>
-            <h:outputText value="#{employer.orgname}" />
-        </p:column>
+						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
+							oncomplete="PF('blockUIWidget').unblock()" />
+						<p:column  style="width:2%" exportable="false">
+							<p:rowToggler />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Organization name" />
+							</f:facet>
+							<h:outputText value="#{employer.orgname}" />
+						</p:column>
 
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Branch Name" />
-            </f:facet>
-            <h:outputText value="#{employer.branch}" />
-        </p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Branch Name" />
+							</f:facet>
+							<h:outputText value="#{employer.branch}" />
+						</p:column>
 
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Established year" />
-            </f:facet>
-            <h:outputText value="#{employer.establishedyear}" />
-        </p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Established year" />
+							</f:facet>
+							<h:outputText value="#{employer.establishedyear}" />
+						</p:column>
 
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Number of employees" />
-            </f:facet>
-            <h:outputText value="#{employer.noofemployees}" />
-        </p:column>
-    </p:dataTable>
-    <pe:blockUI target="employerList" content="blockUIContent" widgetVar="blockUIWidget"/>  
-  
-<h:panelGrid id="blockUIContent" columns="2" style="display:none;">  
-    <h:graphicImage value="/resources/images/process/ajax-loader.gif"  
-                    style="margin-right: 12px; vertical-align: middle;"/>  
-    <h:outputText value="Please wait, data is being processed..." style="white-space: nowrap;"/>  
-</h:panelGrid>
-    <p:panel header="Export PDF and Excel">
-     <p:commandLink id="pdf" ajax="false">
-         <p:graphicImage value="/resources/images/exporticons/pdf.png"/>
-         <pe:exporter type="pdf" target="employerList" fileName="Employer Details"
-                        />
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Number of employees" />
+							</f:facet>
+							<h:outputText value="#{employer.noofemployees}" />
+						</p:column>
+						<p:rowExpansion>
+							<p:dataTable id="employerDetails" var="details"
+								value="#{employer.employerDetails}" style="width:300px;">
 
-     </p:commandLink>
+								<f:facet name="header">
+									<h:outputText value="Additional Details"></h:outputText>
+								</f:facet>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="City Name"></h:outputText>
+									</f:facet>
+									<h:outputText value="#{details.city}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Number of vacansies"></h:outputText>
+									</f:facet>
+									<h:outputText value="#{details.noofvacancies}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Number of employees"></h:outputText>
+									</f:facet>
+									<h:outputText value="#{details.noofemployees}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Number of clients"></h:outputText>
+									</f:facet>
+									<h:outputText value="#{details.noofclients}" />
+								</p:column>
+							</p:dataTable>
 
-     <p:spacer width="20"/>
+						</p:rowExpansion>
+					</p:dataTable>
+					<pe:blockUI target="employerList" content="blockUIContent"
+						widgetVar="blockUIWidget" />
 
-     <p:commandLink id="xls" ajax="false">
-         <p:graphicImage value="/resources/images/exporticons/excel.png"/>
-         <pe:exporter type="xlsx" target="employerList" fileName="Employer Details"
-                         />
+					<h:panelGrid id="blockUIContent" columns="2" style="display:none;">
+						<h:graphicImage value="/resources/images/process/ajax-loader.gif"
+							style="margin-right: 12px; vertical-align: middle;" />
+						<h:outputText value="Please wait, data is being processed..."
+							style="white-space: nowrap;" />
+					</h:panelGrid>
+					<p:panel header="Export PDF and Excel">
+						<p:commandLink id="pdf" ajax="false">
+							<p:graphicImage value="/resources/images/exporticons/pdf.png" />
+							<pe:exporter type="pdf" target="employerList"
+								fileName="Employer Details" />
 
-     </p:commandLink>
-     </p:panel>  
-</h:form>
-                                </pe:layoutPane>
-            <pe:layoutPane position="west" size="200">  
-               		<f:facet name="header">
+						</p:commandLink>
+
+						<p:spacer width="20" />
+
+						<p:commandLink id="xls" ajax="false">
+							<p:graphicImage value="/resources/images/exporticons/excel.png" />
+							<pe:exporter type="xlsx" target="employerList"
+								fileName="Employer Details" />
+
+						</p:commandLink>
+					</p:panel>
+				</h:form>
+			</pe:layoutPane>
+			<pe:layoutPane position="west" size="200">
+				<f:facet name="header">
             		  New Employer Registration
       		 		 </f:facet>
-            </pe:layoutPane>
-            <pe:layoutPane position="south">
+			</pe:layoutPane>
+			<pe:layoutPane position="south">
                  South Block
             </pe:layoutPane>
-        </pe:layout>
-    </h:body>
+		</pe:layout>
+	</h:body>
 </f:view>
 </html>
