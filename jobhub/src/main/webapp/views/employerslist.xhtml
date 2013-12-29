@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<ui:composition
+<html
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -25,8 +25,7 @@
                 East Block
             </pe:layoutPane>
             <pe:layoutPane position="center">
-<h:form prependId="false">
-<!-- 
+ <h:form id="employeeForm">
     <p:dataTable id="employerList" var="employer" value="#{employerDetailsController.employers}"
                  paginator="true" rows="10"
                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -46,7 +45,7 @@
             <f:facet name="header">
                 <h:outputText value="Branch Name" />
             </f:facet>
-            <h:outputText value="#{employer.brach}" />
+            <h:outputText value="#{employer.branch}" />
         </p:column>
 
         <p:column>
@@ -65,7 +64,7 @@
     </p:dataTable>
     <p:panel header="Export PDF and Excel">
      <p:commandLink id="pdf" ajax="false">
-         <p:graphicImage value="/resources/images/pdf.png"/>
+         <p:graphicImage value="/resources/images/exporticons/pdf.png"/>
          <pe:exporter type="pdf" target="employerList" fileName="Employer Details"
                         />
 
@@ -74,12 +73,12 @@
      <p:spacer width="20"/>
 
      <p:commandLink id="xls" ajax="false">
-         <p:graphicImage value="/resources/images/excel.png"/>
+         <p:graphicImage value="/resources/images/exporticons/excel.png"/>
          <pe:exporter type="xlsx" target="employerList" fileName="Employer Details"
                          />
 
      </p:commandLink>
-     </p:panel> -->
+     </p:panel>  
 </h:form>
                                 </pe:layoutPane>
             <pe:layoutPane position="west" size="200">  
@@ -91,4 +90,4 @@
         </pe:layout>
     </h:body>
 </f:view>
-</ui:composition>
+</html>
