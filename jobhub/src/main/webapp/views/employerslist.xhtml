@@ -39,6 +39,7 @@
         </f:facet>
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
+						
 						<!-- <p:column selectionMode="single" style="width:2%" /> -->
 						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
@@ -116,37 +117,38 @@
 						widgetVar="singleEmployerDialog" resizable="false"
 						showEffect="fade" hideEffect="explode">
 						<pe:spotlight id="idPanel1"
-							blocked="${employerDetailsController.selectedEmployer.editable}"
+							blocked="#{employerDetailsController.editable}"
 							style="padding:10px;margin:10px;"
 							styleClass="ui-widget ui-widget-content ui-corner-all">
 							<h:panelGrid id="displaySingle" columns="2" cellpadding="4">
+
 
 								<h:outputText value="Organization Name:" />
 								<h:inputText
 									value="#{employerDetailsController.selectedEmployer.orgname}"
 									style="font-weight:bold"
-									disabled="#{!employerDetailsController.selectedEmployer.editable}" />
+									disabled="#{!employerDetailsController.editable}" />
 
 								<h:outputText value="Branch:" />
 								<h:inputText
 									value="#{employerDetailsController.selectedEmployer.branch}"
-									disabled="#{!employerDetailsController.selectedEmployer.editable}"
+									disabled="#{!employerDetailsController.editable}"
 									style="font-weight:bold" />
 
 								<h:outputText value="Established year:" />
 								<h:inputText
 									value="#{employerDetailsController.selectedEmployer.establishedyear}"
-									disabled="#{!employerDetailsController.selectedEmployer.editable}"
+									disabled="#{!employerDetailsController.editable}"
 									style="font-weight:bold" />
 
 								<h:outputText value="Number of employees:" />
 								<h:inputText
 									value="#{employerDetailsController.selectedEmployer.noofemployees}"
 									style="font-weight:bold"
-									disabled="#{!employerDetailsController.selectedEmployer.editable}" />
+									disabled="#{!employerDetailsController.editable}" />
 							</h:panelGrid>
 							<p:selectBooleanButton
-								value="#{employerDetailsController.selectedEmployer.editable}"
+								value="#{employerDetailsController.editable}"
 								offLabel="Edit" onLabel="Save">
 								<p:ajax event="change" process="idPanel1" update="idPanel1" />
 							</p:selectBooleanButton>

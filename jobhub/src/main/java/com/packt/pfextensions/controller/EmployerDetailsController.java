@@ -33,6 +33,8 @@ public class EmployerDetailsController implements Serializable {
 	private Employer selectedEmployer;
 	private String randomKey;
 	private EmployerDataModel employersModel;
+	private boolean editable;
+
 
 
 
@@ -152,6 +154,14 @@ public class EmployerDetailsController implements Serializable {
 
 	public void setEmployersModel(EmployerDataModel employersModel) {
 		this.employersModel = employersModel;
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	} 
 	
 	
