@@ -33,7 +33,8 @@
         <f:facet name="header">
             Registered Employers List
         </f:facet>
-
+ <p:ajax event="page"  
+                onstart="PF('blockUIWidget').block()" oncomplete="PF('blockUIWidget').unblock()"/>  
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Organization name" />
@@ -62,6 +63,13 @@
             <h:outputText value="#{employer.noofemployees}" />
         </p:column>
     </p:dataTable>
+    <pe:blockUI target="employerList" content="blockUIContent" widgetVar="blockUIWidget"/>  
+  
+<h:panelGrid id="blockUIContent" columns="2" style="display:none;">  
+    <h:graphicImage value="/resources/images/process/ajax-loader.gif"  
+                    style="margin-right: 12px; vertical-align: middle;"/>  
+    <h:outputText value="Please wait, data is being processed..." style="white-space: nowrap;"/>  
+</h:panelGrid>
     <p:panel header="Export PDF and Excel">
      <p:commandLink id="pdf" ajax="false">
          <p:graphicImage value="/resources/images/exporticons/pdf.png"/>
@@ -82,7 +90,9 @@
 </h:form>
                                 </pe:layoutPane>
             <pe:layoutPane position="west" size="200">  
-               		 West Block
+               		<f:facet name="header">
+            		  New Employer Registration
+      		 		 </f:facet>
             </pe:layoutPane>
             <pe:layoutPane position="south">
                  South Block
