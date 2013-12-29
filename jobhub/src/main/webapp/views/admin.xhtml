@@ -8,6 +8,10 @@
         template="/templates/masterTemplate.xhtml">
 
 <ui:define name="content">
+<h:form id="adminForm"> 
+<p:tabView id="tabView">  
+  
+    <p:tab id="tab1" title="Footer Configuration">  
 <p:accordionPanel activeIndex="">  
     <p:tab title="AboutUS">  
         <h:panelGrid id="aboutusgrid" columns="2" cellpadding="10">  
@@ -70,5 +74,105 @@
          </p:outputPanel> 
     </p:tab>   
 </p:accordionPanel>  
+   </p:tab>  
+       <p:tab id="tab2" title="Jobhub Timeline"> 
+       <pe:timeline id="timeline" value="#{jobhubTimelineController.model}" height="250px" var="jobhub"
+             selectable="#{jobhubTimelineController.selectable}" 
+             zoomable="#{jobhubTimelineController.zoomable}"
+             moveable="#{jobhubTimelineController.moveable}"
+             stackEvents="#{jobhubTimelineController.stackEvents}"
+             axisOnTop="#{jobhubTimelineController.axisOnTop}"             
+             eventStyle="#{jobhubTimelineController.eventStyle}"
+             showCurrentTime="#{jobhubTimelineController.showCurrentTime}"
+             showNavigation="#{jobhubTimelineController.showNavigation}"
+             
+             timeZone="#{jobhubTimelineController.timeZone}"  
+             zoomMax="#{jobhubTimelineController.zoomMax}"  
+             start="#{jobhubTimelineController.start}"  
+             end="#{jobhubTimelineController.end}"  
+             editable="true" showButtonNew="true" minHeight="200" widgetVar="timelineWdgt">  
+    <p:ajax event="change" update="@none" listener="#{jobhubTimelineController.onChange}"/>  
+  
+    <p:ajax event="select" listener="#{jobhubTimelineController.onSelect}"/>
+    <h:panelGrid columns="1">  
+        <h:outputText value="NoOfposts: #{jobhub.noofposts}"/>  
+        <h:outputText value="NoOfemployers: #{jobhub.noofemployers}"/>  
+        <h:outputText value="NoOfappliedposts: #{jobhub.noofappliedposts}"/>  
+    </h:panelGrid> 
+</pe:timeline>
+
+<p:dialog id="detailsBookingDlg" header="Booking Details" widgetVar="detailsBookingWdgt"
+          showEffect="clip" hideEffect="clip">
+    <h:panelGroup id="detailsBookingInner" layout="block">
+        <h:panelGrid columns="2" columnClasses="bookingDetails1,bookingDetails2">
+            <h:outputText value="Room"/>
+            <p:inputText value="#{jobhubTimelineController.event.data.roomNumber}"
+                         required="true" label="Room"/>
+            
+            <h:outputText value="Category"/>
+            <p:selectOneMenu value="#{jobhubTimelineController.event.data.category}">
+                <f:selectItem itemLabel="Standard" itemValue="STANDARD"/>
+                <f:selectItem itemLabel="Superior" itemValue="SUPERIOR"/>
+                <f:selectItem itemLabel="Deluxe" itemValue="DELUXE"/>
+                <f:selectItem itemLabel="Junior" itemValue="JUNIOR"/>
+                <f:selectItem itemLabel="Executive Suite" itemValue="EXECUTIVE_SUITE"/>
+            </p:selectOneMenu>
+            
+            <h:outputText value="From"/>
+            <p:calendar value="#{jobhubTimelineController.event.startDate}"
+                        timeZone="#{jobhubTimelineController.timeZone}"
+                        pattern="dd/MM/yyyy HH:mm" required="true" label="From"/>
+            
+            <h:outputText value="Until"/>
+            <p:calendar value="#{jobhubTimelineController.event.endDate}"
+                        timeZone="#{jobhubTimelineController.timeZone}"
+                        pattern="dd/MM/yyyy HH:mm" label="Until"/>
+            
+            <h:outputText value="Phone"/>
+            <p:inputMask value="#{jobhubTimelineController.event.data.phone}" mask="(9999) 999-999"/>
+            
+            <h:outputText value="Comment"/>
+            <p:inputTextarea value="#{jobhubTimelineController.event.data.comment}" autoResize="false"/>
+        </h:panelGrid>
+    </h:panelGroup>
+
+    <f:facet name="footer">
+        <h:panelGroup layout="block" style="text-align:right; padding:2px; white-space:nowrap;">
+            <p:commandButton value="Save" process="detailsBookingDlg" update="@none"
+                             action="#{jobhubTimelineController.saveDetails}"
+                             oncomplete="if(!args.validationFailed){PF('detailsBookingWdgt').hide();}"/>
+            <p:commandButton type="button" value="Close" onclick="PF('detailsBookingWdgt').hide()"/>
+        </h:panelGroup>
+    </f:facet>
+</p:dialog>
+                
+<p:dialog id="deleteBookingDlg" header="Booking Details" widgetVar="deleteBookingWdgt"
+          showEffect="clip" hideEffect="clip" dynamic="true">
+    <h:panelGroup id="deleteBookingInner" layout="block" style="margin:10px;">
+    </h:panelGroup>
+    
+    <f:facet name="footer">
+        <h:panelGroup layout="block" style="text-align:right; padding:2px; white-space:nowrap;">
+            <p:commandButton value="Delete" process="deleteBookingDlg" update="@none"
+                             oncomplete="PF('deleteBookingWdgt').hide()"/>
+            <p:commandButton type="button" value="Close" onclick="PF('deleteBookingWdgt').hide()"/>
+        </h:panelGroup>
+    </f:facet>
+</p:dialog>
+
+            
+<h:outputStylesheet id="timelineCSS">
+    table .formColumn {
+        padding: 0 5px 0 20px;
+        text-align: right;
+        white-space: nowrap;
+    }       
+</h:outputStylesheet>
+             
+       </p:tab>
+  
+  
+</p:tabView>  
+</h:form>
 </ui:define>
 </ui:composition>
