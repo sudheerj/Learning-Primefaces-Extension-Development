@@ -36,9 +36,9 @@ public class LoginBean implements Serializable{
 		FacesMessage msg = null;
 		
 		if(userrole.equalsIgnoreCase("2") && username != null && username.equals("admin") && password != null && password.equals("admin")) {
-			return "/views/admin?faces-redirct=true";
+			return "/views/admin?faces-redirect=true";
 		} else if(userrole.equalsIgnoreCase("1") && username != null && username.equals("employer") && password != null && password.equals("employer")) {
-			return "/views/employerslist?faces-redirct=true";
+			return "/views/employerslist?faces-redirect=true";
 		}
 		else if(userrole.equalsIgnoreCase("0") && username != null && username.equals("jobseeker") && password != null && password.equals("jobseeker")){
 			 return "/views/jobsList?faces-redirect=true";
