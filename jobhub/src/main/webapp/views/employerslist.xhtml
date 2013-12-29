@@ -28,16 +28,19 @@
 			<pe:layoutPane position="center">
 				<h:form id="employeeForm">
 					<p:dataTable id="employerList" var="employer"
-						value="#{employerDetailsController.employers}" paginator="true"
-						rows="10" paginatorPosition="bottom"
+						value="#{employerDetailsController.employersModel}" paginator="true"
+						rowKey="#{employer.orgname}" rows="10"
+						paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15">
+						rowsPerPageTemplate="5,10,15"
+						selection="#{employerDetailsController.selectedEmployer}" selectionMode="single">
 						<f:facet name="header">
             Registered Employers List
         </f:facet>
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
-						<p:column  style="width:2%" exportable="false">
+						<!-- <p:column selectionMode="single" style="width:2%" /> -->
+						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
 						</p:column>
 						<p:column>
@@ -101,7 +104,55 @@
 							</p:dataTable>
 
 						</p:rowExpansion>
+						<f:facet name="footer">
+							<p:commandButton id="viewButton" value="View"
+								icon="ui-icon-search" update=":employeeForm:displaySingle"
+								oncomplete="PF('singleEmployerDialog').show()" />
+						</f:facet>
 					</p:dataTable>
+
+
+					<p:dialog id="dialog" header="Employer Detail"
+						widgetVar="singleEmployerDialog" resizable="false"
+						showEffect="fade" hideEffect="explode">
+						<pe:spotlight id="idPanel1"
+							blocked="${employerDetailsController.selectedEmployer.editable}"
+							style="padding:10px;margin:10px;"
+							styleClass="ui-widget ui-widget-content ui-corner-all">
+							<h:panelGrid id="displaySingle" columns="2" cellpadding="4">
+
+								<h:outputText value="Organization Name:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.orgname}"
+									style="font-weight:bold"
+									disabled="#{!employerDetailsController.selectedEmployer.editable}" />
+
+								<h:outputText value="Branch:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.branch}"
+									disabled="#{!employerDetailsController.selectedEmployer.editable}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Established year:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.establishedyear}"
+									disabled="#{!employerDetailsController.selectedEmployer.editable}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Number of employees:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.noofemployees}"
+									style="font-weight:bold"
+									disabled="#{!employerDetailsController.selectedEmployer.editable}" />
+							</h:panelGrid>
+							<p:selectBooleanButton
+								value="#{employerDetailsController.selectedEmployer.editable}"
+								offLabel="Edit" onLabel="Save">
+								<p:ajax event="change" process="idPanel1" update="idPanel1" />
+							</p:selectBooleanButton>
+						</pe:spotlight>
+					</p:dialog>
+
 					<pe:blockUI target="employerList" content="blockUIContent"
 						widgetVar="blockUIWidget" />
 
@@ -130,10 +181,61 @@
 					</p:panel>
 				</h:form>
 			</pe:layoutPane>
-			<pe:layoutPane position="west" size="200">
+			<pe:layoutPane position="west" size="400">
 				<f:facet name="header">
             		  New Employer Registration
       		 		 </f:facet>
+				<h:form id="registration">
+					<p:panel>
+
+						<p:messages errorClass="error" />
+
+						<h:panelGrid columns="2" columnClasses="label, value"
+							styleClass="grid">
+							<h:outputText value="Organization Name *" />
+							<p:inputText id="org" required="true" label="OrgName"
+								title="Please enter organization name"
+								value="#{employerDetailsController.enrolledEmployer.orgname}" />
+
+							<h:outputText value="Main Branch *" />
+							<p:inputText id="branch" required="true" label="Branch"
+								title="Please enter branchname"
+								value="#{employerDetailsController.enrolledEmployer.branch}" />
+
+							<h:outputText value="Established Year: * "
+								title="Please enter Year" />
+							<p:inputText id="year"
+								value="#{employerDetailsController.enrolledEmployer.establishedyear}" />
+
+							<h:outputText value="Number of employees: "
+								title="Please enter employee count" />
+							<p:inputText id="noofemployee"
+								value="#{employerDetailsController.enrolledEmployer.noofemployees}" />
+
+
+						</h:panelGrid>
+						<p:commandButton value="Register" update=":employeeForm"
+							actionListener="#{employerDetailsController.registerEmployer}"
+							onstart="PF('blockUIWidgetPage').block()"
+							oncomplete="PF('blockUIWidgetPage').unblock()"></p:commandButton>
+						<pe:blockUI widgetVar="blockUIWidgetPage">
+							<h:panelGrid columns="2">
+								<h:graphicImage
+									value="/resources/images/process/ajax-loader.gif"
+									style="margin-right: 12px; vertical-align: middle;" />
+								<h:outputText value="Please wait, data is being inserted..."
+									style="white-space: nowrap;" />
+							</h:panelGrid>
+						</pe:blockUI>
+						<pe:tooltip global="true" myPosition="left center"
+							atPosition="right center" />
+						<pe:keyFilter for="org" mask="alphanum" />
+						<pe:keyFilter for="branch" regEx="/[a-z0-9_]/i" />
+						<pe:keyFilter for="year" mask="num" />
+						<pe:keyFilter for="noofemployee" mask="num" />
+
+					</p:panel>
+				</h:form>
 			</pe:layoutPane>
 			<pe:layoutPane position="south">
                  South Block

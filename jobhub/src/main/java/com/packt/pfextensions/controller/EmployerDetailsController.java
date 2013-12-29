@@ -3,11 +3,15 @@ package com.packt.pfextensions.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
+import com.packt.pfextensions.dataModel.EmployerDataModel;
 import com.packt.pfextensions.model.Employer;
 import com.packt.pfextensions.model.EmployerDetails;
 
@@ -25,12 +29,18 @@ public class EmployerDetailsController implements Serializable {
 
 	private List<Employer> employers;
 	public List<EmployerDetails> employerDetails;
+	private Employer enrolledEmployer=new Employer();
+	private Employer selectedEmployer;
+	private String randomKey;
+	private EmployerDataModel employersModel;
+
 
 
 	@PostConstruct
 	public void init() {
 		employers = new ArrayList<Employer>();
 		populateEmployers(employers, 50);
+		employersModel = new EmployerDataModel(employers); 
 		   
 	        
 	        
@@ -61,6 +71,15 @@ public class EmployerDetailsController implements Serializable {
 			list.add(new Employer(getOrgname(i), getRandomBranch(i),
 					getRandomYear(), getRandomNoofemployees(),employerDetails));}
 	}
+	
+	public void registerEmployer(){
+		employers.add(0, enrolledEmployer);
+		
+		FacesMessage msg = new FacesMessage("Successful", "Welcome :"
+				+ enrolledEmployer.getOrgname());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
 
 	public List<Employer> getEmployers() {
 		return employers;
@@ -100,6 +119,43 @@ public class EmployerDetailsController implements Serializable {
 	private String getClientsCount(){
 		return (int)(Math.random() * 10  + 10) + "";
 	}
+
+	public Employer getEnrolledEmployer() {
+		return enrolledEmployer;
+	}
+
+	public void setEnrolledEmployer(Employer enrolledEmployer) {
+		this.enrolledEmployer = enrolledEmployer;
+	}
+
+	public Employer getSelectedEmployer() {
+		return selectedEmployer;
+	}
+
+	public void setSelectedEmployer(Employer selectedEmployer) {
+		System.out.println("employer selected"+selectedEmployer);
+		this.selectedEmployer = selectedEmployer;
+	}
+	
+	public String getRandomKey() {
+		randomKey=UUID.randomUUID().toString().substring(0, 8);  
+		return randomKey;
+	}
+
+	public void setRandomKey(String randomKey) {
+		this.randomKey = randomKey;
+	}
+
+	public EmployerDataModel getEmployersModel() {
+		return employersModel;
+	}
+
+	public void setEmployersModel(EmployerDataModel employersModel) {
+		this.employersModel = employersModel;
+	} 
+	
+	
+	
 
     
 }

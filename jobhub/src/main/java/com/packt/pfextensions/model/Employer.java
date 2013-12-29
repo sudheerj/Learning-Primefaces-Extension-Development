@@ -15,8 +15,13 @@ public class Employer implements Serializable {
 	private String branch;
 	private String establishedyear;
 	private String noofemployees;
+	private boolean editable;
 	public List<EmployerDetails> employerDetails = new ArrayList<EmployerDetails>();
 
+	
+	public Employer() {
+		super();
+	}
 	public Employer(String orgname, String branch, String establishedyear,
 			String noofemployees,List<EmployerDetails> employerDetails) {
 		super();
@@ -55,6 +60,12 @@ public class Employer implements Serializable {
 	}
 	public void setEmployerDetails(List<EmployerDetails> employerDetails) {
 		this.employerDetails = employerDetails;
+	}
+	public boolean getEditable() {
+		return editable;
+	}
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	}
 	
 	
