@@ -67,6 +67,18 @@ import com.packt.pfextensions.model.Jobhub;
 
 			cal.set(2012, Calendar.APRIL, 16, 0, 0, 0);
 			model.add(new TimelineEvent(new Jobhub("1000","500","8800000"), cal.getTime()));
+			
+			cal.set(2012, Calendar.APRIL, 4, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("8000","590","2300000"), cal.getTime()));
+
+			cal.set(2012, Calendar.APRIL, 10, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("1000","500","8800000"), cal.getTime()));
+			
+			cal.set(2012, Calendar.APRIL, 15, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("8000","590","2300000"), cal.getTime()));
+
+			cal.set(2012, Calendar.APRIL, 21, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("1000","500","8800000"), cal.getTime()));
 
 			cal.set(2012, Calendar.JUNE, 10, 0, 0, 0);
 			model.add(new TimelineEvent(new Jobhub("10300","500","2000000"), cal.getTime()));
