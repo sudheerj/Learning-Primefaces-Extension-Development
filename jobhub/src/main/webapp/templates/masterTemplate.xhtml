@@ -41,7 +41,9 @@
 			draggable="false" closable="false">
 			<p:graphicImage value="/resources/images/process/ajax-loader.gif" />
 		</p:dialog>
-		
+		<pe:ajaxErrorHandler type="javax.faces.application.ViewExpiredException" button="Reload"  
+                     buttonOnclick="document.location.href=document.location.href;"  
+                     body="Due to inactivity on page please push RELOAD to continue." title="Page expired ..."/>  
 	</h:form>
 </h:body>
 
