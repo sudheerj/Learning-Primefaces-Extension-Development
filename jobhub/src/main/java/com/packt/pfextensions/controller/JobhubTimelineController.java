@@ -68,19 +68,29 @@ import com.packt.pfextensions.model.Jobhub;
 			cal.set(2012, Calendar.APRIL, 16, 0, 0, 0);
 			model.add(new TimelineEvent(new Jobhub("1000","500","8800000"), cal.getTime()));
 			
-			cal.set(2012, Calendar.APRIL, 4, 0, 0, 0);
-			model.add(new TimelineEvent(new Jobhub("8000","590","2300000"), cal.getTime()));
+			cal.set(2012, Calendar.MAY, 4, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("100","590","23000"), cal.getTime()));
 
-			cal.set(2012, Calendar.APRIL, 10, 0, 0, 0);
-			model.add(new TimelineEvent(new Jobhub("1000","500","8800000"), cal.getTime()));
+			cal.set(2012, Calendar.MAY, 10, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("200","500","8800"), cal.getTime()));
 			
-			cal.set(2012, Calendar.APRIL, 15, 0, 0, 0);
-			model.add(new TimelineEvent(new Jobhub("8000","590","2300000"), cal.getTime()));
+			cal.set(2012, Calendar.MAY, 15, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("200","590","2300"), cal.getTime()));
 
-			cal.set(2012, Calendar.APRIL, 21, 0, 0, 0);
-			model.add(new TimelineEvent(new Jobhub("1000","500","8800000"), cal.getTime()));
+			cal.set(2012, Calendar.MAY, 21, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("300","500","800"), cal.getTime()));
+			
+			cal.set(2012, Calendar.MAY, 26, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("200","500","8800"), cal.getTime()));
+			
+			cal.set(2012, Calendar.JUNE, 5, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("10300","500","2000000"), cal.getTime()));
 
 			cal.set(2012, Calendar.JUNE, 10, 0, 0, 0);
+			model.add(new TimelineEvent(new Jobhub("60000","500","3300000"), cal.getTime()));
+
+
+			cal.set(2012, Calendar.JUNE, 15, 0, 0, 0);
 			model.add(new TimelineEvent(new Jobhub("10300","500","2000000"), cal.getTime()));
 
 			cal.set(2012, Calendar.JUNE, 19, 0, 0, 0);

@@ -111,6 +111,6 @@
 		<mojarra.version>2.2.4</mojarra.version>
 		<primefaces.version>4.0</primefaces.version>
 		<primefacesextensions.version>1.1.0</primefacesextensions.version>
-		<jetty.version>9.1.0.v20131115</jetty.version>
+		<jetty.version>8.1.10.v20130312</jetty.version>
 	</properties>
 </project>
