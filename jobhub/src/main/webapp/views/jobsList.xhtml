@@ -56,7 +56,7 @@
                 <h:outputText value="#{post.location}"/>
             </p:column>
             <p:column headerText="Status" filterBy="status" filterStyle="display:none;">
-            <p:selectBooleanButton value="#{post.status}" onLabel="Applied" offLabel="Apply" disabled="!#{post.status}">  
+            <p:selectBooleanButton widgetVar="boolbutton" value="#{post.status}" onLabel="Applied" offLabel="Apply" >
             </p:selectBooleanButton> 
             </p:column> 
         </p:dataTable>
