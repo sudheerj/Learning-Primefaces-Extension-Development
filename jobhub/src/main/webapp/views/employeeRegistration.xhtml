@@ -30,7 +30,7 @@
 							value="#{employeeRegistration.jobseeker.lastname}" />
 
 						<h:outputText value="Age: * " title="Please enter Age" />
-						<p:inputText id="age"
+						<p:inputText id="age" required="true" label="Age"
 							value="#{employeeRegistration.jobseeker.age}" />
 
 						<h:outputText value="Sex: " title="Please enter Sex" />
@@ -42,7 +42,8 @@
 						<p:inputText id="status"
 							value="#{employeeRegistration.jobseeker.maritalStatus}" />
 
-
+                        
+                        
 						<h:outputText value="Skip to last: " />
 						<h:selectBooleanCheckbox value="#{employeeRegistration.skip}" />
 					</h:panelGrid>
@@ -59,26 +60,57 @@
 
 			<p:tab id="address" title="Address">
 				<p:panel header="Adress Details">
+					
+					<pe:dynaForm id="dynaForm" value="#{employeeRegistration.model}"
+						var="data" autoSubmit="true" buttonBarPosition="bottom"
+						widgetVar="dynaFormWidget">
+						<pe:dynaFormControl styleClass="pe-dynaform-label">
+							<h:outputText value="#{data}" />
+						</pe:dynaFormControl>
+						<pe:dynaFormControl type="input" for="input">
+							<p:inputText id="input" value="#{data.value}"
+								required="#{data.required}" />
+						</pe:dynaFormControl>
+						<pe:dynaFormControl type="select1" for="country"
+							styleClass="select">
+							<p:selectOneMenu id="country" value="#{data.value}"
+								required="#{data.required}">
+								<f:selectItems value="#{employeeRegistration.countries}" />
+							</p:selectOneMenu>
+						</pe:dynaFormControl>
+						<pe:dynaFormControl type="select2" for="city" styleClass="select">
+							<p:selectOneMenu id="sel" value="#{data.value}"
+								required="#{data.required}">
+								<f:selectItems value="#{employeeRegistration.cities}" />
+							</p:selectOneMenu>
+						</pe:dynaFormControl>
+						<pe:dynaFormControl type="desc" for="desc">
+							<p:inputTextarea id="desc" value="#{data.value}"
+								required="#{data.required}" autoResize="false" />
+						</pe:dynaFormControl>
 
-					<h:messages errorClass="error" />
+						<f:facet name="headerRegular">
+							<div>
+								<h:outputText value="Current Address details" />
+							</div>
+						</f:facet>
 
-					<h:panelGrid columns="2" columnClasses="label, value">
-						<h:outputText value="Street: " />
-						<p:inputText value="#{employeeRegistration.jobseeker.street}" />
+						<f:facet name="headerExtended">
+							<div>
+								<h:outputText value="Permanent Address details" />
+							</div>
+						</f:facet>
 
-						<h:outputText value="Postal Code: " />
-						<p:inputText id="postalCode"
-							value="#{employeeRegistration.jobseeker.postalCode}" />
+						<f:facet name="buttonBar">
+							<p:commandButton type="button"
+								value="Show / hide Permanent address details" style="margin-left: 5px;"
+								onclick="PF('dynaFormWidget').toggleExtended()" />
+						</f:facet> 
+					</pe:dynaForm>
 
-						<h:outputText value="City: " />
-						<p:inputText id="city"
-							value="#{employeeRegistration.jobseeker.city}" />
 
-						<h:outputText value="Skip to last: " />
-						<h:selectBooleanCheckbox value="#{employeeRegistration.skip}" />
-					</h:panelGrid>
-					<pe:keyFilter for="postalCode" mask="num" />
-					<pe:keyFilter for="city" mask="alpha" />
+					<!-- <pe:keyFilter for="postalCode" mask="num" />
+					<pe:keyFilter for="city" mask="alpha" /> -->
 				</p:panel>
 			</p:tab>
 			<p:tab id="professional" title="Professional">
@@ -105,25 +137,24 @@
 						<pe:inputNumber required="true" label="Email"
 							value="#{employeeRegistration.jobseeker.expectedPack}" symbol="$"
 							decimalPlaces="2" />
-							<h:outputText value="Preferred Interview Timings-From: " />
-					    <h:outputLabel>
-						<pe:timePicker
-							value="#{employeeRegistration.jobseeker.interviewFromTime}"
-							timeSeparator="-" startHours="8" endHours="20" startMinutes="10"
-							endMinutes="40" intervalMinutes="10" showCloseButton="true"
-							showDeselectButton="true" showNowButton="true" rows="3"
-							showPeriod="true" style="width:70px;"
-							widgetVar="customTimeWidget" label="Custom time picker" />
-					 <h:outputText value="To:"/>
-						<pe:timePicker
-							value="#{employeeRegistration.jobseeker.interviewToTime}"
-							timeSeparator="-" startHours="8" endHours="20" startMinutes="10"
-							endMinutes="40" intervalMinutes="10" showCloseButton="true"
-							showDeselectButton="true" showNowButton="true" rows="3"
-							showPeriod="true" style="width:70px;"
-							 label="Custom time picker" />
-							</h:outputLabel>
-						
+						<h:outputText value="Preferred Interview Timings-From: " />
+						<h:outputLabel>
+							<pe:timePicker
+								value="#{employeeRegistration.jobseeker.interviewFromTime}"
+								timeSeparator="-" startHours="8" endHours="20" startMinutes="10"
+								endMinutes="40" intervalMinutes="10" showCloseButton="true"
+								showDeselectButton="true" showNowButton="true" rows="3"
+								showPeriod="true" style="width:70px;"
+								widgetVar="customTimeWidget" label="Custom time picker" />
+							<h:outputText value="To:" />
+							<pe:timePicker
+								value="#{employeeRegistration.jobseeker.interviewToTime}"
+								timeSeparator="-" startHours="8" endHours="20" startMinutes="10"
+								endMinutes="40" intervalMinutes="10" showCloseButton="true"
+								showDeselectButton="true" showNowButton="true" rows="3"
+								showPeriod="true" style="width:70px;" label="Custom time picker" />
+						</h:outputLabel>
+
 					</h:panelGrid>
 					<pe:keyFilter for="profession" mask="alpha" />
 				</p:panel>
@@ -139,7 +170,8 @@
 							value="#{employeeRegistration.selectedFrameworkOptions}"
 							layout="pageDirection" stateOneTitle="not matter"
 							stateTwoTitle="love it" stateThreeTitle="dislikes">
-							<f:selectItems value="#{employeeRegistration.allFrameworkOptions}" />
+							<f:selectItems
+								value="#{employeeRegistration.allFrameworkOptions}" />
 						</pe:triStateManyCheckbox>
 
 						<h:outputText value="Database Expertise:" />
@@ -151,13 +183,13 @@
 							<f:selectItem itemLabel="MySQL" itemValue="MySQL" />
 							<f:selectItem itemLabel="SQLServer" itemValue="SQL Server" />
 						</pe:triStateManyCheckbox>
-					<h:outputText value="Overall Expertise:" />
-					<pe:triStateCheckbox value="#{employeeRegistration.avgrating}"/>
+						<h:outputText value="Overall Expertise:" />
+						<pe:triStateCheckbox value="#{employeeRegistration.avgrating}" />
 
 					</h:panelGrid>
 				</p:panel>
 			</p:tab>
-			<p:tab id="contact" title="Contact">
+			<!-- <p:tab id="contact" title="Contact">
 				<p:panel header="Contact Information">
 
 					<h:messages errorClass="error" />
@@ -168,8 +200,8 @@
 							value="#{employeeRegistration.jobseeker.email}" />
 
 						<h:outputText id="phone" value="Phone: " />
-						<p:inputMask value="#{employeeRegistration.jobseeker.phone}"   
-                        mask="(999) 999-9999? x99999"/> 
+						<p:inputMask value="#{employeeRegistration.jobseeker.phone}"
+							mask="(999) 999-9999? x99999" />
 
 						<h:outputText value="Additional Info: " />
 						<p:inputText value="#{employeeRegistration.jobseeker.info}" />
@@ -178,7 +210,7 @@
 					<pe:keyFilter for="phone" mask="pint" />
 				</p:panel>
 			</p:tab>
-
+ -->
 			<p:tab id="confirm" title="Confirmation">
 				<p:panel header="Confirmation">
 
@@ -194,8 +226,8 @@
 						<h:outputText value="Age: " />
 						<h:outputText styleClass="outputLabel"
 							value="#{employeeRegistration.jobseeker.age}" />
-					
-					<h:outputText value="Street: " />
+
+						<h:outputText value="Street: " />
 						<h:outputText styleClass="outputLabel"
 							value="#{employeeRegistration.jobseeker.street}" />
 
@@ -222,10 +254,8 @@
 						<h:outputText />
 						<h:outputText />
 					</h:panelGrid>
-					<h:outputText
-						value="Accurate content? " />
-					<pe:triStateCheckbox
-						value="#{employeeRegistration.infocheck}" />
+					<h:outputText value="Accurate content? " />
+					<pe:triStateCheckbox value="#{employeeRegistration.infocheck}" />
 					<h:outputText></h:outputText>
 					<h:outputText></h:outputText>
 					<p:separator></p:separator>
@@ -233,9 +263,31 @@
 						actionListener="#{employeeRegistration.save}" />
 
 				</p:panel>
-				
+
 			</p:tab>
 
 		</p:wizard>
+		<h:outputStylesheet id="dynaFormCSS">
+    /* note: trick with colspan is needed for IE8 */
+    .pe-dynaform-cell input,
+    .pe-dynaform-cell textarea,
+    .pe-dynaform-cell[colspan="1"] input,
+    .pe-dynaform-cell[colspan="1"] textarea {
+        width: 130px;
+    }
+
+    /* note: trick with colspan is needed for IE8 */
+    .pe-dynaform-cell.calendar input,
+    .pe-dynaform-cell[colspan="1"].calendar input {
+        width: 100px;
+    }
+    
+    .pe-dynaform-headerfacet div{
+        border: 1px dotted #808080;
+        padding: 10px;
+        text-align: center;
+    }    
+</h:outputStylesheet>
+
 	</ui:define>
 </ui:composition>
