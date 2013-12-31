@@ -42,7 +42,7 @@ import com.packt.pfextensions.model.SkillsDetails;
 				JobDetailsArchList.add(jobDetails);
 				jobDetails = new JobDetails("SAP Domain", "14", "B13-Architect",  getSkillsDetails("SAP"));
 				JobDetailsArchList.add(jobDetails);
-				jobPosts.add(new JobPost("SrArchitect","Architectural designs","US", JobDetailsArchList));
+				jobPosts.add(new JobPost("SrArchitect","Architectural designs","US",false, JobDetailsArchList));
 
 				//SrDeveloper
 				List<JobDetails> JobDetailsSrDevList = new ArrayList<JobDetails>();
@@ -54,7 +54,7 @@ import com.packt.pfextensions.model.SkillsDetails;
 				JobDetailsSrDevList.add(jobDetailsSrDev);
 				jobDetailsSrDev = new JobDetails("SAP Domain", "15", "B13-Architect",  getSkillsDetails("SAP"));
 				JobDetailsSrDevList.add(jobDetailsSrDev);
-				jobPosts.add(new JobPost("SrDeveloper","Designs and developement","UK", JobDetailsSrDevList));
+				jobPosts.add(new JobPost("SrDeveloper","Designs and developement","UK",true, JobDetailsSrDevList));
 
 				//SrLeadDeveloper
 				List<JobDetails> jobDetailsLeadDevList = new ArrayList<JobDetails>();
@@ -66,7 +66,7 @@ import com.packt.pfextensions.model.SkillsDetails;
 				jobDetailsLeadDevList.add(jobDetailsLeadDev);
 				jobDetails = new JobDetails("SAP Domain", "12", "B13-Architect",  getSkillsDetails("SAP"));
 				jobDetailsLeadDevList.add(jobDetailsLeadDev);
-				jobPosts.add(new JobPost("SrArchitect","Designs,Developement and management activities","US", jobDetailsLeadDevList));
+				jobPosts.add(new JobPost("SrArchitect","Designs,Developement and management activities","US",true, jobDetailsLeadDevList));
 				
 				// Software Developer
 				List<JobDetails> JobDetailsDevList = new ArrayList<JobDetails>();
@@ -78,7 +78,7 @@ import com.packt.pfextensions.model.SkillsDetails;
 				JobDetailsArchList.add(jobDetailsDev);
 				jobDetailsDev = new JobDetails("SAP Domain", "14", "B13-Architect",  getSkillsDetails("SAP"));
 				JobDetailsArchList.add(jobDetailsDev);
-				jobPosts.add(new JobPost("Software Developer","Application developement","US", JobDetailsArchList));
+				jobPosts.add(new JobPost("Software Developer","Application developement","US",false, JobDetailsArchList));
 				
 		}
 		
