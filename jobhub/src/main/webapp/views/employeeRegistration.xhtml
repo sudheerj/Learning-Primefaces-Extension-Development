@@ -9,7 +9,7 @@
 
 	<ui:define name="content">
 		<p:growl id="growl" sticky="true" showDetail="true" />
-		<p:wizard flowListener="#{employeeRegistration.onFlowProcess}">
+		<p:wizard flowListener="#{employeeRegistration.onFlowProcess}" onnext="">
 
 			<p:tab id="personal" title="Personal">
 
@@ -79,7 +79,20 @@
 							</p:selectOneMenu>
 						</pe:dynaFormControl>
 						<pe:dynaFormControl type="select2" for="city" styleClass="select">
-							<p:selectOneMenu id="sel" value="#{data.value}"
+							<p:selectOneMenu id="city" value="#{data.value}"
+								required="#{data.required}">
+								<f:selectItems value="#{employeeRegistration.cities}" />
+							</p:selectOneMenu>
+						</pe:dynaFormControl>
+						<pe:dynaFormControl type="select3" for="country"
+							styleClass="select">
+							<p:selectOneMenu id="country1" value="#{data.value}" widgetVar="$country1"
+								required="#{data.required}">
+								<f:selectItems value="#{employeeRegistration.countries}" />
+							</p:selectOneMenu>
+						</pe:dynaFormControl>
+						<pe:dynaFormControl type="select4" for="city" styleClass="select" widgetVar="$city1">
+							<p:selectOneMenu id="city1" value="#{data.value}"
 								required="#{data.required}">
 								<f:selectItems value="#{employeeRegistration.cities}" />
 							</p:selectOneMenu>
@@ -103,8 +116,8 @@
 
 						<f:facet name="buttonBar">
 							<p:commandButton type="button"
-								value="Show / hide Permanent address details" style="margin-left: 5px;"
-								onclick="PF('dynaFormWidget').toggleExtended()" />
+								value="Show/hide Permanent address details" style="margin-left: 5px;"
+								onclick="PF('dynaFormWidget').toggleExtended();" />
 						</f:facet> 
 					</pe:dynaForm>
 

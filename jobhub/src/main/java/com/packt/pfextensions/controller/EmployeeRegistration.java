@@ -150,10 +150,10 @@ public class EmployeeRegistration implements Serializable {
 		row = model.createExtendedRow();
 
 		row.addControl("Country", 1, 1);
-		row.addControl(new AddressProperty("Country", false), "select1", 1, 1);
+		row.addControl(new AddressProperty("Country", false), "select3", 1, 1);
 
 		row.addControl("City", 1, 1);
-		row.addControl(new AddressProperty("City", false), "select2", 1, 1);
+		row.addControl(new AddressProperty("City", false), "select4", 1, 1);
 
 	}
 
@@ -188,10 +188,10 @@ public class EmployeeRegistration implements Serializable {
 	    }  
 	 public List<SelectItem> getCities() {  
 	        if (cities.isEmpty()) {  
-	        	cities.add(new SelectItem("city1", "city"));  
-	        	cities.add(new SelectItem("city1", "city"));  
 	        	cities.add(new SelectItem("city1", "city1"));  
-	        	cities.add(new SelectItem("city1", "city1"));  
+	        	cities.add(new SelectItem("city2", "city2"));  
+	        	cities.add(new SelectItem("city3", "city3"));  
+	        	cities.add(new SelectItem("city4", "city4"));  
 	        }  
 	  
 	        return cities;  
