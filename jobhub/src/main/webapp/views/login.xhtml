@@ -41,15 +41,19 @@
 
 				<h:outputText></h:outputText>
 				<p:commandButton id="loginButton" value="Login" update="growl"
-					style="float:right" action="#{loginBean.validateUser}" />
+					style="float:right" action="#{loginBean.validateUser}" ajax="false" />
+
 			</h:panelGrid>
 
 			<f:facet name="footer">
 				<h:panelGrid columns="3" style="margin-left:30%">
-					<p:commandLink value="ChangePassword"></p:commandLink>
+					<p:outputPanel id="register">
+						<p:commandLink value="Register" ajax="false"
+							rendered="#{loginBean.renderRegister}"
+							action="employeeRegistration?faces-redirect=true"></p:commandLink>
+					</p:outputPanel>
 					<p:spacer width="10" />
-					<p:commandLink value="Register" ajax="false"
-						action="employeeRegistration?faces-redirect=true"></p:commandLink>
+					<p:commandLink value="ChangePassword"></p:commandLink>
 				</h:panelGrid>
 			</f:facet>
 

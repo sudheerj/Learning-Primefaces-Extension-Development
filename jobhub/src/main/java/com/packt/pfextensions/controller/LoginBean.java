@@ -26,6 +26,7 @@ public class LoginBean implements Serializable{
 	
 	private String userrole;
 	private String loginmessage;
+	private boolean renderRegister=true;
 	
 	@PostConstruct  
 	public void init() { 
@@ -55,12 +56,18 @@ public class LoginBean implements Serializable{
 		
 		if(userrole.equalsIgnoreCase("1")){
 			loginmessage="Employer's Login";
+			renderRegister=false;
+
 		}
 		else if(userrole.equalsIgnoreCase("2")){
 			loginmessage="Admin's Login";
+			renderRegister=false;
+
 		}
 		else {
 			loginmessage="JobSeeker's Login";
+			renderRegister=true;
+
 		}
 		
 	}
@@ -98,6 +105,14 @@ public class LoginBean implements Serializable{
 
 	public void setLoginmessage(String loginmessage) {
 		this.loginmessage = loginmessage;
+	}
+
+	public boolean isRenderRegister() {
+		return renderRegister;
+	}
+
+	public void setRenderRegister(boolean renderRegister) {
+		this.renderRegister = renderRegister;
 	}
 
 	
