@@ -1,35 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:pe="http://primefaces.org/ui/extensions">
-<f:view contentType="text/html" locale="en">
-	<pe:head title="PrimeFaces Extensions Jobhub Application"
-		shortcutIcon="#{request.contextPath}/favicon.ico">
-		<f:facet name="first">
-			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-			<meta http-equiv="pragma" content="no-cache" />
-			<meta http-equiv="cache-control" content="no-cache" />
-			<meta http-equiv="expires" content="0" />
-		</f:facet>
-	</pe:head>
-	<h:body>
-		<pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me" fullPage="false" style="width:100%; height:615px;"
 			togglerTipOpen="Close Me">
-			<pe:layoutPane position="north">
+			<!-- <pe:layoutPane position="north">
                 North Block
-            </pe:layoutPane>
+            </pe:layoutPane> -->
 			<pe:layoutPane position="east">
                 East Block
             </pe:layoutPane>
 			<pe:layoutPane position="center">
 				<h:form id="employeeForm">
 					<p:dataTable id="employerList" var="employer"
-						value="#{employerDetailsController.employersModel}" paginator="true"
-						rowKey="#{employer.orgname}" rows="10"
+						value="#{employerDetailsController.employersModel}"
+						paginator="true" rowKey="#{employer.orgname}" rows="10"
 						paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15"
@@ -39,7 +30,7 @@
         </f:facet>
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
-						
+
 						<p:column selectionMode="single" style="width:2%" />
 						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
@@ -148,9 +139,10 @@
 									disabled="#{!employerDetailsController.editable}" />
 							</h:panelGrid>
 							<p:selectBooleanButton
-								value="#{employerDetailsController.editable}"
-								offLabel="Edit" onLabel="Save">
-								<p:ajax event="change" process="idPanel1" update="idPanel1,employerList" />
+								value="#{employerDetailsController.editable}" offLabel="Edit"
+								onLabel="Save">
+								<p:ajax event="change" process="idPanel1"
+									update="idPanel1,employerList" />
 							</p:selectBooleanButton>
 						</pe:spotlight>
 					</p:dialog>
@@ -239,10 +231,9 @@
 					</p:panel>
 				</h:form>
 			</pe:layoutPane>
-			<pe:layoutPane position="south">
+			<!-- <pe:layoutPane position="south">
                  South Block
-            </pe:layoutPane>
+            </pe:layoutPane> -->
 		</pe:layout>
-	</h:body>
-</f:view>
-</html>
+	</ui:define>
+</ui:composition>

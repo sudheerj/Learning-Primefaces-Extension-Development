@@ -9,9 +9,6 @@
 	<ui:define name="content">
 		<pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me" fullPage="false" style="width:100%; height:900px;"
 			togglerTipOpen="Close Me">
-			<!-- <pe:layoutPane position="north">
-				
-			</pe:layoutPane> -->
 			<pe:layoutPane position="east">
                 East Block
             </pe:layoutPane>
@@ -21,7 +18,8 @@
 					<pe:masterDetail id="masterDetail"
 						level="#{jobDetailsController.currentLevel}">
 
-						<pe:masterDetailLevel level="1" levelLabel="List of all posts">
+						<pe:masterDetailLevel level="1" levelLabel="List of all posts" >
+						
 							<p:dataTable id="posts" value="#{jobDetailsController.jobPosts}"
 								var="post" widgetVar="postsWidgetVar"
 								filteredValue="#{jobDetailsController.filteredPosts}">
@@ -101,7 +99,8 @@
 					</pe:masterDetail>
 				</h:form>
 			</pe:layoutPane>
-			<pe:layoutPane position="west" size="200">
+			<pe:layoutPane position="west" size="300" >
+			<pe:layoutPane position="north" size="150">
 			<f:facet name="header">
 					<h:outputText value="Search criteria for Job Posts"/>
 				</f:facet>
@@ -115,6 +114,18 @@
 					</h:panelGroup>
 
 				</h:form>
+				</pe:layoutPane>
+				<pe:layoutPane position="center" size="200">
+				<f:facet name="header">
+					<h:outputText value="Companies List"/>
+				</f:facet>
+				<h:form id="companiesForm">
+						<h:outputLabel value="Do you want to know the list of all companies? Please click " />
+						<h:commandLink value="here" action="companiesList.xhtml?faces-redirect=true" ajax="false" style="color:blue"></h:commandLink>
+						
+
+				</h:form>
+				</pe:layoutPane>
 				<!-- <f:facet name="header">
 					<h:outputText value="Menu" />
 				</f:facet>

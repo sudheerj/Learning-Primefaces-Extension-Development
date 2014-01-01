@@ -6,6 +6,7 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:pe="http://primefaces.org/ui/extensions">
     <p:panel>
+    <h:form id="headerForm">
    <p:graphicImage value="/resources/images/logo/jobhub.png" width="250" height="100" style="margin-top:2px"  />   
 	<p:carousel value="#{adminController.images}" var="image" pageLinks="6" autoPlayInterval="4000"   
         numVisible="1" effect="easeInStrong" circular="true" style="margin-left:12%">  
@@ -23,6 +24,7 @@
             <p:graphicImage value="/resources/images/logout.png" />  
         </h:commandLink> 
 	</p:outputPanel>
+	</h:form>
 	</p:panel> 
 	
 </html>

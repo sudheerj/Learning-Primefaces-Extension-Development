@@ -9,57 +9,58 @@
 
 	<ui:define name="content">
 
+		<h:form id="loginForm">
+			<p:growl id="growl" showDetail="true" life="3000" />
 
-		<p:growl id="growl" showDetail="true" life="3000" />
+			<p:panel id="panel" header="#{loginBean.loginmessage}"
+				style="height:28%;width:30%;margin-left:35%;margin-top:1%">
 
-		<p:panel id="panel" header="#{loginBean.loginmessage}"
-			style="height:28%;width:30%;margin-left:35%;margin-top:1%">
+				<p:messages></p:messages>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="username" value="#{msg['login.username']}:" />
+					<p:inputText value="#{loginBean.username}" id="username"
+						required="true" label="username">
+						<pe:tooltip for="username" value="#{msg['login.enterusername']}"
+							showEffect="slideToggle" hideEffect="slideToggle" showDelay="0"
+							myPosition="left center" atPosition="right center" />
+					</p:inputText>
+					<h:outputLabel for="password" value="#{msg['login.password']}:" />
+					<p:password value="#{loginBean.password}" id="password"
+						required="true" label="password">
+						<pe:tooltip for="password" value="#{msg['login.enterpasswd']}"
+							showEffect="slideToggle" hideEffect="slideToggle" showDelay="0"
+							myPosition="left center" atPosition="right center" />
+					</p:password>
+					<h:outputText value="#{msg['login.loginas']}:"></h:outputText>
+					<p:selectOneMenu value="#{loginBean.userrole}" label="Login as:">
+						<f:selectItem itemLabel="JobSeeker" itemValue="0" />
+						<f:selectItem itemLabel="Employer" itemValue="1" />
+						<f:selectItem itemLabel="Admin" itemValue="2" />
+						<p:ajax update="loginForm" listener="#{loginBean.changeUserRole}" />
+					</p:selectOneMenu>
 
-			<p:messages></p:messages>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel for="username" value="#{msg['login.username']}:" />
-				<p:inputText value="#{loginBean.username}" id="username"
-					required="true" label="username">
-					<pe:tooltip for="username" value="#{msg['login.enterusername']}"
-						showEffect="slideToggle" hideEffect="slideToggle" showDelay="0"
-						myPosition="left center" atPosition="right center" />
-				</p:inputText>
-				<h:outputLabel for="password" value="#{msg['login.password']}:" />
-				<p:password value="#{loginBean.password}" id="password"
-					required="true" label="password">
-					<pe:tooltip for="password" value="#{msg['login.enterpasswd']}"
-						showEffect="slideToggle" hideEffect="slideToggle" showDelay="0"
-						myPosition="left center" atPosition="right center" />
-				</p:password>
-				<h:outputText value="#{msg['login.loginas']}:"></h:outputText>
-				<p:selectOneMenu value="#{loginBean.userrole}" label="Login as:">
-					<f:selectItem itemLabel="JobSeeker" itemValue="0" />
-					<f:selectItem itemLabel="Employer" itemValue="1" />
-					<f:selectItem itemLabel="Admin" itemValue="2" />
-					<p:ajax update="mainForm" listener="#{loginBean.changeUserRole}" />
-				</p:selectOneMenu>
+					<h:outputText></h:outputText>
+					<p:commandButton id="loginButton" value="#{msg['login.login']}"
+						update="growl" style="float:right"
+						action="#{loginBean.validateUser}" ajax="false" />
 
-				<h:outputText></h:outputText>
-				<p:commandButton id="loginButton" value="#{msg['login.login']}" update="growl"
-					style="float:right" action="#{loginBean.validateUser}" ajax="false" />
-
-			</h:panelGrid>
-
-			<f:facet name="footer">
-				<h:panelGrid columns="3" style="margin-left:30%">
-					<p:outputPanel id="register">
-						<p:commandLink value="#{msg['login.register']}" ajax="false"
-							rendered="#{loginBean.renderRegister}"
-							action="employeeRegistration?faces-redirect=true"></p:commandLink>
-					</p:outputPanel>
-					<p:spacer width="10" />
-					<p:commandLink value="#{msg['login.changpasswd']}"></p:commandLink>
 				</h:panelGrid>
-			</f:facet>
+
+				<f:facet name="footer">
+					<h:panelGrid columns="3" style="margin-left:30%">
+						<p:outputPanel id="register">
+							<p:commandLink value="#{msg['login.register']}" ajax="false"
+								rendered="#{loginBean.renderRegister}"
+								action="employeeRegistration?faces-redirect=true"></p:commandLink>
+						</p:outputPanel>
+						<p:spacer width="10" />
+						<p:commandLink value="#{msg['login.changpasswd']}"></p:commandLink>
+					</h:panelGrid>
+				</f:facet>
 
 
 
-		</p:panel>
-
+			</p:panel>
+		</h:form>
 	</ui:define>
 </ui:composition>

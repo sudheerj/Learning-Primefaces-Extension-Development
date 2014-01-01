@@ -8,7 +8,8 @@
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       xmlns:pe="http://primefaces.org/ui/extensions"
       template="/templates/masterTemplate.xhtml">
-<ui:define name="content"> 
+<ui:define name="content">
+<h:form id="companiesListForm">
 <h:panelGroup id="wrapper" layout="block"> 
 <h:panelGroup id="container" layout="block">  
   <pe:fluidGrid value="#{employerController.companies}" var="company"  
@@ -101,5 +102,6 @@
         margin-top: -4px;  
     }  
 </h:outputStylesheet> 
+</h:form> 
 </ui:define>  
 </ui:composition>
