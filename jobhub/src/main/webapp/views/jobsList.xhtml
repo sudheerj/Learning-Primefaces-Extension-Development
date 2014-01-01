@@ -59,12 +59,12 @@
 									filterStyle="display:none;width:10px">
 									<h:outputText value="#{post.location}" />
 								</p:column>
-								<!-- <p:column headerText="Status"  width="20"
+								<p:column headerText="Status"  width="20"
 									filterStyle="display:none;width:10px">
 									<p:selectBooleanButton widgetVar="boolbutton"
 										value="#{post.status}" onLabel="Applied" offLabel="Apply">
 									</p:selectBooleanButton>
-								</p:column> -->
+								</p:column>
 							</p:dataTable>
 						</pe:masterDetailLevel>
 
@@ -149,16 +149,12 @@
 		</pe:layout>
 		<script>
 			function searchKeyPressedHandler() {
-				$(document)
-						.on("keyup","#myFilter input",
-								function(event) {
-									var searchValue = document
-											.getElementById('searchform:myFilter_text').value;
+				$(document).on("keyup","#searchform input",
+							function(event) {
+									var searchValue = document.getElementById('searchform:myFilter_text').value;
 
-									$("#masterDetailform\\:posts\\:globalFilter")
-											.val(searchValue);
-									$("#masterDetailform\\:posts\\:globalFilter")
-											.trigger('keyup')
+									$("#masterDetailform\\:posts\\:globalFilter").val(searchValue);
+									$("#masterDetailform\\:posts\\:globalFilter").trigger('keyup');
 								});
 			}
 		</script>
