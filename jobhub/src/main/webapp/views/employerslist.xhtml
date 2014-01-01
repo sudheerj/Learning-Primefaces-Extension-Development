@@ -9,14 +9,30 @@
 	template="/templates/masterTemplate.xhtml">
 	<ui:define name="content">
 		<pe:layout resizerTip="Resize Me" togglerTipClosed="Open Me"
-			fullPage="false" style="width:100%; height:615px;"
+			fullPage="false" style="width:100%; height:650px;"
 			togglerTipOpen="Close Me">
 			<!-- <pe:layoutPane position="north">
                 North Block
             </pe:layoutPane> -->
-			<pe:layoutPane position="east">
-                East Block
-            </pe:layoutPane>
+			<pe:layoutPane position="east" size="300">
+				<f:facet name="header">
+            		  Latest Updates
+      		 		 </f:facet>
+
+				<p:dataTable value="#{employerUpdatesController.recentupdates}"
+					rows="4" var="monthinfo">
+					<p:column>
+						<p:panel header="#{monthinfo.monthname}">
+							<h:outputText value="Posts:#{monthinfo.noofposts}"></h:outputText>
+							<br />
+							<h:outputText value="Total applications:#{monthinfo.applications}"></h:outputText>
+							<br />
+							<h:outputText value="Total selected:#{monthinfo.noofselected}"></h:outputText>
+							
+						</p:panel>
+					</p:column>
+				</p:dataTable>
+			</pe:layoutPane>
 			<pe:layoutPane position="center">
 				<h:form id="employeeForm">
 					<pe:remoteCommand name="remoteload">
@@ -34,33 +50,33 @@
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
 						<p:ajax event="filter" id="filter"
-							listener="#{employerDetailsController.onFilter}"  />
+							listener="#{employerDetailsController.onFilter}" />
 						<p:column selectionMode="single" style="width:2%" />
 						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
 						</p:column>
-						<p:column filterBy="orgname" filterMatchMode="contains">
+						<p:column filterBy="orgname" filterMatchMode="contains" width="70">
 							<f:facet name="header">
 								<h:outputText value="Organization name" />
 							</f:facet>
 							<h:outputText value="#{employer.orgname}" />
 						</p:column>
 
-						<p:column>
+						<p:column width="30">
 							<f:facet name="header">
 								<h:outputText value="Branch Name" />
 							</f:facet>
 							<h:outputText value="#{employer.branch}" />
 						</p:column>
 
-						<p:column>
+						<p:column width="30">
 							<f:facet name="header">
 								<h:outputText value="Established year" />
 							</f:facet>
 							<h:outputText value="#{employer.establishedyear}" />
 						</p:column>
 
-						<p:column>
+						<p:column width="70">
 							<f:facet name="header">
 								<h:outputText value="Number of employees" />
 							</f:facet>
@@ -101,14 +117,14 @@
 
 						</p:rowExpansion>
 						<p:columnGroup type="footer" id="columngroup">
-						  <p:outputPanel id="total">
-							<p:row>
-								<p:column colspan="5" footerText="Total:"
-									style="text-align:right" />
+							<p:outputPanel id="total">
+								<p:row>
+									<p:column colspan="5" footerText="Total:"
+										style="text-align:right" />
 
-								<p:column
-									footerText="#{employerDetailsController.employeeTotal}" />
-							</p:row>
+									<p:column
+										footerText="#{employerDetailsController.employeeTotal}" />
+								</p:row>
 							</p:outputPanel>
 						</p:columnGroup>
 						<f:facet name="footer">
