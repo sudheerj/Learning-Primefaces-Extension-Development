@@ -18,6 +18,11 @@
    			<f:selectItems value="#{languageController.countriesInMap}" />   
         </h:selectOneMenu>  
 	</p:outputPanel>
+	<p:outputPanel style="float:right" rendered="#{view.viewId != '/views/login.xhtml'}">
+       <h:commandLink action="/views/login.xhtml?faces-redirect=true">  
+            <p:graphicImage value="/resources/images/logout.png" />  
+        </h:commandLink> 
+	</p:outputPanel>
 	</p:panel> 
 	
 </html>
