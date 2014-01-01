@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
-
-<h:head>
-	<title>Jobhub Application</title>
-		<link type="text/css" rel="stylesheet" 
-		  href="#{request.contextPath}//resources/css/style.css" />
-	
-</h:head>
-
-<h:body>
-	<h:form id="mainForm">
+<f:view contentType="text/html">
+	<pe:head title="PrimeFaces Extensions JobHub application"
+		shortcutIcon="#{request.contextPath}/favicon.ico">
+		<f:facet name="first">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta http-equiv="pragma" content="no-cache" />
+			<meta http-equiv="cache-control" content="no-cache" />
+			<meta http-equiv="expires" content="0" />
+		</f:facet>
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}//resources/css/style.css" />
+	</pe:head>
+	<h:body>
+		<h:form id="mainForm">
 			<div id="header">
 				<ui:insert name="header">
 					<ui:include src="/templates/common/header.xhtml" />
@@ -25,8 +28,7 @@
 
 			<div id="content">
 				<ui:insert name="content">
-					<!-- 	 	  <ui:include src="/template/common/commonContent.xhtml" />
- -->
+					  <ui:include src="/templates/common/content.xhtml" />
 				</ui:insert>
 			</div>
 
@@ -35,16 +37,18 @@
 					<ui:include src="/templates/common/footer.xhtml" />
 				</ui:insert>
 			</div>
-		<p:ajaxStatus onstart="PF('statusDialog').show();"
-			onsuccess="PF('statusDialog').hide();" />
-		<p:dialog modal="true" widgetVar="statusDialog" header="Status"
-			draggable="false" closable="false">
-			<p:graphicImage value="/resources/images/process/ajax-loader.gif" />
-		</p:dialog>
-		<pe:ajaxErrorHandler type="javax.faces.application.ViewExpiredException" button="Reload"  
-                     buttonOnclick="document.location.href=document.location.href;"  
-                     body="Due to inactivity on page please push RELOAD to continue." title="Page expired ..."/>  
-	</h:form>
-</h:body>
-
+			<p:ajaxStatus onstart="PF('statusDialog').show();"
+				onsuccess="PF('statusDialog').hide();" />
+			<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+				draggable="false" closable="false">
+				<p:graphicImage value="/resources/images/process/ajax-loader.gif" />
+			</p:dialog>
+			<pe:ajaxErrorHandler
+				type="javax.faces.application.ViewExpiredException" button="Reload"
+				buttonOnclick="document.location.href=document.location.href;"
+				body="Due to inactivity on page please push RELOAD to continue."
+				title="Page expired ..." />
+		</h:form>
+	</h:body>
+	</f:view>
 </html>
