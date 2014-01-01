@@ -9,4 +9,13 @@
             org.primefaces.extensions.component.ajaxerrorhandler.AjaxExceptionHandlerFactory
         </exception-handler-factory>
     </factory>
+    <application>
+     	   <locale-config>
+     	        <default-locale>en</default-locale>
+     	   </locale-config>
+	   <resource-bundle>
+		<base-name>com.packt.messages</base-name>
+		<var>msg</var>
+	   </resource-bundle>
+     </application>
 </faces-config>

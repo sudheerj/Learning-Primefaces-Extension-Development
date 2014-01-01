@@ -6,31 +6,86 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 
-<p:panel style="margin-top:1px%" >
+<p:panel style="margin-top:1px%">
 	<div style="margin-left: 30%;">
-		<p:commandLink value="AboutUS" onclick="PF('$aboutusDialog').show()"
+		<p:commandLink value="#{msg['footer.aboutus']}" onclick="PF('$aboutusDialog').show()"
 			styleClass="links"></p:commandLink>
 		<p:spacer width="20" />
-		<p:commandLink value="Communication"
+		<p:commandLink value="#{msg['footer.communication']}"
 			oncomplete="$communicationDialog.show()" styleClass="links"></p:commandLink>
 		<p:spacer width="20" />
-		<p:commandLink value="Privacy" oncomplete="$privacyDialog.show()"
+		<p:commandLink value="#{msg['footer.privacy']}" oncomplete="$privacyDialog.show()"
 			styleClass="links"></p:commandLink>
 		<p:spacer width="20" />
-		<p:commandLink value="Disclaimer"
+		<p:commandLink value="#{msg['footer.disclaimer']}"
 			oncomplete="$disclaimerDialog.show()" styleClass="links"></p:commandLink>
 		<p:spacer width="20" />
-		<p:commandLink value="Help" oncomplete="$helpDialog.show()"
+		<p:commandLink value="#{msg['footer.help']}" oncomplete="$helpDialog.show()"
 			styleClass="links"></p:commandLink>
 		<p:spacer height="40" />
 	</div>
-	<p:separator style="margin-left:30%;margin-right:30%" ></p:separator>
+	<p:separator style="margin-left:30%;margin-right:30%"></p:separator>
 	<div style="margin-left: 36%">@CopyRight 2013 All rights
 		reserved.</div>
 
 	<p:dialog id="aboutusDialog" header="Dynamic Dialog"
 		widgetVar="$aboutusDialog" width="400" modal="true" dynamic="true">
-		<h:outputText value="#{adminController.aboutus}" />
+		<!-- <h:panelGroup id="footerwrapper" layout="block">
+			<div data-property="font-size" class="dial first">
+				<h3>Font Size:</h3>
+				<ul>
+					<li data-value="8px">8px</li>
+					<li data-value="10px">10px</li>
+					<li data-value="12px">12px</li>
+					<li data-value="14px">14px</li>
+					<li data-value="16px">16px</li>
+					<li data-value="18px">18px</li>
+					<li data-value="24px">24px</li>
+					<li data-value="36px">36px</li>
+					<li data-value="48px">48px</li>
+					<li data-value="72px">72px</li>
+				</ul>
+				<div class="indicator"></div>
+			</div>
+			<div data-property="width" class="dial">
+				<h3>Width:</h3>
+				<ul>
+					<li data-value="150px">150px</li>
+					<li data-value="200px">200px</li>
+					<li data-value="250px">250px</li>
+					<li data-value="300px">300px</li>
+					<li data-value="350px">350px</li>
+					<li data-value="400px">400px</li>
+					<li data-value="500px">500px</li>
+					<li data-value="600px">600px</li>
+					<li data-value="700px">700px</li>
+					<li data-value="800px">800px</li>
+					<li data-value="1024px">1024px</li>
+					<li data-value="1280px">1280px</li>
+				</ul>
+				<div class="indicator"></div>
+			</div>
+			<div data-property="background-color" class="dial">
+				<h3>BG Color:</h3>
+				<ul>
+					<li data-value="#fff">#fff</li>
+					<li data-value="#d1f2a5">#d1f2a5</li>
+					<li data-value="#effab4">#effab4</li>
+					<li data-value="#ffc48c">#ffc48c</li>
+					<li data-value="#ff9f80">#ff9f80</li>
+					<li data-value="#f56991">#f56991</li>
+				</ul>
+				<div class="indicator"></div>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup id="textContainer" layout="block">
+			<h:outputText value="#{adminController.aboutus}" />
+		</h:panelGroup>
+		<pe:waypoint id="waypoint" for="@(.dial li)" forContext="@(.dial ul)" offset="25">  
+    <pe:javascript event="reached" execute="handleWaypoint(ext);"/>  
+</pe:waypoint>  
+       -->
+
 	</p:dialog>
 	<p:dialog id="communicationDialog" header="Dynamic Dialog"
 		widgetVar="$communicationDialog" width="400" modal="true"

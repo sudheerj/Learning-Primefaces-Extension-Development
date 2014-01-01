@@ -2,11 +2,16 @@ package com.packt.pfextensions.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
 @ManagedBean
 @ApplicationScoped
@@ -29,16 +34,20 @@ public class AdminController implements Serializable {
 	private Boolean helpFlag;
 	private List<String> images;
 	
-	@PostConstruct  
-	public void init() {  
-	 images = new ArrayList<String>();  
-	  
-	  for(int i=1;i<=6;i++) {  
-	   images.add("galleria" + i + ".jpg");  
-	        }  
-		aboutus = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts."+
-	        "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts."+
-				"The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
+ 
+	
+
+	@PostConstruct
+	public void init() {
+		System.out.println("application scoped bean");
+		images = new ArrayList<String>();
+
+		for (int i = 1; i <= 6; i++) {
+			images.add("galleria" + i + ".jpg");
+		}
+		aboutus = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts."
+				+ "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts."
+				+ "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
 		communication = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
 		privacy = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
 		disclaimer = "The jobhub application is aimed to provide employement for most of the people around the globe.This is mainly categoriezed for jobseekers and employeers.Administrator can have access rights to change the rules and acts.";
@@ -46,37 +55,47 @@ public class AdminController implements Serializable {
 
 	}
 
-	public void aboutusEdit() {
-		aboutusFlag=true;
-	}
-	public void aboutusSave() {
-		aboutusFlag=false;
-	}
-	public void communicationEdit() {
-		communicationFlag=true;
-	}
-	public void communicationSave() {
-		communicationFlag=false;
-	}
-	public void privacyEdit() {
-		privacyFlag=true;
-	}
-	public void privacySave() {
-		privacyFlag=false;
-	}
-	public void disclaimerEdit() {
-		disclaimerFlag=true;
-	}
-	public void disclaimerSave() {
-		disclaimerFlag=false;
-	}
-	public void helpEdit() {
-		helpFlag=true;
-	}
-	public void helpSave() {
-		helpFlag=false;
-	}
 	
+	public void aboutusEdit() {
+		aboutusFlag = true;
+	}
+
+	public void aboutusSave() {
+		aboutusFlag = false;
+	}
+
+	public void communicationEdit() {
+		communicationFlag = true;
+	}
+
+	public void communicationSave() {
+		communicationFlag = false;
+	}
+
+	public void privacyEdit() {
+		privacyFlag = true;
+	}
+
+	public void privacySave() {
+		privacyFlag = false;
+	}
+
+	public void disclaimerEdit() {
+		disclaimerFlag = true;
+	}
+
+	public void disclaimerSave() {
+		disclaimerFlag = false;
+	}
+
+	public void helpEdit() {
+		helpFlag = true;
+	}
+
+	public void helpSave() {
+		helpFlag = false;
+	}
+
 	public String getCommunication() {
 		return communication;
 	}
@@ -172,6 +191,5 @@ public class AdminController implements Serializable {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	
 
 }

@@ -1,11 +1,16 @@
 package com.packt.pfextensions.controller;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.view.ViewScoped;
 //import org.primefaces.context.RequestContext;
 import javax.faces.bean.ManagedBean;
@@ -27,10 +32,12 @@ public class LoginBean implements Serializable{
 	private String userrole;
 	private String loginmessage;
 	private boolean renderRegister=true;
+	ResourceBundle messageBundle;
 	
 	@PostConstruct  
 	public void init() { 
-		loginmessage="Login"; 
+		messageBundle = ResourceBundle.getBundle("com.packt.messages",FacesContext.getCurrentInstance().getViewRoot().getLocale());
+		 loginmessage=messageBundle.getString("login.login"); 
 	}
 	
 	public String validateUser() {
@@ -55,22 +62,24 @@ public class LoginBean implements Serializable{
 	public void changeUserRole(){
 		
 		if(userrole.equalsIgnoreCase("1")){
-			loginmessage="Employer's Login";
+			loginmessage=messageBundle.getString("login.employerlogin");
 			renderRegister=false;
 
 		}
 		else if(userrole.equalsIgnoreCase("2")){
-			loginmessage="Admin's Login";
+			loginmessage=messageBundle.getString("login.adminlogin");
 			renderRegister=false;
 
 		}
 		else {
-			loginmessage="JobSeeker's Login";
+			loginmessage=messageBundle.getString("login.jobseekerlogin");
 			renderRegister=true;
 
 		}
 		
 	}
+	
+	
 	public String getUsername() {
 		return username;
 	}
