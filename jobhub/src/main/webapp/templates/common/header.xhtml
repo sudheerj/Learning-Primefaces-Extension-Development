@@ -11,7 +11,7 @@
         numVisible="1" effect="easeInStrong" circular="true" style="margin-left:12%">  
     <p:graphicImage value="/resources/images/galleria/#{image}" alt="Image Description for #{image}"  width="500" height="100"  title="#{image}"/>  
 	</p:carousel>
-	<p:outputPanel style="float:right">
+	<p:outputPanel style="float:right" rendered="#{view.viewId == '/views/login.xhtml'}">
 	<h:outputText value="#{msg['login.language']}: "  />  
         <h:selectOneMenu value="#{languageController.localeCode}" onchange="submit()" 
 			valueChangeListener="#{languageController.countryLocaleCodeChanged}">
