@@ -66,7 +66,7 @@ import com.packt.pfextensions.model.SkillsDetails;
 				jobDetailsLeadDevList.add(jobDetailsLeadDev);
 				jobDetails = new JobDetails("SAP Domain", "12", "B13-Architect",  getSkillsDetails("SAP"));
 				jobDetailsLeadDevList.add(jobDetailsLeadDev);
-				jobPosts.add(new JobPost("SrArchitect","Designs,Developement and management activities","US",true, jobDetailsLeadDevList));
+				jobPosts.add(new JobPost("SrArchitect","R&D and management activities","US",true, jobDetailsLeadDevList));
 				
 				// Software Developer
 				List<JobDetails> JobDetailsDevList = new ArrayList<JobDetails>();
