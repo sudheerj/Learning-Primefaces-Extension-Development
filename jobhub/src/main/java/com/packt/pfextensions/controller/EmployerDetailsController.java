@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.data.FilterEvent;
 
 import com.packt.pfextensions.dataModel.EmployerDataModel;
@@ -44,9 +45,10 @@ public class EmployerDetailsController implements Serializable {
 	@PostConstruct
 	public void init() {
 		employers = new ArrayList<Employer>();
-		filteredemployers = new ArrayList<Employer>();
+	//	filteredemployers = new ArrayList<Employer>();
 		populateEmployers(employers, 50);
 		employersModel = new EmployerDataModel(employers);
+		getEmployeeTotal();
 
 	}
 
@@ -116,13 +118,14 @@ public class EmployerDetailsController implements Serializable {
 	}
 	
 	public void onFilter(FilterEvent filterEvent) {
-		filteredemployers=(List<Employer>) filterEvent.getData();
+		DataTable table=(DataTable) filterEvent.getSource();
+		List<Employer> filteredemployerslist=table.getFilteredValue();
 		employers=new ArrayList<Employer>();
-		for(Employer employer : filteredemployers){
-			employers.add(employer);
+		for(Employer employer : filteredemployerslist){
+			employeetotal=employeetotal+new Integer(employer.getNoofemployees());
 		}
 		//Collections.copy(employers, filteredemployers); 
-		getEmployeeTotal();
+		//getEmployeeTotal();
 	
 	}
 
@@ -216,6 +219,14 @@ public class EmployerDetailsController implements Serializable {
 
 	public void setFilteredemployers(List<Employer> filteredemployers) {
 		this.filteredemployers = filteredemployers;
+	}
+
+	public int getEmployeetotal() {
+		return employeetotal;
+	}
+
+	public void setEmployeetotal(int employeetotal) {
+		this.employeetotal = employeetotal;
 	}
 	
 }

@@ -33,23 +33,23 @@
 					</p:column>
 				</p:dataTable>
 			</pe:layoutPane>
-			<pe:layoutPane position="center">
+			<pe:layoutPane position="center" update="">
 				<h:form id="employeeForm">
-					<pe:remoteCommand name="remoteload">
+					<pe:remoteCommand id="remote" name="remoteload" update="employerList:total">
 					</pe:remoteCommand>
 					<p:dataTable id="employerList" var="employer"
 						value="#{employerDetailsController.employersModel}"
 						paginator="true" rowKey="#{employer.orgname}" rows="10"
 						paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15"
+						rowsPerPageTemplate="5,10,15" filteredValue="#{employerDetailsController.filteredemployers}"
 						selection="#{employerDetailsController.selectedEmployer}">
 						<f:facet name="header">
             Registered Employers List
         </f:facet>
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
-						<p:ajax event="filter" id="filter"
+						<p:ajax event="filter" id="filter" oncomplete="remoteload()"
 							listener="#{employerDetailsController.onFilter}" />
 						<p:column selectionMode="single" style="width:2%" />
 						<p:column style="width:2%" exportable="false">
@@ -123,7 +123,7 @@
 										style="text-align:right" />
 
 									<p:column
-										footerText="#{employerDetailsController.employeeTotal}" />
+										footerText="#{employerDetailsController.employeetotal}" />
 								</p:row>
 							</p:outputPanel>
 						</p:columnGroup>
