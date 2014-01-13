@@ -23,8 +23,8 @@ public class JobSeeker implements Serializable {
 	
 	private Double experience=new Double(0);
 	
-	private Double currentPack = new Double(0); 
-	private Double expectedPack = new Double(0); 
+	private Currency currentPack; 
+	private Currency expectedPack; 
 	
 	private Date interviewFromTime;
 	private Date interviewToTime;
@@ -37,6 +37,13 @@ public class JobSeeker implements Serializable {
 	private String email;
 	
 	private String phone;
+	
+	
+
+	public JobSeeker() {
+		currentPack=new Currency();
+		expectedPack=new Currency();
+	}
 
 	public String getFirstname() {
 		return firstname;
@@ -143,19 +150,21 @@ public class JobSeeker implements Serializable {
 		this.experience = experience;
 	}
 
-	public Double getCurrentPack() {
+	
+
+	public Currency getCurrentPack() {
 		return currentPack;
 	}
 
-	public void setCurrentPack(Double currentPack) {
+	public void setCurrentPack(Currency currentPack) {
 		this.currentPack = currentPack;
 	}
 
-	public Double getExpectedPack() {
+	public Currency getExpectedPack() {
 		return expectedPack;
 	}
 
-	public void setExpectedPack(Double expectedPack) {
+	public void setExpectedPack(Currency expectedPack) {
 		this.expectedPack = expectedPack;
 	}
 

@@ -55,14 +55,14 @@
 						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
 						</p:column>
-						<p:column filterBy="orgname" filterMatchMode="contains" width="70">
+						<p:column filterBy="#{employer.orgname}" filterMatchMode="contains" width="70">
 							<f:facet name="header">
 								<h:outputText value="Organization name" />
 							</f:facet>
 							<h:outputText value="#{employer.orgname}" />
 						</p:column>
 
-						<p:column width="30">
+						<p:column width="30" filterBy="#{employer.branch}" filterMatchMode="contains">
 							<f:facet name="header">
 								<h:outputText value="Branch Name" />
 							</f:facet>
@@ -74,6 +74,9 @@
 								<h:outputText value="Established year" />
 							</f:facet>
 							<h:outputText value="#{employer.establishedyear}" />
+							<f:facet name="footer">
+							 Total:
+							</f:facet>
 						</p:column>
 
 						<p:column width="70">
@@ -81,6 +84,12 @@
 								<h:outputText value="Number of employees" />
 							</f:facet>
 							<h:outputText value="#{employer.noofemployees}" />
+							<f:facet name="footer">
+							<p:outputPanel id="total">
+								
+					          <h:outputText value="#{employerDetailsController.employeetotal}" />
+							</p:outputPanel>
+							</f:facet>
 						</p:column>
 						<p:rowExpansion>
 							<p:dataTable id="employerDetails" var="details"
@@ -116,17 +125,7 @@
 							</p:dataTable>
 
 						</p:rowExpansion>
-						<p:columnGroup type="footer" id="columngroup">
-							<p:outputPanel id="total">
-								<p:row>
-									<p:column colspan="5" footerText="Total:"
-										style="text-align:right" />
-
-									<p:column
-										footerText="#{employerDetailsController.employeetotal}" />
-								</p:row>
-							</p:outputPanel>
-						</p:columnGroup>
+						
 						<f:facet name="footer">
 							<p:commandButton id="viewButton" value="Edit"
 								icon="ui-icon-search" update=":employeeForm:displaySingle"

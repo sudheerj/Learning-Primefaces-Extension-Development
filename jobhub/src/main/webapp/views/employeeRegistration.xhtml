@@ -9,6 +9,7 @@
 
 	<ui:define name="content">
 		<p:growl id="growl" sticky="true" showDetail="true" />
+		<h:form id="regForm">
 		<p:wizard flowListener="#{employeeRegistration.onFlowProcess}" onnext="">
 
 			<p:tab id="personal" title="Personal">
@@ -136,20 +137,22 @@
 						<p:inputText id="profession" required="true" label="Email"
 							value="#{employeeRegistration.jobseeker.profession}" />
 
-						<h:outputText value="Experience: " />
+						<h:outputText value="Experience:* " />
 						<pe:inputNumber
-							value="#{employeeRegistration.jobseeker.experience}" minValue="0"
-							maxValue="30" emptyValue="empty" />
+							value="#{employeeRegistration.jobseeker.experience}" required="true" minValue="0"
+							maxValue="30" emptyValue="empty" symbol="yrs" symbolPosition="s" roundMethod="s" />
 
 						<h:outputText value="Current Package: " />
 						<pe:inputNumber
-							value="#{employeeRegistration.jobseeker.currentPack}" symbol="$"
-							decimalPlaces="2" />
+							value="#{employeeRegistration.jobseeker.currentPack}" symbol="$" emptyValue="zero" roundMethod="S" 
+							decimalPlaces="2" decimalSeparator="," thousandSeparator="." symbolPosition="p" converter="inputNumberConverter" converterMessage="Entered value should be Currency type"/>
 
 						<h:outputText value="Expected Package: " />
 						<pe:inputNumber required="true" label="Email"
-							value="#{employeeRegistration.jobseeker.expectedPack}" symbol="$"
-							decimalPlaces="2" />
+							value="#{employeeRegistration.jobseeker.expectedPack}" symbol="$" emptyValue="zero" roundMethod="S"  validatorMessage="The expected package should not be more than 20000"
+							decimalPlaces="2" decimalSeparator="," thousandSeparator="." symbolPosition="p" converter="inputNumberConverter" converterMessage="Entered value should be Currency type">
+							<f:validateDoubleRange maximum="20000"/>
+						</pe:inputNumber> 
 						<h:outputText value="Preferred Interview Timings-From: " />
 						<h:outputLabel>
 							<pe:timePicker
@@ -280,6 +283,7 @@
 			</p:tab>
 
 		</p:wizard>
+		</h:form>
 		<h:outputStylesheet id="dynaFormCSS">
     /* note: trick with colspan is needed for IE8 */
     .pe-dynaform-cell input,

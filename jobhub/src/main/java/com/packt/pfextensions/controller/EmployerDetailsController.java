@@ -117,15 +117,27 @@ public class EmployerDetailsController implements Serializable {
 		return employeetotal;
 	}
 	
-	public void onFilter(FilterEvent filterEvent) {
+	public Map<String,String> onFilter(FilterEvent filterEvent) {
+		System.out.println("onfilter start");
 		DataTable table=(DataTable) filterEvent.getSource();
+		System.out.println("table");
 		List<Employer> filteredemployerslist=table.getFilteredValue();
-		employers=new ArrayList<Employer>();
+		System.out.println("filer"+filteredemployerslist);
+		System.out.println("size=="+filteredemployerslist.size());
 		for(Employer employer : filteredemployerslist){
 			employeetotal=employeetotal+new Integer(employer.getNoofemployees());
+			System.out.println("loop");
 		}
 		//Collections.copy(employers, filteredemployers); 
 		//getEmployeeTotal();
+	//return table.getFilters();
+		
+		for(Employer employer : filteredemployers){
+			employeetotal=employeetotal+new Integer(employer.getNoofemployees());
+			System.out.println("loop");
+		}
+		
+		return null;
 	
 	}
 
