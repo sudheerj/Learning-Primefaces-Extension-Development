@@ -1,5 +1,6 @@
 package com.packt.pfextensions.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import com.packt.pfextensions.model.JobSeekerUpdates;
 
 @ManagedBean
 @ViewScoped
-public class EmployerUpdatesController {
+public class EmployerUpdatesController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private List<EmployerUpdates> recentupdates;

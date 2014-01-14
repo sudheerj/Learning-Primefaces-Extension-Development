@@ -25,51 +25,57 @@
 						<p:panel header="#{monthinfo.monthname}">
 							<h:outputText value="Posts:#{monthinfo.noofposts}"></h:outputText>
 							<br />
-							<h:outputText value="Total applications:#{monthinfo.applications}"></h:outputText>
+							<h:outputText
+								value="Total applications:#{monthinfo.applications}"></h:outputText>
 							<br />
 							<h:outputText value="Total selected:#{monthinfo.noofselected}"></h:outputText>
-							
+
 						</p:panel>
 					</p:column>
 				</p:dataTable>
 			</pe:layoutPane>
 			<pe:layoutPane position="center" update="">
-				<h:form id="employeeForm">
-					<pe:remoteCommand id="remote" name="remoteload" update="employerList:total">
+				<h:form id="employerForm">
+					<pe:remoteCommand id="remote" name="remoteload"
+						update="employerList:total">
 					</pe:remoteCommand>
 					<p:dataTable id="employerList" var="employer"
 						value="#{employerDetailsController.employersModel}"
 						paginator="true" rowKey="#{employer.orgname}" rows="10"
 						paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" filteredValue="#{employerDetailsController.filteredemployers}"
+						rowsPerPageTemplate="5,10,15"
+						filteredValue="#{employerDetailsController.filteredemployers}"
 						selection="#{employerDetailsController.selectedEmployer}">
 						<f:facet name="header">
             Registered Employers List
         </f:facet>
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
-						<p:ajax event="filter" id="filter" oncomplete="remoteload()"
-							listener="#{employerDetailsController.onFilter}" />
+						<!-- <p:ajax event="filter" id="filter" oncomplete="remoteload()"
+							listener="#{employerDetailsController.onFilter}" /> -->
 						<p:column selectionMode="single" style="width:2%" />
 						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
 						</p:column>
-						<p:column filterBy="#{employer.orgname}" filterMatchMode="contains" width="70">
+						<p:column filterBy="#{employer.orgname}"
+							filterMatchMode="contains" width="70">
 							<f:facet name="header">
 								<h:outputText value="Organization name" />
 							</f:facet>
 							<h:outputText value="#{employer.orgname}" />
 						</p:column>
 
-						<p:column width="30" filterBy="#{employer.branch}" filterMatchMode="contains">
+						<p:column width="30" filterBy="#{employer.branch}"
+							filterMatchMode="contains">
 							<f:facet name="header">
 								<h:outputText value="Branch Name" />
 							</f:facet>
 							<h:outputText value="#{employer.branch}" />
 						</p:column>
 
-						<p:column width="30">
+						<p:column width="30" filterBy="#{employer.establishedyear}"
+							filterMatchMode="contains">
 							<f:facet name="header">
 								<h:outputText value="Established year" />
 							</f:facet>
@@ -85,10 +91,11 @@
 							</f:facet>
 							<h:outputText value="#{employer.noofemployees}" />
 							<f:facet name="footer">
-							<p:outputPanel id="total">
-								
-					          <h:outputText value="#{employerDetailsController.employeetotal}" />
-							</p:outputPanel>
+								<p:outputPanel id="total">
+
+									<h:outputText
+										value="#{employerDetailsController.employeetotal}" />
+								</p:outputPanel>
 							</f:facet>
 						</p:column>
 						<p:rowExpansion>
@@ -125,15 +132,18 @@
 							</p:dataTable>
 
 						</p:rowExpansion>
-						
+
 						<f:facet name="footer">
 							<p:commandButton id="viewButton" value="Edit"
-								icon="ui-icon-search" update=":employeeForm:displaySingle"
+								icon="ui-icon-search" update=":employerForm:displaySingle"
 								oncomplete="PF('singleEmployerDialog').show()" />
 						</f:facet>
 					</p:dataTable>
 
-
+					<pe:tooltip value="Type any value to filter datatable"
+						for="@(#employerList th .ui-column-filter)" shared="true"
+						atPosition="top center" myPosition="bottom center" />
+						
 					<p:dialog id="dialog" header="Employer Detail"
 						widgetVar="singleEmployerDialog" resizable="false"
 						showEffect="fade" hideEffect="explode">
@@ -203,7 +213,9 @@
 
 						</p:commandLink>
 					</p:panel>
+
 				</h:form>
+
 			</pe:layoutPane>
 			<pe:layoutPane position="west" size="400">
 				<f:facet name="header">
@@ -238,7 +250,7 @@
 
 
 						</h:panelGrid>
-						<p:commandButton value="Register" update=":employeeForm"
+						<p:commandButton value="Register" update=":employerForm"
 							actionListener="#{employerDetailsController.registerEmployer}"
 							onstart="PF('blockUIWidgetPage').block()"
 							oncomplete="PF('blockUIWidgetPage').unblock()"></p:commandButton>
