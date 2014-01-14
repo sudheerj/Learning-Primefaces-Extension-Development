@@ -151,7 +151,7 @@
 						<pe:inputNumber required="true" label="Email"
 							value="#{employeeRegistration.jobseeker.expectedPack}" symbol="$" emptyValue="zero" roundMethod="S"  validatorMessage="The expected package should not be more than 20000"
 							decimalPlaces="2" decimalSeparator="," thousandSeparator="." symbolPosition="p" converter="inputNumberConverter" converterMessage="Entered value should be Currency type">
-							<f:validateDoubleRange maximum="20000"/>
+							<!-- <f:validateDoubleRange maximum="20000"/> -->
 						</pe:inputNumber> 
 						<h:outputText value="Preferred Interview Timings-From: " />
 						<h:outputLabel>

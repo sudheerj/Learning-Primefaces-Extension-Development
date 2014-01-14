@@ -12,7 +12,7 @@
 			<p:tabView id="tabView">
 
 				<p:tab id="tab1" title="Footer Configuration">
-					<p:accordionPanel activeIndex="">
+					<p:accordionPanel activeIndex="-1">
 						<p:tab title="AboutUS">
 							<h:panelGrid id="aboutusgrid" columns="2" cellpadding="10">
 								<p:graphicImage value="/resources/images/aboutus.png" />
@@ -22,8 +22,16 @@
 								actionListener="#{adminController.aboutusEdit}"
 								update="editor1panel"></p:commandButton>
 							<p:outputPanel id="editor1panel">
-								<p:editor id="editor1" value="#{adminController.aboutus}"
-									rendered="#{adminController.aboutusFlag}" width="600" />
+								<pe:ckEditor id="editor1" value="#{adminController.aboutus}"
+									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
+									interfaceColor="\##{adminController.color1}"
+									rendered="#{adminController.aboutusFlag}" width="500" />
+								<p:outputPanel 
+									rendered="#{adminController.aboutusFlag}">
+									<p:colorPicker id="popupCP1" value="#{adminController.color1}">
+									</p:colorPicker>
+									<p:commandButton value="Submit color" update="editor1" />
+								</p:outputPanel>
 								<p:commandButton value="Save"
 									actionListener="#{adminController.aboutusSave}"
 									update="editor1panel,aboutusgrid"
@@ -39,8 +47,17 @@
 								actionListener="#{adminController.communicationEdit}"
 								update="editor2panel"></p:commandButton>
 							<p:outputPanel id="editor2panel">
-								<p:editor id="editor2" value="#{adminController.communication}"
-									width="600" rendered="#{adminController.communicationFlag}" />
+								<pe:ckEditor id="editor2"
+									value="#{adminController.communication}"
+									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
+									interfaceColor="\##{adminController.color2}" width="500"
+									rendered="#{adminController.communicationFlag}" />
+								<p:outputPanel 
+									rendered="#{adminController.communicationFlag}">
+									<p:colorPicker id="popupCP2" value="#{adminController.color2}">
+									</p:colorPicker>
+									<p:commandButton value="Submit color" update="editor2" />
+								</p:outputPanel>
 								<p:commandButton value="Save"
 									actionListener="#{adminController.communicationSave}"
 									update="editor2panel,communicationgrid"
@@ -57,8 +74,16 @@
 								actionListener="#{adminController.privacyEdit}"
 								update="editor3panel"></p:commandButton>
 							<p:outputPanel id="editor3panel">
-								<p:editor id="editor3" value="#{adminController.privacy}"
-									width="600" rendered="#{adminController.privacyFlag}" />
+								<pe:ckEditor id="editor3" value="#{adminController.privacy}"
+									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
+									interfaceColor="\##{adminController.color3}" width="500"
+									rendered="#{adminController.privacyFlag}" />
+								<p:outputPanel 
+									rendered="#{adminController.privacyFlag}">
+									<p:colorPicker id="popupCP3" value="#{adminController.color3}">
+									</p:colorPicker>
+									<p:commandButton value="Submit color" update="editor3" />
+								</p:outputPanel>
 								<p:commandButton value="Save"
 									actionListener="#{adminController.privacySave}"
 									update="editor3panel,privacygrid"
@@ -75,8 +100,16 @@
 								actionListener="#{adminController.disclaimerEdit}"
 								update="editor4panel"></p:commandButton>
 							<p:outputPanel id="editor4panel">
-								<p:editor id="editor4" value="#{adminController.disclaimer}"
-									width="600" rendered="#{adminController.disclaimerFlag}" />
+								<pe:ckEditor id="editor4" value="#{adminController.disclaimer}"
+									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
+									interfaceColor="\##{adminController.color4}" width="500"
+									rendered="#{adminController.disclaimerFlag}" />
+								<p:outputPanel 
+									rendered="#{adminController.disclaimerFlag}">
+									<p:colorPicker id="popupCP4" value="#{adminController.color4}">
+									</p:colorPicker>
+									<p:commandButton value="Submit color" update="editor4" />
+								</p:outputPanel>
 								<p:commandButton value="Save"
 									actionListener="#{adminController.disclaimerSave}"
 									update="editor4panel,disclaimergrid"
@@ -93,8 +126,16 @@
 								actionListener="#{adminController.helpEdit}"
 								update="editor5panel"></p:commandButton>
 							<p:outputPanel id="editor5panel">
-								<p:editor id="editor5" value="#{adminController.help}"
-									width="600" rendered="#{adminController.helpFlag}" />
+								<pe:ckEditor id="editor5" value="#{adminController.help}"
+									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
+									interfaceColor="\##{adminController.color5}" width="500"
+									rendered="#{adminController.helpFlag}" />
+								<p:outputPanel 
+									rendered="#{adminController.helpFlag}">
+									<p:colorPicker id="popupCP5" value="#{adminController.color5}">
+									</p:colorPicker>
+									<p:commandButton value="Submit color" update="editor5" />
+								</p:outputPanel>
 								<p:commandButton value="Save"
 									actionListener="#{adminController.helpSave}"
 									update="editor5panel,helpgrid"
@@ -132,8 +173,8 @@
 								value="NoOfappliedposts: #{jobhub.noofappliedposts}" />
 						</h:panelGrid>
 					</pe:timeline>
-
-					<p:dialog id="detailsBookingDlg" header="Booking Details"
+					<ui:remove>
+						<!-- <p:dialog id="detailsBookingDlg" header="Booking Details"
 						widgetVar="detailsBookingWdgt" showEffect="clip" hideEffect="clip">
 						<h:panelGroup id="detailsBookingInner" layout="block">
 							<h:panelGrid columns="2"
@@ -204,9 +245,8 @@
 									onclick="PF('deleteBookingWdgt').hide()" />
 							</h:panelGroup>
 						</f:facet>
-					</p:dialog>
-
-
+					</p:dialog> -->
+					</ui:remove>
 					<h:outputStylesheet id="timelineCSS">
     table .formColumn {
         padding: 0 5px 0 20px;

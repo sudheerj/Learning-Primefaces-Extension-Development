@@ -33,6 +33,12 @@
 			<artifactId>primefaces-extensions</artifactId>
 			<version>${primefacesextensions.version}</version>
 		</dependency>
+		<!-- ckEditor -->
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>resources-ckeditor</artifactId>
+			<version>1.2.1</version>
+		</dependency>
 		<!-- All Themes -->
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
