@@ -16,21 +16,19 @@
 
 				<p:panel header="Personal Details">
 
-					<h:messages errorClass="error" />
-
 					<h:panelGrid columns="2" columnClasses="label, value"
 						styleClass="grid">
 						<h:outputText value="Firstname: *" />
 						<p:inputText id="firstname" required="true" label="Firstname"
-							title="Please enter firstname"
+							title="#{component.valid? 'Please enter firstname':'Firstname cannot be empty'}"
 							value="#{employeeRegistration.jobseeker.firstname}" />
 
 						<h:outputText value="Lastname: *" />
 						<p:inputText id="lastname" required="true" label="Lastname"
-							title="Please enter firstname"
+							title="#{component.valid? 'Please enter lastname':'Lastname cannot be empty'"
 							value="#{employeeRegistration.jobseeker.lastname}" />
 
-						<h:outputText value="Age: * " title="Please enter Age" />
+						<h:outputText value="Age: * " title="#{component.valid? 'Please enter Age':'Age cannot be empty'" />
 						<p:inputText id="age" required="true" label="Age"
 							value="#{employeeRegistration.jobseeker.age}" />
 
@@ -48,7 +46,7 @@
 						<h:outputText value="Skip to last: " />
 						<h:selectBooleanCheckbox value="#{employeeRegistration.skip}" />
 					</h:panelGrid>
-					<pe:tooltip global="true" myPosition="left center"
+					<pe:tooltip global="true" myPosition="left center" for="@(.ui-state-error)"
 						atPosition="right center" />
 					<pe:keyFilter for="firstname" mask="alphanum" />
 					<pe:keyFilter for="lastname" regEx="/[a-z0-9_]/i" />
