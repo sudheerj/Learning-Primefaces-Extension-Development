@@ -40,20 +40,18 @@
 						update="employerList:total">
 					</pe:remoteCommand>
 					<p:dataTable id="employerList" var="employer"
-						value="#{employerDetailsController.employersModel}"
-						paginator="true" rowKey="#{employer.orgname}" rows="10"
-						paginatorPosition="bottom"
+						value="#{employerDetailsController.employers}" paginator="true"
+						rowKey="#{employer.orgname}" rows="10" paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15"
-						filteredValue="#{employerDetailsController.filteredemployers}"
-						selection="#{employerDetailsController.selectedEmployer}">
+						rowsPerPageTemplate="5,10,15" filterEvent="enter"
+						filteredValue="#{employerDetailsController.filteredemployers}">
 						<f:facet name="header">
             Registered Employers List
         </f:facet>
 						<p:ajax event="page" onstart="PF('blockUIWidget').block()"
 							oncomplete="PF('blockUIWidget').unblock()" />
-						<!-- <p:ajax event="filter" id="filter" oncomplete="remoteload()"
-							listener="#{employerDetailsController.onFilter}" /> -->
+						<p:ajax event="filter" id="filter" oncomplete="remoteload()"
+							listener="#{employerDetailsController.onFilter}" />
 						<p:column selectionMode="single" style="width:2%" />
 						<p:column style="width:2%" exportable="false">
 							<p:rowToggler />
@@ -143,7 +141,7 @@
 					<pe:tooltip value="Type any value to filter datatable"
 						for="@(#employerList th .ui-column-filter)" shared="true"
 						atPosition="top center" myPosition="bottom center" />
-						
+
 					<p:dialog id="dialog" header="Employer Detail"
 						widgetVar="singleEmployerDialog" resizable="false"
 						showEffect="fade" hideEffect="explode">

@@ -46,13 +46,16 @@ public class EmployerDetailsController implements Serializable {
 	public void init() {
 		employers = new ArrayList<Employer>();
 	//	filteredemployers = new ArrayList<Employer>();
-		populateEmployers(employers, 50);
+		employers=populateEmployers(employers, 50);
 		employersModel = new EmployerDataModel(employers);
-		getEmployeeTotal();
+		employeetotal=0;
+		for (Employer employer : employers) {
+			employeetotal += new Integer(employer.getNoofemployees());
+		}
 
 	}
 
-	private void populateEmployers(List<Employer> list, int size) {
+	private List<Employer> populateEmployers(List<Employer> list, int size) {
 		for (int i = 0; i < size; i++) {
 			employerDetails = new ArrayList<EmployerDetails>();
 
@@ -97,6 +100,7 @@ public class EmployerDetailsController implements Serializable {
 			list.add(new Employer(getOrgname(i), getRandomBranch(i),
 					getRandomYear(), getRandomNoofemployees(), employerDetails));
 		}
+		return list;
 	}
 
 	public void registerEmployer() {
@@ -108,11 +112,11 @@ public class EmployerDetailsController implements Serializable {
 	}
 
 	public int getEmployeeTotal() {
-		 employeetotal = 0;
+		/* employeetotal = 0;
 
 		for (Employer employer : employers) {
 			employeetotal += new Integer(employer.getNoofemployees());
-		}
+		}*/
 
 		return employeetotal;
 	}
@@ -122,22 +126,23 @@ public class EmployerDetailsController implements Serializable {
 		DataTable table=(DataTable) filterEvent.getSource();
 		System.out.println("table");
 		List<Employer> filteredemployerslist=table.getFilteredValue();
-		System.out.println("filer"+filteredemployerslist);
-		System.out.println("size=="+filteredemployerslist.size());
+		System.out.println("fitler"+filteredemployerslist);
+	/*	System.out.println("size=="+filteredemployerslist.size());
+		for(Employer employer : filteredemployerslist){
+			employeetotal=employeetotal+new Integer(employer.getNoofemployees());
+			System.out.println("loop");
+		}*/
+		//Collections.copy(employers, filteredemployers); 
+		//getEmployeeTotal();
+	//return table.getFilters();
+		employeetotal=0;
+		if(filteredemployerslist!=null)
 		for(Employer employer : filteredemployerslist){
 			employeetotal=employeetotal+new Integer(employer.getNoofemployees());
 			System.out.println("loop");
 		}
-		//Collections.copy(employers, filteredemployers); 
-		//getEmployeeTotal();
-	//return table.getFilters();
 		
-		for(Employer employer : filteredemployers){
-			employeetotal=employeetotal+new Integer(employer.getNoofemployees());
-			System.out.println("loop");
-		}
-		
-		return null;
+		return table.getFilters();
 	
 	}
 
@@ -196,7 +201,6 @@ public class EmployerDetailsController implements Serializable {
 	}
 
 	public void setSelectedEmployer(Employer selectedEmployer) {
-		System.out.println("employer selected" + selectedEmployer);
 		this.selectedEmployer = selectedEmployer;
 	}
 
@@ -226,10 +230,12 @@ public class EmployerDetailsController implements Serializable {
 	}
 
 	public List<Employer> getFilteredemployers() {
+		System.out.println("getter=="+filteredemployers);
 		return filteredemployers;
 	}
 
 	public void setFilteredemployers(List<Employer> filteredemployers) {
+		System.out.println("setter=="+filteredemployers);
 		this.filteredemployers = filteredemployers;
 	}
 

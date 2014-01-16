@@ -67,6 +67,12 @@ public class Employer implements Serializable {
 	public void setEditable(boolean editable) {
 		this.editable = editable;
 	}
+	@Override
+	public String toString() {
+		return "Employer [orgname=" + orgname + ", branch=" + branch
+				+ ", establishedyear=" + establishedyear + ", noofemployees="
+				+ noofemployees + ", editable=" + editable + "]";
+	}
 	
 	
 
