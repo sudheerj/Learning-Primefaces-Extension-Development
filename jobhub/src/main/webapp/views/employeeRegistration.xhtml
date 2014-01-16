@@ -25,11 +25,11 @@
 
 						<h:outputText value="Lastname: *" />
 						<p:inputText id="lastname" required="true" label="Lastname"
-							title="#{component.valid? 'Please enter lastname':'Lastname cannot be empty'"
+							title="#{component.valid? 'Please enter lastname':'Lastname cannot be empty'}"
 							value="#{employeeRegistration.jobseeker.lastname}" />
 
-						<h:outputText value="Age: * " title="#{component.valid? 'Please enter Age':'Age cannot be empty'" />
-						<p:inputText id="age" required="true" label="Age"
+						<h:outputText value="Age: * "  />
+						<p:inputText id="age" required="true" label="Age" title="#{component.valid? 'Please enter Age':'Age cannot be empty'}"
 							value="#{employeeRegistration.jobseeker.age}" />
 
 						<h:outputText value="Sex: " title="Please enter Sex" />
