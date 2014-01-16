@@ -138,9 +138,7 @@
 						</f:facet>
 					</p:dataTable>
 
-					<pe:tooltip value="Type any value to filter datatable"
-						for="@(#employerList th .ui-column-filter)" shared="true"
-						atPosition="top center" myPosition="bottom center" />
+
 
 					<p:dialog id="dialog" header="Employer Detail"
 						widgetVar="singleEmployerDialog" resizable="false"
@@ -213,7 +211,9 @@
 					</p:panel>
 
 				</h:form>
-
+				<pe:tooltip value="Type any value to filter datatable"
+					for="@(#employerForm\\:employerList th .ui-column-filter)"
+					shared="true" atPosition="top center" myPosition="bottom center" />
 			</pe:layoutPane>
 			<pe:layoutPane position="west" size="400">
 				<f:facet name="header">
