@@ -19,6 +19,7 @@ import org.primefaces.event.data.FilterEvent;
 import com.packt.pfextensions.dataModel.EmployerDataModel;
 import com.packt.pfextensions.model.Employer;
 import com.packt.pfextensions.model.EmployerDetails;
+import com.packt.pfextensions.model.OrgStandards;
 
 @ManagedBean
 @ViewScoped
@@ -41,6 +42,9 @@ public class EmployerDetailsController implements Serializable {
 	private EmployerDataModel employersModel;
 	private boolean editable;
 	private int employeetotal;
+	private String focus;
+	private String result;
+	private OrgStandards standards;
 
 	@PostConstruct
 	public void init() {
@@ -245,6 +249,30 @@ public class EmployerDetailsController implements Serializable {
 
 	public void setEmployeetotal(int employeetotal) {
 		this.employeetotal = employeetotal;
+	}
+
+	public OrgStandards getStandards() {
+		return standards;
+	}
+
+	public void setStandards(OrgStandards standards) {
+		this.standards = standards;
+	}
+
+	public String getFocus() {
+		return focus;
+	}
+
+	public void setFocus(String focus) {
+		this.focus = focus;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
 	}
 	
 }
