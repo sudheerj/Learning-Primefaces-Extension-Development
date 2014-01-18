@@ -151,23 +151,21 @@
 							decimalPlaces="2" decimalSeparator="," thousandSeparator="." symbolPosition="p" converter="inputNumberConverter" converterMessage="Entered value should be Currency type">
 							<!-- <f:validateDoubleRange maximum="20000"/> -->
 						</pe:inputNumber> 
-						<h:outputText value="Preferred Interview Timings-From: " />
-						<h:outputLabel>
+						<h:outputText value="Preferred Interview Timings-Start: " />
 							<pe:timePicker
 								value="#{employeeRegistration.jobseeker.interviewFromTime}"
-								timeSeparator="-" startHours="8" endHours="20" startMinutes="10"
-								endMinutes="40" intervalMinutes="10" showCloseButton="true"
-								showDeselectButton="true" showNowButton="true" rows="3"
+								timeSeparator="-" startHours="9" endHours="12" startMinutes="5"
+								endMinutes="55" intervalMinutes="5" showCloseButton="true"
+								showDeselectButton="true" showNowButton="true" rows="2"
 								showPeriod="true" style="width:70px;"
 								widgetVar="customTimeWidget" label="Custom time picker" />
-							<h:outputText value="To:" />
+							<h:outputText value="End:" />
 							<pe:timePicker
 								value="#{employeeRegistration.jobseeker.interviewToTime}"
-								timeSeparator="-" startHours="8" endHours="20" startMinutes="10"
-								endMinutes="40" intervalMinutes="10" showCloseButton="true"
-								showDeselectButton="true" showNowButton="true" rows="3"
+								timeSeparator="-" startHours="13" endHours="16" startMinutes="5"
+								endMinutes="55" intervalMinutes="5" showCloseButton="true"
+								showDeselectButton="true" showNowButton="true" rows="2"
 								showPeriod="true" style="width:70px;" label="Custom time picker" />
-						</h:outputLabel>
 
 					</h:panelGrid>
 					<pe:keyFilter for="profession" mask="alpha" />
