@@ -15,15 +15,20 @@
             		  Latest Updates
       		 		 </f:facet>
 
-				<p:dataTable value="#{jobSeekerUpdatesController.recentupdates}" rows="4"
-					var="monthinfo">
+				<p:dataTable value="#{jobSeekerUpdatesController.recentupdates}"
+					rows="4" var="monthinfo">
 					<p:column>
-					<p:panel header="#{monthinfo.monthname}">
-					<h:outputText value="Posts:#{monthinfo.noofposts}"></h:outputText><br/>
-					<h:outputText value="Posts applied:#{monthinfo.noofpostsapplied}"></h:outputText><br/>
-					<h:outputText value="Recruiter views:#{monthinfo.noofviews}"></h:outputText><br/>
-					<h:outputText value="Employer Downloads:#{monthinfo.noofdownloads}"></h:outputText><br/>
-					</p:panel>
+						<p:panel header="#{monthinfo.monthname}">
+							<h:outputText value="Posts:#{monthinfo.noofposts}"></h:outputText>
+							<br />
+							<h:outputText value="Posts applied:#{monthinfo.noofpostsapplied}"></h:outputText>
+							<br />
+							<h:outputText value="Recruiter views:#{monthinfo.noofviews}"></h:outputText>
+							<br />
+							<h:outputText
+								value="Employer Downloads:#{monthinfo.noofdownloads}"></h:outputText>
+							<br />
+						</p:panel>
 					</p:column>
 				</p:dataTable>
 
@@ -37,8 +42,9 @@
 						<pe:masterDetailLevel level="1" levelLabel="List of all posts">
 
 							<p:dataTable id="posts" value="#{jobDetailsController.jobPosts}"
-								var="post" widgetVar="postsWidgetVar" rows="10" paginator="true" paginatorPosition="bottom"
-								filteredValue="#{jobDetailsController.filteredPosts}" >
+								var="post" widgetVar="postsWidgetVar" rows="10" paginator="true"
+								paginatorPosition="bottom"
+								filteredValue="#{jobDetailsController.filteredPosts}">
 								<f:facet name="header">
 									<p:inputText id="globalFilter"
 										onkeyup="postsWidgetVar.filter()"
@@ -51,21 +57,45 @@
 										<pe:selectDetailLevel contextValue="#{post}" />
 									</p:commandLink>
 								</p:column>
-								<p:column headerText="Description" filterBy="postDescription" width="110"
-									filterStyle="display:none;">
+								<p:column headerText="Description" filterBy="postDescription"
+									width="110" filterStyle="display:none;">
 									<h:outputText value="#{post.postDescription}" />
 								</p:column>
 								<p:column headerText="Location" filterBy="location" width="20"
 									filterStyle="display:none;width:10px">
 									<h:outputText value="#{post.location}" />
 								</p:column>
-								<p:column headerText="Status"  width="20"
+								<p:column headerText="Status" width="20"
 									filterStyle="display:none;width:10px">
 									<p:selectBooleanButton widgetVar="boolbutton"
 										value="#{post.status}" onLabel="Applied" offLabel="Apply">
 									</p:selectBooleanButton>
 								</p:column>
 							</p:dataTable>
+							<p:panel header="Export PDF and Excel">
+								<p:commandLink id="pdf" ajax="false">
+									<p:graphicImage value="/resources/images/exporticons/pdf.png" />
+									<!-- <f:setPropertyActionListener value="false"
+										target="#{exporterController.customExporter}" /> -->
+									<pe:exporter type="pdf"
+										target="posts"
+										fileName="posts" />
+
+								</p:commandLink>
+
+								<p:spacer width="20" />
+
+								<p:commandLink id="xls" ajax="false">
+									<p:graphicImage value="/resources/images/exporticons/excel.png" />
+									<!-- <f:setPropertyActionListener value="false"
+										target="#{exporterController.customExporter}" /> -->
+									<pe:exporter type="xlsx"
+										target="posts"
+										fileName="posts"  />
+
+								</p:commandLink>
+
+							</p:panel>
 						</pe:masterDetailLevel>
 
 						<pe:masterDetailLevel level="2" contextVar="post"
@@ -83,6 +113,30 @@
 									<h:outputText value="#{job.position}" />
 								</p:column>
 							</p:dataTable>
+							<p:panel header="Export PDF and Excel">
+								<p:commandLink id="pdf1" ajax="false">
+									<p:graphicImage value="/resources/images/exporticons/pdf.png" />
+									<!-- <f:setPropertyActionListener value="false"
+										target="#{exporterController.customExporter}" /> -->
+									<pe:exporter type="pdf"
+										target="jobs"
+										fileName="jobs" />
+
+								</p:commandLink>
+
+								<p:spacer width="20" />
+
+								<p:commandLink id="xls1" ajax="false">
+									<p:graphicImage value="/resources/images/exporticons/excel.png" />
+									<!-- <f:setPropertyActionListener value="false"
+										target="#{exporterController.customExporter}" /> -->
+									<pe:exporter type="xlsx"
+										target="jobs"
+										fileName="jobs" datasetPadding="4" />
+
+								</p:commandLink>
+
+							</p:panel>
 						</pe:masterDetailLevel>
 
 						<pe:masterDetailLevel level="3" contextVar="job"
@@ -111,6 +165,30 @@
 									<pe:selectDetailLevel step="-1" />
 								</p:commandButton>
 							</h:panelGrid>
+							<p:panel header="Export PDF and Excel">
+								<p:commandLink id="pdf2" ajax="false">
+									<p:graphicImage value="/resources/images/exporticons/pdf.png" />
+									<!-- <f:setPropertyActionListener value="false"
+										target="#{exporterController.customExporter}" /> -->
+									<pe:exporter type="pdf"
+										target="skills"
+										fileName="skills" />
+
+								</p:commandLink>
+
+								<p:spacer width="20" />
+
+								<p:commandLink id="xls2" ajax="false">
+									<p:graphicImage value="/resources/images/exporticons/excel.png" />
+									<!-- <f:setPropertyActionListener value="false"
+										target="#{exporterController.customExporter}" /> -->
+									<pe:exporter type="xlsx"
+										target="skills"
+										fileName="skills"  />
+
+								</p:commandLink>
+
+							</p:panel>
 						</pe:masterDetailLevel>
 					</pe:masterDetail>
 				</h:form>
@@ -149,12 +227,20 @@
 		</pe:layout>
 		<script>
 			function searchKeyPressedHandler() {
-				$(document).on("keyup","#searchform input",
-							function(event) {
-									var searchValue = document.getElementById('searchform:myFilter_text').value;
+				$(document)
+						.on(
+								"keyup",
+								"#searchform input",
+								function(event) {
+									var searchValue = document
+											.getElementById('searchform:myFilter_text').value;
 
-									$("#masterDetailform\\:posts\\:globalFilter").val(searchValue);
-									$("#masterDetailform\\:posts\\:globalFilter").trigger('keyup');
+									$(
+											"#masterDetailform\\:posts\\:globalFilter")
+											.val(searchValue);
+									$(
+											"#masterDetailform\\:posts\\:globalFilter")
+											.trigger('keyup');
 								});
 			}
 		</script>
