@@ -24,11 +24,11 @@
 							<p:outputPanel id="editor1panel">
 								<pe:ckEditor id="editor1" value="#{adminController.aboutus}"
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
-									interfaceColor="\##{adminController.color1}"
+									interfaceColor="\##{adminController.color}"
 									rendered="#{adminController.aboutusFlag}" width="500" />
 								<p:outputPanel 
 									rendered="#{adminController.aboutusFlag}">
-									<p:colorPicker id="popupCP1" value="#{adminController.color1}">
+									<p:colorPicker id="popupCP1" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor1" />
 								</p:outputPanel>
@@ -50,11 +50,11 @@
 								<pe:ckEditor id="editor2"
 									value="#{adminController.communication}"
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
-									interfaceColor="\##{adminController.color2}" width="500"
+									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.communicationFlag}" />
 								<p:outputPanel 
 									rendered="#{adminController.communicationFlag}">
-									<p:colorPicker id="popupCP2" value="#{adminController.color2}">
+									<p:colorPicker id="popupCP2" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor2" />
 								</p:outputPanel>
@@ -76,11 +76,11 @@
 							<p:outputPanel id="editor3panel">
 								<pe:ckEditor id="editor3" value="#{adminController.privacy}"
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
-									interfaceColor="\##{adminController.color3}" width="500"
+									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.privacyFlag}" />
 								<p:outputPanel 
 									rendered="#{adminController.privacyFlag}">
-									<p:colorPicker id="popupCP3" value="#{adminController.color3}">
+									<p:colorPicker id="popupCP3" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor3" />
 								</p:outputPanel>
@@ -102,11 +102,11 @@
 							<p:outputPanel id="editor4panel">
 								<pe:ckEditor id="editor4" value="#{adminController.disclaimer}"
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
-									interfaceColor="\##{adminController.color4}" width="500"
+									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.disclaimerFlag}" />
 								<p:outputPanel 
 									rendered="#{adminController.disclaimerFlag}">
-									<p:colorPicker id="popupCP4" value="#{adminController.color4}">
+									<p:colorPicker id="popupCP4" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor4" />
 								</p:outputPanel>
@@ -128,11 +128,11 @@
 							<p:outputPanel id="editor5panel">
 								<pe:ckEditor id="editor5" value="#{adminController.help}"
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
-									interfaceColor="\##{adminController.color5}" width="500"
+									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.helpFlag}" />
 								<p:outputPanel 
 									rendered="#{adminController.helpFlag}">
-									<p:colorPicker id="popupCP5" value="#{adminController.color5}">
+									<p:colorPicker id="popupCP5" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor5" />
 								</p:outputPanel>

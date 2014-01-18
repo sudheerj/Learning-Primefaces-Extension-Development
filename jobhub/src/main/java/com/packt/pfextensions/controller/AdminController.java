@@ -25,12 +25,7 @@ public class AdminController implements Serializable {
 	private String privacy;
 	private String disclaimer;
 	private String help;
-	private String color1="1234FF";
-	private String color2="1234FF";
-	private String color3="1234FF";
-	private String color4="1234FF";
-	private String color5="1234FF";
-	
+	private String color="1234FF";
 	private String language;
 
 	private Boolean aboutusFlag;
@@ -40,9 +35,6 @@ public class AdminController implements Serializable {
 	private Boolean helpFlag;
 	private List<String> images;
 	
- 
-	
-
 	@PostConstruct
 	public void init() {
 		images = new ArrayList<String>();
@@ -202,57 +194,12 @@ public class AdminController implements Serializable {
 		this.language = language;
 	}
 
-
-	public String getColor1() {
-		return color1;
+	public String getColor() {
+		return color;
 	}
 
-
-	public void setColor1(String color1) {
-		this.color1 = color1;
+	public void setColor(String color) {
+		this.color = color;
 	}
-
-
-	public String getColor2() {
-		return color2;
-	}
-
-
-	public void setColor2(String color2) {
-		this.color2 = color2;
-	}
-
-
-	public String getColor3() {
-		return color3;
-	}
-
-
-	public void setColor3(String color3) {
-		this.color3 = color3;
-	}
-
-
-	public String getColor4() {
-		return color4;
-	}
-
-
-	public void setColor4(String color4) {
-		this.color4 = color4;
-	}
-
-
-	public String getColor5() {
-		return color5;
-	}
-
-
-	public void setColor5(String color5) {
-		this.color5 = color5;
-	}
-
-
-	
 
 }
