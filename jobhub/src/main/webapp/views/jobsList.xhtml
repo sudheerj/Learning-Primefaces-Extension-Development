@@ -51,18 +51,27 @@
 										style="width:150px;display:none;" />
 
 								</f:facet>
-								<p:column id="title" headerText="Post Title"  filterBy="title" width="60"
-									filterStyle="display:none;" >
+								<p:column id="title" filterBy="title" width="60"
+									filterStyle="display:none;">
+									<f:facet name="header">
+										<h:outputText value="Post Title"></h:outputText>
+									</f:facet>
 									<p:commandLink value="#{post.title}">
 										<pe:selectDetailLevel contextValue="#{post}" />
 									</p:commandLink>
 								</p:column>
-								<p:column headerText="Description" filterBy="postDescription"
-									width="110" filterStyle="display:none;">
+								<p:column filterBy="postDescription" width="110"
+									filterStyle="display:none;">
+									<f:facet name="header">
+										<h:outputText value="Description"></h:outputText>
+									</f:facet>
 									<h:outputText value="#{post.postDescription}" />
 								</p:column>
-								<p:column headerText="Location" filterBy="location" width="20"
+								<p:column filterBy="location" width="20"
 									filterStyle="display:none;width:10px">
+									<f:facet name="header">
+										<h:outputText value="Location"></h:outputText>
+									</f:facet>
 									<h:outputText value="#{post.location}" />
 								</p:column>
 								<p:column headerText="Status" width="20" exportable="false"
@@ -72,14 +81,12 @@
 									</p:selectBooleanButton>
 								</p:column>
 							</p:dataTable>
-							<p:panel header="Export PDF and Excel">
+							<p:panel header="Export data to PDF and Excel">
 								<p:commandLink id="pdf" ajax="false">
 									<p:graphicImage value="/resources/images/exporticons/pdf.png" />
 									<f:setPropertyActionListener value="true"
 										target="#{exporterController.customExporter}" />
-									<pe:exporter type="pdf"
-										target="posts"
-										fileName="posts" />
+									<pe:exporter type="pdf" target="posts" fileName="posts" />
 
 								</p:commandLink>
 
@@ -89,9 +96,7 @@
 									<p:graphicImage value="/resources/images/exporticons/excel.png" />
 									<f:setPropertyActionListener value="true"
 										target="#{exporterController.customExporter}" />
-									<pe:exporter type="xlsx"
-										target="posts"
-										fileName="posts"  />
+									<pe:exporter type="xlsx" target="posts" fileName="posts" />
 
 								</p:commandLink>
 
