@@ -195,8 +195,13 @@
 					<p:panel header="Export PDF and Excel">
 						<p:commandLink id="pdf" ajax="false">
 							<p:graphicImage value="/resources/images/exporticons/pdf.png" />
+							<f:setPropertyActionListener value="false"
+								target="#{exporterController.customExporter}" />
 							<pe:exporter type="pdf" target="employerList"
-								fileName="Employer Details" />
+								fileName="Employer Details" facetBackground="#008000"
+								facetFontSize="15" facetFontColor="#FFFFFF"
+								facetFontStyle="BOLD" cellFontColor="#0000FF" cellFontSize="12"
+								cellFontStyle="NORMAL" fontName="Courier New" />
 
 						</p:commandLink>
 
@@ -204,8 +209,13 @@
 
 						<p:commandLink id="xls" ajax="false">
 							<p:graphicImage value="/resources/images/exporticons/excel.png" />
+							<f:setPropertyActionListener value="false"
+								target="#{exporterController.customExporter}" />
 							<pe:exporter type="xlsx" target="employerList"
-								fileName="Employer Details" />
+								fileName="Employer Details" facetBackground="#F88017"
+								facetFontSize="10" facetFontColor="#0000ff"
+								facetFontStyle="BOLD" fontName="Courier New"
+								cellFontColor="#00ff00" cellFontSize="8" cellFontStyle="NORMAL" />
 
 						</p:commandLink>
 					</p:panel>
@@ -254,51 +264,52 @@
 							oncomplete="PF('blockUIWidgetPage').unblock()"></p:commandButton>
 						<p:separator></p:separator>
 						<p:panel>
-						<f:facet name="header">
+							<f:facet name="header">
 						Click the below buttons to know about CMMI level standards
 						</f:facet>
-						<pe:remoteCommand id="applyDataCommand" name="applyData"
-							process="@this" update="focus result standards">
+							<pe:remoteCommand id="applyDataCommand" name="applyData"
+								process="@this" update="focus result standards">
 
-							<pe:assignableParam name="focus"
-								assignTo="#{employerDetailsController.focus}" />
-							<pe:assignableParam name="result"
-								assignTo="#{employerDetailsController.result}">
-							</pe:assignableParam>
-							<pe:assignableParam name="standards"
-								assignTo="#{employerDetailsController.standards}">
-								<pe:convertJson />
-							</pe:assignableParam>
-						</pe:remoteCommand>
-						<script type="text/javascript">
-							cmmi3 = {
-								years : 5,
-								employees : "2k",
-								revenue:"10mil"
-							};
-							cmmi5 = {
+								<pe:assignableParam name="focus"
+									assignTo="#{employerDetailsController.focus}" />
+								<pe:assignableParam name="result"
+									assignTo="#{employerDetailsController.result}">
+								</pe:assignableParam>
+								<pe:assignableParam name="standards"
+									assignTo="#{employerDetailsController.standards}">
+									<pe:convertJson />
+								</pe:assignableParam>
+							</pe:remoteCommand>
+							<script type="text/javascript">
+								cmmi3 = {
+									years : 5,
+									employees : "2k",
+									revenue : "10mil"
+								};
+								cmmi5 = {
 									years : 10,
 									employees : "5k",
-									revenue:"90mil",
-							};
-						</script>
-						<h:outputLabel for="focus" value="Focus: " />
-						<h:outputText id="focus"
-							value="#{employerDetailsController.focus}" />
-						<br />
-						<h:outputLabel for="result" value="Result: " />
-						<h:outputText id="result" value="#{employerDetailsController.result}" />
-						<br />
-						<h:outputLabel for="standards" value="Standards: " />
-						<h:outputText id="standards"
-							value="years:#{employerDetailsController.standards.years} - employees:#{employerDetailsController.standards.employees} - revenue:#{employerDetailsController.standards.revenue}" />
-						<br />
-						<br />
+									revenue : "90mil",
+								};
+							</script>
+							<h:outputLabel for="focus" value="Focus: " />
+							<h:outputText id="focus"
+								value="#{employerDetailsController.focus}" />
+							<br />
+							<h:outputLabel for="result" value="Result: " />
+							<h:outputText id="result"
+								value="#{employerDetailsController.result}" />
+							<br />
+							<h:outputLabel for="standards" value="Standards: " />
+							<h:outputText id="standards"
+								value="years:#{employerDetailsController.standards.years} - employees:#{employerDetailsController.standards.employees} - revenue:#{employerDetailsController.standards.revenue}" />
+							<br />
+							<br />
 
-						<p:commandButton value="CMMI3" type="button"
-							onclick="applyData('Continuous Process Improvement', 'Highest Quality', JSON.stringify(cmmi3))" />
-						<p:commandButton value="CMMI5" type="button"
-							onclick="applyData('Process Standardization', 'Medium Quality ', JSON.stringify(cmmi5))" />
+							<p:commandButton value="CMMI3" type="button"
+								onclick="applyData('Continuous Process Improvement', 'Highest Quality', JSON.stringify(cmmi3))" />
+							<p:commandButton value="CMMI5" type="button"
+								onclick="applyData('Process Standardization', 'Medium Quality ', JSON.stringify(cmmi5))" />
 						</p:panel>
 						<pe:blockUI widgetVar="blockUIWidgetPage">
 							<h:panelGrid columns="2">

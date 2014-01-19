@@ -51,8 +51,8 @@
 										style="width:150px;display:none;" />
 
 								</f:facet>
-								<p:column headerText="Post Title" filterBy="title" width="60"
-									filterStyle="display:none;">
+								<p:column id="title" headerText="Post Title"  filterBy="title" width="60"
+									filterStyle="display:none;" >
 									<p:commandLink value="#{post.title}">
 										<pe:selectDetailLevel contextValue="#{post}" />
 									</p:commandLink>
@@ -65,7 +65,7 @@
 									filterStyle="display:none;width:10px">
 									<h:outputText value="#{post.location}" />
 								</p:column>
-								<p:column headerText="Status" width="20"
+								<p:column headerText="Status" width="20" exportable="false"
 									filterStyle="display:none;width:10px">
 									<p:selectBooleanButton widgetVar="boolbutton"
 										value="#{post.status}" onLabel="Applied" offLabel="Apply">
@@ -75,8 +75,8 @@
 							<p:panel header="Export PDF and Excel">
 								<p:commandLink id="pdf" ajax="false">
 									<p:graphicImage value="/resources/images/exporticons/pdf.png" />
-									<!-- <f:setPropertyActionListener value="false"
-										target="#{exporterController.customExporter}" /> -->
+									<f:setPropertyActionListener value="true"
+										target="#{exporterController.customExporter}" />
 									<pe:exporter type="pdf"
 										target="posts"
 										fileName="posts" />
@@ -87,8 +87,8 @@
 
 								<p:commandLink id="xls" ajax="false">
 									<p:graphicImage value="/resources/images/exporticons/excel.png" />
-									<!-- <f:setPropertyActionListener value="false"
-										target="#{exporterController.customExporter}" /> -->
+									<f:setPropertyActionListener value="true"
+										target="#{exporterController.customExporter}" />
 									<pe:exporter type="xlsx"
 										target="posts"
 										fileName="posts"  />
@@ -113,30 +113,6 @@
 									<h:outputText value="#{job.position}" />
 								</p:column>
 							</p:dataTable>
-							<p:panel header="Export PDF and Excel">
-								<p:commandLink id="pdf1" ajax="false">
-									<p:graphicImage value="/resources/images/exporticons/pdf.png" />
-									<!-- <f:setPropertyActionListener value="false"
-										target="#{exporterController.customExporter}" /> -->
-									<pe:exporter type="pdf"
-										target="jobs"
-										fileName="jobs" />
-
-								</p:commandLink>
-
-								<p:spacer width="20" />
-
-								<p:commandLink id="xls1" ajax="false">
-									<p:graphicImage value="/resources/images/exporticons/excel.png" />
-									<!-- <f:setPropertyActionListener value="false"
-										target="#{exporterController.customExporter}" /> -->
-									<pe:exporter type="xlsx"
-										target="jobs"
-										fileName="jobs" datasetPadding="4" />
-
-								</p:commandLink>
-
-							</p:panel>
 						</pe:masterDetailLevel>
 
 						<pe:masterDetailLevel level="3" contextVar="job"
@@ -165,30 +141,6 @@
 									<pe:selectDetailLevel step="-1" />
 								</p:commandButton>
 							</h:panelGrid>
-							<p:panel header="Export PDF and Excel">
-								<p:commandLink id="pdf2" ajax="false">
-									<p:graphicImage value="/resources/images/exporticons/pdf.png" />
-									<!-- <f:setPropertyActionListener value="false"
-										target="#{exporterController.customExporter}" /> -->
-									<pe:exporter type="pdf"
-										target="skills"
-										fileName="skills" />
-
-								</p:commandLink>
-
-								<p:spacer width="20" />
-
-								<p:commandLink id="xls2" ajax="false">
-									<p:graphicImage value="/resources/images/exporticons/excel.png" />
-									<!-- <f:setPropertyActionListener value="false"
-										target="#{exporterController.customExporter}" /> -->
-									<pe:exporter type="xlsx"
-										target="skills"
-										fileName="skills"  />
-
-								</p:commandLink>
-
-							</p:panel>
 						</pe:masterDetailLevel>
 					</pe:masterDetail>
 				</h:form>
