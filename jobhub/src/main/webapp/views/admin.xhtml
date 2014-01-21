@@ -26,8 +26,7 @@
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
 									interfaceColor="\##{adminController.color}"
 									rendered="#{adminController.aboutusFlag}" width="500" />
-								<p:outputPanel 
-									rendered="#{adminController.aboutusFlag}">
+								<p:outputPanel rendered="#{adminController.aboutusFlag}">
 									<p:colorPicker id="popupCP1" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor1" />
@@ -52,8 +51,7 @@
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
 									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.communicationFlag}" />
-								<p:outputPanel 
-									rendered="#{adminController.communicationFlag}">
+								<p:outputPanel rendered="#{adminController.communicationFlag}">
 									<p:colorPicker id="popupCP2" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor2" />
@@ -78,8 +76,7 @@
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
 									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.privacyFlag}" />
-								<p:outputPanel 
-									rendered="#{adminController.privacyFlag}">
+								<p:outputPanel rendered="#{adminController.privacyFlag}">
 									<p:colorPicker id="popupCP3" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor3" />
@@ -104,8 +101,7 @@
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
 									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.disclaimerFlag}" />
-								<p:outputPanel 
-									rendered="#{adminController.disclaimerFlag}">
+								<p:outputPanel rendered="#{adminController.disclaimerFlag}">
 									<p:colorPicker id="popupCP4" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor4" />
@@ -130,8 +126,7 @@
 									toolbar="[['Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker']]"
 									interfaceColor="\##{adminController.color}" width="500"
 									rendered="#{adminController.helpFlag}" />
-								<p:outputPanel 
-									rendered="#{adminController.helpFlag}">
+								<p:outputPanel rendered="#{adminController.helpFlag}">
 									<p:colorPicker id="popupCP5" value="#{adminController.color}">
 									</p:colorPicker>
 									<p:commandButton value="Submit color" update="editor5" />
@@ -161,92 +156,91 @@
 						start="#{jobhubTimelineController.start}"
 						end="#{jobhubTimelineController.end}" editable="true"
 						showButtonNew="true" minHeight="200" widgetVar="timelineWdgt">
+
 						<p:ajax event="change" update="@none"
 							listener="#{jobhubTimelineController.onChange}" />
+						<p:ajax event="edit" update="detailsJobhubInner"
+							listener="#{jobhubTimelineController.onEdit}"
+							oncomplete="PF('detailsJobhubWdgt').show()" />
+						<p:ajax event="add" update="detailsJobhubInner"
+							listener="#{jobhubTimelineController.onAdd}"
+							oncomplete="PF('detailsJobhubWdgt').show()" />
+						<p:ajax event="delete" update="deleteJobhubInner"
+							listener="#{jobhubTimelineController.onDelete}"
+							onstart="PF('timelineWdgt').cancelDelete()"
+							oncomplete="PF('deleteJobhubWdgt').show()" />
 
-						<p:ajax event="select"
-							listener="#{jobhubTimelineController.onSelect}" />
+
 						<h:panelGrid columns="1">
-							<h:outputText value="NoOfposts: #{jobhub.noofposts}" />
-							<h:outputText value="NoOfemployers: #{jobhub.noofemployers}" />
+							<h:outputText value="Posts: #{jobhub.noofposts}" />
+							<h:outputText value="Employers: #{jobhub.noofemployers}" />
 							<h:outputText
-								value="NoOfappliedposts: #{jobhub.noofappliedposts}" />
+								value="AppliedPosts: #{jobhub.noofappliedposts}" />
 						</h:panelGrid>
 					</pe:timeline>
-					<ui:remove>
-						<!-- <p:dialog id="detailsBookingDlg" header="Booking Details"
-						widgetVar="detailsBookingWdgt" showEffect="clip" hideEffect="clip">
-						<h:panelGroup id="detailsBookingInner" layout="block">
+					<p:dialog id="detailsJobhubDlg" header="Jobhub Details"
+						widgetVar="detailsJobhubWdgt" showEffect="clip" hideEffect="clip">
+						<h:panelGroup id="detailsJobhubInner" layout="block">
 							<h:panelGrid columns="2"
-								columnClasses="bookingDetails1,bookingDetails2">
-								<h:outputText value="Room" />
+								columnClasses="JobhubDetails1,JobhubDetails2">
+								<h:outputText value="Posts" />
 								<p:inputText
-									value="#{jobhubTimelineController.event.data.roomNumber}"
+									value="#{jobhubTimelineController.event.data.noofposts}"
 									required="true" label="Room" />
 
-								<h:outputText value="Category" />
-								<p:selectOneMenu
-									value="#{jobhubTimelineController.event.data.category}">
-									<f:selectItem itemLabel="Standard" itemValue="STANDARD" />
-									<f:selectItem itemLabel="Superior" itemValue="SUPERIOR" />
-									<f:selectItem itemLabel="Deluxe" itemValue="DELUXE" />
-									<f:selectItem itemLabel="Junior" itemValue="JUNIOR" />
-									<f:selectItem itemLabel="Executive Suite"
-										itemValue="EXECUTIVE_SUITE" />
-								</p:selectOneMenu>
-
-								<h:outputText value="From" />
+								<h:outputText value="Start" />
 								<p:calendar value="#{jobhubTimelineController.event.startDate}"
 									timeZone="#{jobhubTimelineController.timeZone}"
 									pattern="dd/MM/yyyy HH:mm" required="true" label="From" />
 
-								<h:outputText value="Until" />
+								<h:outputText value="End" />
 								<p:calendar value="#{jobhubTimelineController.event.endDate}"
 									timeZone="#{jobhubTimelineController.timeZone}"
 									pattern="dd/MM/yyyy HH:mm" label="Until" />
 
-								<h:outputText value="Phone" />
-								<p:inputMask
-									value="#{jobhubTimelineController.event.data.phone}"
-									mask="(9999) 999-999" />
+								<h:outputText value="Employers" />
+								<p:inputText
+									value="#{jobhubTimelineController.event.data.noofemployers}"
+									required="true" label="Room" />
 
-								<h:outputText value="Comment" />
-								<p:inputTextarea
-									value="#{jobhubTimelineController.event.data.comment}"
-									autoResize="false" />
+								<h:outputText value="Applied posts" />
+								<p:inputText
+									value="#{jobhubTimelineController.event.data.noofappliedposts}"
+									required="true" label="Room" />
 							</h:panelGrid>
 						</h:panelGroup>
 
 						<f:facet name="footer">
 							<h:panelGroup layout="block"
 								style="text-align:right; padding:2px; white-space:nowrap;">
-								<p:commandButton value="Save" process="detailsBookingDlg"
+								<p:commandButton value="Save" process="detailsJobhubDlg"
 									update="@none" action="#{jobhubTimelineController.saveDetails}"
-									oncomplete="if(!args.validationFailed){PF('detailsBookingWdgt').hide();}" />
+									oncomplete="if(!args.validationFailed){PF('detailsJobhubWdgt').hide();}" />
 								<p:commandButton type="button" value="Close"
-									onclick="PF('detailsBookingWdgt').hide()" />
+									onclick="PF('detailsJobhubWdgt').hide()" />
 							</h:panelGroup>
 						</f:facet>
 					</p:dialog>
 
-					<p:dialog id="deleteBookingDlg" header="Booking Details"
-						widgetVar="deleteBookingWdgt" showEffect="clip" hideEffect="clip"
+					<p:dialog id="deleteJobhubDlg" header="Jobhub Details"
+						widgetVar="deleteJobhubWdgt" showEffect="clip" hideEffect="clip"
 						dynamic="true">
-						<h:panelGroup id="deleteBookingInner" layout="block"
+						<h:panelGroup id="deleteJobhubInner" layout="block"
 							style="margin:10px;">
+							<h:outputText value="#{jobhubTimelineController.deleteMessage}" />
 						</h:panelGroup>
 
 						<f:facet name="footer">
 							<h:panelGroup layout="block"
 								style="text-align:right; padding:2px; white-space:nowrap;">
-								<p:commandButton value="Delete" process="deleteBookingDlg"
-									update="@none" oncomplete="PF('deleteBookingWdgt').hide()" />
+								<p:commandButton value="Delete" process="deleteJobhubDlg"
+									update="@none" action="#{jobhubTimelineController.delete}"
+									oncomplete="PF('deleteJobhubWdgt').hide()" />
 								<p:commandButton type="button" value="Close"
-									onclick="PF('deleteBookingWdgt').hide()" />
+									onclick="PF('deleteJobhubWdgt').hide()" />
 							</h:panelGroup>
 						</f:facet>
-					</p:dialog> -->
-					</ui:remove>
+					</p:dialog>
 					<h:outputStylesheet id="timelineCSS">
     table .formColumn {
         padding: 0 5px 0 20px;
