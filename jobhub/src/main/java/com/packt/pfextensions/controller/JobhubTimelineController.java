@@ -29,8 +29,6 @@ public class JobhubTimelineController implements Serializable {
 		 */
 	private static final long serialVersionUID = 1L;
 
-	private TimelineModel model;
-
 	private boolean selectable = true;
 	private boolean zoomable = true;
 	private boolean moveable = true;
@@ -40,9 +38,8 @@ public class JobhubTimelineController implements Serializable {
 	private boolean showCurrentTime = true;
 	private boolean showNavigation = false;
 
-	// private TimelineModel model;
-	private TimelineEvent event; // current event to be changed, edited, deleted
-									// or added
+	private TimelineModel model;
+	private TimelineEvent event;
 	private long zoomMax;
 	private Date start;
 	private Date end;
@@ -50,11 +47,7 @@ public class JobhubTimelineController implements Serializable {
 
 	@PostConstruct
 	protected void initialize() {
-
-		// initial zooming is ca. one month to avoid hiding of event details
-		// (due to wide time range of events)
 		zoomMax = 1000L * 60 * 60 * 24 * 30;
-
 		model = new TimelineModel();
 
 		Calendar cal = Calendar.getInstance();
@@ -130,81 +123,81 @@ public class JobhubTimelineController implements Serializable {
 				end));
 
 		cal.set(2012, Calendar.JUNE, 5, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2012, Calendar.JUNE, 10, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("10300", "500", "2000000"),
 				start, end));
 
 		cal.set(2012, Calendar.JUNE, 10, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2012, Calendar.JUNE, 15, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("60000", "500", "3300000"),
 				start, end));
 
 		cal.set(2012, Calendar.JUNE, 15, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2012, Calendar.AUGUST, 20, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("10300", "500", "2000000"),
 				start, end));
 
 		cal.set(2012, Calendar.JUNE, 19, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2012, Calendar.JULY, 24, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("60000", "500", "3300000"),
 				start, end));
 
 		cal.set(2012, Calendar.SEPTEMBER, 26, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2012, Calendar.SEPTEMBER, 31, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("34000", "700", "6000000"),
 				start, end));
 
 		cal.set(2012, Calendar.OCTOBER, 13, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2012, Calendar.OCTOBER, 18, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("15500", "700", "2000000"),
 				start, end));
 
 		cal.set(2012, Calendar.DECEMBER, 16, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2012, Calendar.DECEMBER, 21, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("23000", "600", "2300000"),
 				start, end));
 
 		cal.set(2013, Calendar.FEBRUARY, 3, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2013, Calendar.FEBRUARY, 8, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("23000", "500", "233000"),
 				start, end));
 
 		cal.set(2013, Calendar.MAY, 4, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2013, Calendar.MAY, 9, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("55000", "500", "2330000"),
 				start, end));
 
 		cal.set(2013, Calendar.JUNE, 5, 0, 0, 0);
-		 start = cal.getTime();
+		start = cal.getTime();
 		cal.set(2013, Calendar.JUNE, 10, 0, 0, 0);
-		 end = cal.getTime();
+		end = cal.getTime();
 
 		model.add(new TimelineEvent(new Jobhub("222000", "2300", "23230000"),
 				start, end));
