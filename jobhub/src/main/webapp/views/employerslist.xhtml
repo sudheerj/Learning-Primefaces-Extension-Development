@@ -266,7 +266,7 @@
 						<pe:keyFilter for="noofemployee" mask="num" />
 						<p:commandButton value="Register" update=":employerForm"
 							actionListener="#{employerDetailsController.registerEmployer}"
-							onstart="PF('blockUIWidgetPage').block()"
+							onstart="PF('blockUIWidgetPage').block()" global="false"
 							oncomplete="PF('blockUIWidgetPage').unblock()"></p:commandButton>
 						</p:panel>
 						</h:form>
