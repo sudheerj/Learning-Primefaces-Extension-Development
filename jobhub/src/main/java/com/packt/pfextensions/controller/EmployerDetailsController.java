@@ -45,6 +45,7 @@ public class EmployerDetailsController implements Serializable {
 	private String focus;
 	private String result;
 	private OrgStandards standards;
+	private String state;
 
 	@PostConstruct
 	public void init() {
@@ -273,6 +274,14 @@ public class EmployerDetailsController implements Serializable {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 }
