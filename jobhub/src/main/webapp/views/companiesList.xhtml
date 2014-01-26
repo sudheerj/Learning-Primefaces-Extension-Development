@@ -1,41 +1,44 @@
 <!DOCTYPE html>
-<ui:composition
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-      xmlns:pe="http://primefaces.org/ui/extensions"
-      template="/templates/masterTemplate.xhtml">
-<ui:define name="content">
-<h:form id="companiesListForm">
-<h:panelGroup id="wrapper" layout="block"> 
-<h:panelGroup id="container" layout="block">  
-  <pe:fluidGrid value="#{employerController.companies}" var="company"  
-              fitWidth="true" hasImages="true">  
-    <p:ajax event="layoutComplete" update="@none"  
-            listener="#{employerController.fireLayoutComplete}"/>  
-      
-    <pe:fluidGridItem> 
-     
-        <h:graphicImage id="companyImage" value="/resources/images/employers/#{company.name}" > 
-        <pe:waypoint id="waypoint"   offset="'100%'">  
-    <pe:javascript event="reached" execute="handleWaypoint(ext);"/>  
-</pe:waypoint> 
-        </h:graphicImage>
-    </pe:fluidGridItem>  
-</pe:fluidGrid> 
-</h:panelGroup>
-<p:commandButton id="topLink" type="button" value="TOP" icon="ui-icon-triangle-1-n" styleClass="top hidden"
-                     title="Back to top" onclick="$('html, body').animate({scrollTop: 0}, 'fast');"/> 
-                     
-</h:panelGroup>
-  <pe:waypoint id="waypoint1" offset="'-100%'">
-    <pe:javascript event="reached" execute="$('.ui-button').toggleClass('hidden');"/>
-</pe:waypoint>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/templates/masterTemplate.xhtml">
+	<ui:define name="content">
+		<h:form id="companiesListForm">
+			<h:panelGroup id="wrapper" layout="block">
+				<h:panelGroup id="container" layout="block">
+					<pe:fluidGrid value="#{employerController.companies}" var="company"
+						fitWidth="true" hasImages="true">
+						<p:ajax event="layoutComplete" update="@none"
+							listener="#{employerController.fireLayoutComplete}" />
 
-<h:outputStylesheet id="waypointCSS">
+						<pe:fluidGridItem>
+
+							<h:graphicImage id="companyImage"
+								value="/resources/images/employers/#{company.name}">
+								<pe:waypoint id="waypoint1" offset="'100%'">
+									<pe:javascript event="reached" execute="handleWaypoint(ext);" />
+								</pe:waypoint>
+							</h:graphicImage>
+						</pe:fluidGridItem>
+					</pe:fluidGrid>
+				</h:panelGroup>
+				<p:commandButton id="topLink" type="button" value="TOP"
+					icon="ui-icon-triangle-1-n" styleClass="top hidden"
+					title="Back to top"
+					onclick="$('html, body').animate({scrollTop: 0}, 'fast');" />
+
+			</h:panelGroup>
+			<pe:waypoint id="waypoint2" offset="'-100%'">
+				<pe:javascript event="reached"
+					execute="$('.ui-button').toggleClass('hidden');" />
+			</pe:waypoint>
+
+			<h:outputStylesheet id="waypointCSS">
     #wrapper {
     	width: 560px;
     	margin: 0 auto;
@@ -57,8 +60,8 @@
         display: none;
     }
 </h:outputStylesheet>
-  
-<h:outputScript id="waypointScript" target="body">  
+
+			<h:outputScript id="waypointScript" target="body">  
 /* <![CDATA[ */ 
     function handleWaypoint(ext) { 
         var img = $(ext.waypoint); 
@@ -82,12 +85,12 @@
         }); 
     } 
 /* ]]> */  
-</h:outputScript>               
-<h:outputStylesheet id="fluidGridCSS">      
+</h:outputScript>
+			<h:outputStylesheet id="fluidGridCSS">      
     img {  
         margin-top: -4px;  
     }  
-</h:outputStylesheet> 
-</h:form> 
-</ui:define>  
+</h:outputStylesheet>
+		</h:form>
+	</ui:define>
 </ui:composition>
