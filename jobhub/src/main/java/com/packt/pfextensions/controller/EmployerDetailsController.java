@@ -236,7 +236,6 @@ public class EmployerDetailsController implements Serializable {
 	}
 
 	public List<Employer> getFilteredemployers() {
-		System.out.println("getter=="+filteredemployers);
 		return filteredemployers;
 	}
 

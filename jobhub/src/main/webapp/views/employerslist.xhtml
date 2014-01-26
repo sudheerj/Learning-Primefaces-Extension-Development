@@ -264,9 +264,9 @@
 						<pe:keyFilter for="branch" regEx="/[a-z0-9_]/i" />
 						<pe:keyFilter for="year" mask="num" />
 						<pe:keyFilter for="noofemployee" mask="num" />
-						<p:commandButton value="Register" update=":employerForm"
+						<p:commandButton value="Register" update=":employerForm" global="false"
 							actionListener="#{employerDetailsController.registerEmployer}"
-							onstart="PF('blockUIWidgetPage').block()" global="false"
+							onstart="PF('blockUIWidgetPage').block()" 
 							oncomplete="PF('blockUIWidgetPage').unblock()"></p:commandButton>
 						</p:panel>
 						</h:form>
