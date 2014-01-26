@@ -229,9 +229,9 @@
 				<f:facet name="header">
             		  New Employer Registration
       		 		 </f:facet>
+      		  <pe:layoutPane position="north">  
 				<h:form id="registration">
 					<p:panel>
-
 						<p:messages errorClass="error" />
 
 						<h:panelGrid columns="2" columnClasses="label, value"
@@ -258,11 +258,21 @@
 
 
 						</h:panelGrid>
+						<pe:tooltip global="true" myPosition="left center"
+							atPosition="right center" />
+						<pe:keyFilter for="org" mask="alphanum" />
+						<pe:keyFilter for="branch" regEx="/[a-z0-9_]/i" />
+						<pe:keyFilter for="year" mask="num" />
+						<pe:keyFilter for="noofemployee" mask="num" />
 						<p:commandButton value="Register" update=":employerForm"
 							actionListener="#{employerDetailsController.registerEmployer}"
 							onstart="PF('blockUIWidgetPage').block()"
 							oncomplete="PF('blockUIWidgetPage').unblock()"></p:commandButton>
-						<p:separator></p:separator>
+						</p:panel>
+						</h:form>
+					</pe:layoutPane>
+					<pe:layoutPane position="center">
+					<h:form id="standards">
 						<p:panel>
 							<f:facet name="header">
 						Click the below buttons to know about CMMI level standards
@@ -311,6 +321,8 @@
 							<p:commandButton value="CMMI5" type="button"
 								onclick="applyData('Process Standardization', 'Medium Quality ', JSON.stringify(cmmi5))" />
 						</p:panel>
+						</h:form>
+						</pe:layoutPane>
 						<pe:blockUI widgetVar="blockUIWidgetPage">
 							<h:panelGrid columns="2">
 								<h:graphicImage
@@ -320,15 +332,9 @@
 									style="white-space: nowrap;" />
 							</h:panelGrid>
 						</pe:blockUI>
-						<pe:tooltip global="true" myPosition="left center"
-							atPosition="right center" />
-						<pe:keyFilter for="org" mask="alphanum" />
-						<pe:keyFilter for="branch" regEx="/[a-z0-9_]/i" />
-						<pe:keyFilter for="year" mask="num" />
-						<pe:keyFilter for="noofemployee" mask="num" />
+						
 
-					</p:panel>
-				</h:form>
+				
 			</pe:layoutPane>
 			<!-- <pe:layoutPane position="south">
                  South Block
