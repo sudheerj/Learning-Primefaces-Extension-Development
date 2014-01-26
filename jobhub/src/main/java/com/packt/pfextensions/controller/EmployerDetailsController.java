@@ -50,6 +50,7 @@ public class EmployerDetailsController implements Serializable {
 	@PostConstruct
 	public void init() {
 		employers = new ArrayList<Employer>();
+		selectedEmployer = new Employer();
 	//	filteredemployers = new ArrayList<Employer>();
 		employers=populateEmployers(employers, 50);
 		employersModel = new EmployerDataModel(employers);

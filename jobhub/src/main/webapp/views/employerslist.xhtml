@@ -43,7 +43,7 @@
 						value="#{employerDetailsController.employers}" paginator="true"
 						rowKey="#{employer.orgname}" rows="10" paginatorPosition="bottom"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15" filterEvent="enter"
+						rowsPerPageTemplate="5,10,15" filterEvent="enter" selection="#{employerDetailsController.selectedEmployer}"
 						filteredValue="#{employerDetailsController.filteredemployers}">
 						<f:facet name="header">
             Registered Employers List
