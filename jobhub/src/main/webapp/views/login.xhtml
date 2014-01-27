@@ -47,14 +47,14 @@
 				</h:panelGrid>
 
 				<f:facet name="footer">
-					<h:panelGrid columns="3" style="margin-left:30%">
+					<h:panelGrid columns="3" style="margin-left:70%">
 						<p:outputPanel id="register">
 							<p:commandLink value="#{msg['login.register']}" ajax="false"
 								rendered="#{loginBean.renderRegister}"
 								action="employeeRegistration?faces-redirect=true"></p:commandLink>
 						</p:outputPanel>
-						<p:spacer width="10" />
-						<p:commandLink value="#{msg['login.changpasswd']}"></p:commandLink>
+						<!-- <p:spacer width="10" />
+						<p:commandLink value="#{msg['login.changpasswd']}"></p:commandLink> -->
 					</h:panelGrid>
 				</f:facet>
 
