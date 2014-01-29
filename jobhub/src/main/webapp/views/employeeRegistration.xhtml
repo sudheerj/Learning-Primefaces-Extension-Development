@@ -119,10 +119,6 @@
 								onclick="PF('dynaFormWidget').toggleExtended();" />
 						</f:facet> 
 					</pe:dynaForm>
-
-
-					<!-- <pe:keyFilter for="postalCode" mask="num" />
-					<pe:keyFilter for="city" mask="alpha" /> -->
 				</p:panel>
 			</p:tab>
 			<p:tab id="professional" title="Professional">
@@ -130,27 +126,34 @@
 
 					<h:messages errorClass="error" />
 
-					<h:panelGrid columns="2" columnClasses="label, value">
+					<h:panelGrid columns="4" columnClasses="label, value">
 						<h:outputText value="Profession: *" />
 						<p:inputText id="profession" required="true" label="Email"
 							value="#{employeeRegistration.jobseeker.profession}" />
+						<h:outputText></h:outputText>
+						<h:outputText></h:outputText>
 
 						<h:outputText value="Experience:* " />
 						<pe:inputNumber
 							value="#{employeeRegistration.jobseeker.experience}" required="true" minValue="0"
 							maxValue="30" emptyValue="empty" symbol="yrs" symbolPosition="s" roundMethod="s" />
+							<h:outputText></h:outputText>
+						<h:outputText></h:outputText>
 
 						<h:outputText value="Current Package: " />
 						<pe:inputNumber
 							value="#{employeeRegistration.jobseeker.currentPack}" symbol="$" emptyValue="zero" roundMethod="S" 
 							decimalPlaces="2" decimalSeparator="," thousandSeparator="." symbolPosition="p" converter="inputNumberConverter" converterMessage="Entered value should be Currency type"/>
+							<h:outputText></h:outputText>
+						<h:outputText></h:outputText>
 
 						<h:outputText value="Expected Package: " />
 						<pe:inputNumber required="true" label="Email"
 							value="#{employeeRegistration.jobseeker.expectedPack}" symbol="$" emptyValue="zero" roundMethod="S"  validatorMessage="The expected package should not be more than 20000"
 							decimalPlaces="2" decimalSeparator="," thousandSeparator="." symbolPosition="p" converter="inputNumberConverter" converterMessage="Entered value should be Currency type">
-							<!-- <f:validateDoubleRange maximum="20000"/> -->
 						</pe:inputNumber> 
+						<h:outputText></h:outputText>
+						<h:outputText></h:outputText>
 						<h:outputText value="Preferred Interview Timings-Start: " />
 							<pe:timePicker
 								value="#{employeeRegistration.jobseeker.interviewFromTime}"
@@ -172,7 +175,7 @@
 				</p:panel>
 			</p:tab>
 			<p:tab id="skills" title="Skills">
-				<p:panel header="Contact Information">
+				<p:panel header="Skills Information">
 
 					<h:messages errorClass="error" />
 
@@ -201,7 +204,7 @@
 					</h:panelGrid>
 				</p:panel>
 			</p:tab>
-			<!-- <p:tab id="contact" title="Contact">
+		    <p:tab id="contact" title="Contact">
 				<p:panel header="Contact Information">
 
 					<h:messages errorClass="error" />
@@ -222,10 +225,10 @@
 					<pe:keyFilter for="phone" mask="pint" />
 				</p:panel>
 			</p:tab>
- -->
+ 
 			<p:tab id="confirm" title="Confirmation">
 				<p:panel header="Confirmation">
-
+					<p:growl autoUpdate="true"></p:growl>
 					<h:panelGrid id="confirmation" columns="6">
 						<h:outputText value="Firstname: " />
 						<h:outputText styleClass="outputLabel"
@@ -271,7 +274,7 @@
 					<h:outputText></h:outputText>
 					<h:outputText></h:outputText>
 					<p:separator></p:separator>
-					<p:commandButton value="Submit" update="growl"
+					<p:commandButton value="Submit" 
 						actionListener="#{employeeRegistration.save}" />
 
 				</p:panel>
