@@ -179,14 +179,14 @@
 						</h:panelGrid>
 					</pe:timeline>
 					<p:dialog id="detailsJobhubDlg" header="Jobhub Details"
-						widgetVar="detailsJobhubWdgt" showEffect="clip" hideEffect="clip">
+						widgetVar="detailsJobhubWdgt" showEffect="clip" hideEffect="clip" appendToBody="true">
 						<h:panelGroup id="detailsJobhubInner" layout="block">
 							<h:panelGrid columns="2"
 								columnClasses="JobhubDetails1,JobhubDetails2">
 								<h:outputText value="Posts" />
 								<p:inputText
 									value="#{jobhubTimelineController.event.data.noofposts}"
-									required="true" label="Room" />
+									required="true" label="Posts" />
 
 								<h:outputText value="Start" />
 								<p:calendar value="#{jobhubTimelineController.event.startDate}"
@@ -201,12 +201,12 @@
 								<h:outputText value="Employers" />
 								<p:inputText
 									value="#{jobhubTimelineController.event.data.noofemployers}"
-									required="true" label="Room" />
+									required="true" label="Employers" />
 
 								<h:outputText value="Applied posts" />
 								<p:inputText
 									value="#{jobhubTimelineController.event.data.noofappliedposts}"
-									required="true" label="Room" />
+									required="true" label="Applied Posts" />
 							</h:panelGrid>
 						</h:panelGroup>
 
