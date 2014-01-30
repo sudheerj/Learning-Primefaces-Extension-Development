@@ -159,13 +159,13 @@
 
 						<p:ajax event="change" update="@none"
 							listener="#{jobhubTimelineController.onChange}" />
-						<p:ajax event="edit" update="detailsJobhubInner"
+						<p:ajax event="edit" update=":jobhubdetails:detailsJobhubInner"
 							listener="#{jobhubTimelineController.onEdit}"
 							oncomplete="PF('detailsJobhubWdgt').show()" />
-						<p:ajax event="add" update="detailsJobhubInner"
+						<p:ajax event="add" update=":jobhubdetails:detailsJobhubInner"
 							listener="#{jobhubTimelineController.onAdd}"
 							oncomplete="PF('detailsJobhubWdgt').show()" />
-						<p:ajax event="delete" update="deleteJobhubInner"
+						<p:ajax event="delete" update=":deletejobhub:deleteJobhubInner"
 							listener="#{jobhubTimelineController.onDelete}"
 							onstart="PF('timelineWdgt').cancelDelete()"
 							oncomplete="PF('deleteJobhubWdgt').show()" />
@@ -174,73 +174,10 @@
 						<h:panelGrid columns="1">
 							<h:outputText value="Posts: #{jobhub.noofposts}" />
 							<h:outputText value="Employers: #{jobhub.noofemployers}" />
-							<h:outputText
-								value="AppliedPosts: #{jobhub.noofappliedposts}" />
+							<h:outputText value="AppliedPosts: #{jobhub.noofappliedposts}" />
 						</h:panelGrid>
 					</pe:timeline>
-					<p:dialog id="detailsJobhubDlg" header="Jobhub Details"
-						widgetVar="detailsJobhubWdgt" showEffect="clip" hideEffect="clip" appendToBody="true">
-						<h:panelGroup id="detailsJobhubInner" layout="block">
-							<h:panelGrid columns="2"
-								columnClasses="JobhubDetails1,JobhubDetails2">
-								<h:outputText value="Posts" />
-								<p:inputText
-									value="#{jobhubTimelineController.event.data.noofposts}"
-									required="true" label="Posts" />
 
-								<h:outputText value="Start" />
-								<p:calendar value="#{jobhubTimelineController.event.startDate}"
-									timeZone="#{jobhubTimelineController.timeZone}"
-									pattern="dd/MM/yyyy HH:mm" required="true" label="From" />
-
-								<h:outputText value="End" />
-								<p:calendar value="#{jobhubTimelineController.event.endDate}"
-									timeZone="#{jobhubTimelineController.timeZone}"
-									pattern="dd/MM/yyyy HH:mm" label="Until" />
-
-								<h:outputText value="Employers" />
-								<p:inputText
-									value="#{jobhubTimelineController.event.data.noofemployers}"
-									required="true" label="Employers" />
-
-								<h:outputText value="Applied posts" />
-								<p:inputText
-									value="#{jobhubTimelineController.event.data.noofappliedposts}"
-									required="true" label="Applied Posts" />
-							</h:panelGrid>
-						</h:panelGroup>
-
-						<f:facet name="footer">
-							<h:panelGroup layout="block"
-								style="text-align:right; padding:2px; white-space:nowrap;">
-								<p:commandButton value="Save" process="detailsJobhubDlg"
-									update="@none" action="#{jobhubTimelineController.saveDetails}"
-									oncomplete="if(!args.validationFailed){PF('detailsJobhubWdgt').hide();}" />
-								<p:commandButton type="button" value="Close"
-									onclick="PF('detailsJobhubWdgt').hide()" />
-							</h:panelGroup>
-						</f:facet>
-					</p:dialog>
-
-					<p:dialog id="deleteJobhubDlg" header="Jobhub Details"
-						widgetVar="deleteJobhubWdgt" showEffect="clip" hideEffect="clip"
-						dynamic="true">
-						<h:panelGroup id="deleteJobhubInner" layout="block"
-							style="margin:10px;">
-							<h:outputText value="#{jobhubTimelineController.deleteMessage}" />
-						</h:panelGroup>
-
-						<f:facet name="footer">
-							<h:panelGroup layout="block"
-								style="text-align:right; padding:2px; white-space:nowrap;">
-								<p:commandButton value="Delete" process="deleteJobhubDlg"
-									update="@none" action="#{jobhubTimelineController.delete}"
-									oncomplete="PF('deleteJobhubWdgt').hide()" />
-								<p:commandButton type="button" value="Close"
-									onclick="PF('deleteJobhubWdgt').hide()" />
-							</h:panelGroup>
-						</f:facet>
-					</p:dialog>
 					<h:outputStylesheet id="timelineCSS">
     table .formColumn {
         padding: 0 5px 0 20px;
@@ -254,5 +191,71 @@
 
 			</p:tabView>
 		</h:form>
+		<p:dialog id="detailsJobhubDlg" header="Jobhub Details"
+			widgetVar="detailsJobhubWdgt" showEffect="clip" hideEffect="clip"
+			appendToBody="true">
+			<h:form id="jobhubdetails">
+				<h:panelGroup id="detailsJobhubInner" layout="block">
+					<h:panelGrid columns="2"
+						columnClasses="JobhubDetails1,JobhubDetails2">
+						<h:outputText value="Posts" />
+						<p:inputText
+							value="#{jobhubTimelineController.event.data.noofposts}"
+							required="true" label="Posts" />
+
+						<h:outputText value="Start" />
+						<p:calendar value="#{jobhubTimelineController.event.startDate}"
+							timeZone="#{jobhubTimelineController.timeZone}"
+							pattern="dd/MM/yyyy HH:mm" required="true" label="From" />
+
+						<h:outputText value="End" />
+						<p:calendar value="#{jobhubTimelineController.event.endDate}"
+							timeZone="#{jobhubTimelineController.timeZone}"
+							pattern="dd/MM/yyyy HH:mm" label="Until" />
+
+						<h:outputText value="Employers" />
+						<p:inputText
+							value="#{jobhubTimelineController.event.data.noofemployers}"
+							required="true" label="Employers" />
+
+						<h:outputText value="Applied posts" />
+						<p:inputText
+							value="#{jobhubTimelineController.event.data.noofappliedposts}"
+							required="true" label="Applied Posts" />
+					</h:panelGrid>
+				</h:panelGroup>
+				<p:separator></p:separator>
+				<h:panelGroup layout="block"
+					style="text-align:right; padding:2px; white-space:nowrap;">
+					<p:commandButton value="Save" process="@this,jobhubdetails"
+						update="jobhubdetails"
+						action="#{jobhubTimelineController.saveDetails}"
+						oncomplete="if(!args.validationFailed){PF('detailsJobhubWdgt').hide();}" />
+					<p:commandButton type="button" value="Close"
+						onclick="PF('detailsJobhubWdgt').hide()" />
+				</h:panelGroup>
+			</h:form>
+		</p:dialog>
+
+		<p:dialog id="deleteJobhubDlg" header="Jobhub Details"
+			widgetVar="deleteJobhubWdgt" showEffect="clip" hideEffect="clip"
+			appendToBody="true" dynamic="true">
+			<h:form id="deletejobhub">
+				<h:panelGroup id="deleteJobhubInner" layout="block"
+					style="margin:10px;">
+					<h:outputText value="#{jobhubTimelineController.deleteMessage}" />
+				</h:panelGroup>
+
+				<p:separator></p:separator>
+				<h:panelGroup layout="block"
+					style="text-align:right; padding:2px; white-space:nowrap;">
+					<p:commandButton value="Delete" process="deletejobhub"
+						update="@none" action="#{jobhubTimelineController.delete}"
+						oncomplete="PF('deleteJobhubWdgt').hide()" />
+					<p:commandButton type="button" value="Close"
+						onclick="PF('deleteJobhubWdgt').hide()" />
+				</h:panelGroup>
+			</h:form>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
