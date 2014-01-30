@@ -133,55 +133,12 @@
 
 						<f:facet name="footer">
 							<p:commandButton id="viewButton" value="Edit"
-								icon="ui-icon-search" update=":employerForm:displaySingle"
+								icon="ui-icon-search" update=":employerEdit:displaySingle"
 								oncomplete="PF('singleEmployerDialog').show()" />
 						</f:facet>
 					</p:dataTable>
 
 
-
-					<p:dialog id="dialog" header="Employer Detail"
-						widgetVar="singleEmployerDialog" resizable="false"
-						showEffect="fade" hideEffect="explode" appendToBody="true">
-						<pe:spotlight id="idPanel1"
-							blocked="#{employerDetailsController.editable}"
-							style="padding:10px;margin:10px;"
-							styleClass="ui-widget ui-widget-content ui-corner-all">
-							<h:panelGrid id="displaySingle" columns="2" cellpadding="4">
-
-
-								<h:outputText value="Organization Name:" />
-								<h:inputText
-									value="#{employerDetailsController.selectedEmployer.orgname}"
-									style="font-weight:bold"
-									disabled="#{!employerDetailsController.editable}" />
-
-								<h:outputText value="Branch:" />
-								<h:inputText
-									value="#{employerDetailsController.selectedEmployer.branch}"
-									disabled="#{!employerDetailsController.editable}"
-									style="font-weight:bold" />
-
-								<h:outputText value="Established year:" />
-								<h:inputText
-									value="#{employerDetailsController.selectedEmployer.establishedyear}"
-									disabled="#{!employerDetailsController.editable}"
-									style="font-weight:bold" />
-
-								<h:outputText value="Number of employees:" />
-								<h:inputText
-									value="#{employerDetailsController.selectedEmployer.noofemployees}"
-									style="font-weight:bold"
-									disabled="#{!employerDetailsController.editable}" />
-							</h:panelGrid>
-							<p:selectBooleanButton
-								value="#{employerDetailsController.editable}" offLabel="Edit"
-								onLabel="Save">
-								<p:ajax event="change" process="idPanel1"
-									update="idPanel1,employerList" />
-							</p:selectBooleanButton>
-						</pe:spotlight>
-					</p:dialog>
 
 					<pe:blockUI target="employerList" content="blockUIContent"
 						widgetVar="blockUIWidget" />
@@ -340,5 +297,51 @@
                  South Block
             </pe:layoutPane> -->
 		</pe:layout>
+		
+					<p:dialog id="dialog" header="Employer Detail"
+						widgetVar="singleEmployerDialog" resizable="false"
+						showEffect="fade" hideEffect="explode" appendToBody="true">
+						<h:form id="employerEdit">
+						<pe:spotlight id="idPanel1"
+							blocked="#{employerDetailsController.editable}"
+							style="padding:10px;margin:10px;"
+							styleClass="ui-widget ui-widget-content ui-corner-all">
+							<h:panelGrid id="displaySingle" columns="2" cellpadding="4">
+
+
+								<h:outputText value="Organization Name:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.orgname}"
+									style="font-weight:bold"
+									disabled="#{!employerDetailsController.editable}" />
+
+								<h:outputText value="Branch:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.branch}"
+									disabled="#{!employerDetailsController.editable}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Established year:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.establishedyear}"
+									disabled="#{!employerDetailsController.editable}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Number of employees:" />
+								<h:inputText
+									value="#{employerDetailsController.selectedEmployer.noofemployees}"
+									style="font-weight:bold"
+									disabled="#{!employerDetailsController.editable}" />
+							</h:panelGrid>
+							<p:selectBooleanButton
+								value="#{employerDetailsController.editable}" offLabel="Edit"
+								onLabel="Save">
+								<p:ajax event="change" process="idPanel1"
+									update="idPanel1,:employerForm:employerList" />
+							</p:selectBooleanButton>
+						</pe:spotlight>
+						</h:form>
+					</p:dialog>
+		
 	</ui:define>
 </ui:composition>
