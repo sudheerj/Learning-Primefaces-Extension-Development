@@ -195,6 +195,7 @@
 			widgetVar="detailsJobhubWdgt" showEffect="clip" hideEffect="clip"
 			appendToBody="true">
 			<h:form id="jobhubdetails">
+			    <p:messages></p:messages>
 				<h:panelGroup id="detailsJobhubInner" layout="block">
 					<h:panelGrid columns="2"
 						columnClasses="JobhubDetails1,JobhubDetails2">
@@ -228,7 +229,7 @@
 				<h:panelGroup layout="block"
 					style="text-align:right; padding:2px; white-space:nowrap;">
 					<p:commandButton value="Save" process="@this,jobhubdetails"
-						update="jobhubdetails"
+						update=":jobhubdetails"
 						action="#{jobhubTimelineController.saveDetails}"
 						oncomplete="if(!args.validationFailed){PF('detailsJobhubWdgt').hide();}" />
 					<p:commandButton type="button" value="Close"
